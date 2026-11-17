@@ -40,9 +40,9 @@
     // Map state
     selectedBoxId: null,
     activeRegion: "",
-    mapCenter: { lat: 47.648, lng: -122.342, label: "Seattle, WA" },
+    mapCenter: { lat: 43.6629, lng: -79.3957, label: "Toronto, ON" },
     placingBoxMode: false,
-    pendingNewBoxCoords: { lat: 47.648, lng: -122.342 },
+    pendingNewBoxCoords: { lat: 43.6629, lng: -79.3957 },
     mapViewBox: { x: 0, y: 0, w: 1000, h: 720 },
     mapDrag: null,
 
@@ -154,7 +154,7 @@
   }
 
   function getBoxRegionLabel(box) {
-    if (!box) return "Seattle, WA";
+    if (!box) return "Toronto, ON";
     const city = (box.city || "").trim();
     const st = (box.state || "").trim();
     if (city && st) return `${city}, ${st}`;
@@ -460,12 +460,11 @@
       const matched = state.boxes.filter((b) => getBoxRegionLabel(b) === state.activeRegion);
       if (matched.length > 0) return matched;
     }
-    const cLat = state.mapCenter?.lat ?? state.boxes[0].lat;
-    const cLng = state.mapCenter?.lng ?? state.boxes[0].lng;
-    const nearby = state.boxes.filter(
+    const cLat = state.mapCenter?.lat ?? 43.6629;
+    const cLng = state.mapCenter?.lng ?? -79.3957;
+    return state.boxes.filter(
       (b) => Math.abs(b.lat - cLat) <= 0.35 && Math.abs(b.lng - cLng) <= 0.45
     );
-    return nearby.length > 0 ? nearby : state.boxes;
   }
 
   function lngToWorldX(lng, z) {
@@ -1073,15 +1072,15 @@
         showToast("Please enter a name and address for the new library box.");
         return;
       }
-      const centerLat = state.mapCenter?.lat ?? 47.648;
-      const centerLng = state.mapCenter?.lng ?? -122.342;
-      const regionParts = (state.activeRegion || "Seattle, WA").split(",").map((s) => s.trim());
+      const centerLat = state.mapCenter?.lat ?? 43.6629;
+      const centerLng = state.mapCenter?.lng ?? -79.3957;
+      const regionParts = (state.activeRegion || "Toronto, ON").split(",").map((s) => s.trim());
       payload.new_box = {
         name,
         address,
         neighborhood: document.getElementById("inlineBoxNeighborhood").value.trim() || "Neighborhood",
-        city: regionParts[0] || "Seattle",
-        state: regionParts[1] || "WA",
+        city: regionParts[0] || "Toronto",
+        state: regionParts[1] || "ON",
         roof_color: document.getElementById("inlineBoxRoofColor").value,
         lat: Number((centerLat + (Math.random() - 0.5) * 0.01).toFixed(5)),
         lng: Number((centerLng + (Math.random() - 0.5) * 0.015).toFixed(5)),
@@ -1214,6 +1213,37 @@
       }
     }
 
+    const REGION_CODE_MAP = {
+      ontario: "ON",
+      quebec: "QC",
+      "québec": "QC",
+      "british columbia": "BC",
+      alberta: "AB",
+      manitoba: "MB",
+      saskatchewan: "SK",
+      "nova scotia": "NS",
+      "new brunswick": "NB",
+      washington: "WA",
+      oregon: "OR",
+      california: "CA",
+      texas: "TX",
+      minnesota: "MN",
+      illinois: "IL",
+      "new york": "NY",
+      massachusetts: "MA",
+      colorado: "CO",
+      "district of columbia": "DC",
+    };
+
+    function normalizeRegionCode(addr = {}, rawState = "") {
+      const iso = addr["ISO3166-2-lvl4"] || "";
+      if (iso.includes("-")) return iso.split("-").pop().toUpperCase();
+      const cand = (rawState || addr.state_code || addr.state || "").trim();
+      if (!cand) return "";
+      if (cand.length <= 3) return cand.toUpperCase();
+      return REGION_CODE_MAP[cand.toLowerCase()] || cand;
+    }
+
     async function fetchLiveOsmBookcasesInBrowser({ query, lat, lng }) {
       let targetLat = lat;
       let targetLng = lng;
@@ -1235,7 +1265,7 @@
         targetLat = Number(hit.lat);
         targetLng = Number(hit.lon);
         city = addr.city || addr.town || addr.village || addr.county || "";
-        stateCode = addr.state || "";
+        stateCode = normalizeRegionCode(addr);
         postcode = addr.postcode || "";
       } else if (targetLat != null && targetLng != null) {
         try {
@@ -1246,7 +1276,7 @@
           );
           const addr = revData.address || {};
           city = addr.city || addr.town || addr.village || addr.county || "";
-          stateCode = addr.state || "";
+          stateCode = normalizeRegionCode(addr);
           postcode = addr.postcode || "";
         } catch (_err) {
           // Reverse geocode optional; continue with GPS coordinates
@@ -1296,7 +1326,7 @@
         const name = tags.name || (rawRef ? `Little Free Library #${rawRef}` : `Community Book Box #${el.id}`);
         const street = [tags["addr:housenumber"], tags["addr:street"]].filter(Boolean).join(" ").trim();
         const boxCity = tags["addr:city"] || city || "";
-        const boxState = tags["addr:state"] || stateCode || "";
+        const boxState = normalizeRegionCode({}, tags["addr:state"] || stateCode || "");
         const boxZip = tags["addr:postcode"] || postcode || "";
         const neighborhood = tags["addr:suburb"] || tags["addr:neighbourhood"] || boxCity || "Local";
         const address = street || tags.description || `GPS ${Number(elLat).toFixed(4)}, ${Number(elLng).toFixed(4)}`;
@@ -1619,13 +1649,13 @@
     document.getElementById("newMapBoxForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       try {
-        const regionParts = (state.activeRegion || "Seattle, WA").split(",").map((s) => s.trim());
+        const regionParts = (state.activeRegion || "Toronto, ON").split(",").map((s) => s.trim());
         const resp = await apiPost("/api/boxes", {
           name: document.getElementById("mapBoxName").value.trim(),
           address: document.getElementById("mapBoxAddress").value.trim(),
           neighborhood: document.getElementById("mapBoxNeighborhood").value.trim() || "Neighborhood",
-          city: regionParts[0] || "Seattle",
-          state: regionParts[1] || "WA",
+          city: regionParts[0] || "Toronto",
+          state: regionParts[1] || "ON",
           charter_number: document.getElementById("mapBoxCharter").value.trim(),
           steward_name: document.getElementById("mapBoxSteward").value.trim(),
           roof_color: document.getElementById("mapBoxRoofColor").value,

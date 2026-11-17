@@ -10,6 +10,7 @@ import math
 import mimetypes
 import os
 import re
+import socket
 import sqlite3
 import urllib.error
 import urllib.parse
@@ -19,6 +20,21 @@ from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
+
+# Prefer IPv4 for outbound HTTP calls (prevents 10s IPv6 socket timeouts on macOS).
+_ORIG_GETADDRINFO = socket.getaddrinfo
+
+
+def _ipv4_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+    results = _ORIG_GETADDRINFO(host, port, family, type, proto, flags)
+    if family in (0, socket.AF_UNSPEC):
+        v4 = [r for r in results if r[0] == socket.AF_INET]
+        if v4:
+            return v4
+    return results
+
+
+socket.getaddrinfo = _ipv4_getaddrinfo
 
 BASE_DIR = Path(__file__).resolve().parent
 PUBLIC_DIR = BASE_DIR / "public"
@@ -39,7 +55,7 @@ ALLOWED_GENRES = [
 
 PRESET_UPLOAD_SCANS = {
     "demo-cedar-creek": {
-        "suggested_box_name": "19th Ave E Little Free Library",
+        "suggested_box_name": "Brunswick Ave Little Free Library",
         "note": "Freshly restocked the cedar box with weekend reads and a couple of classics!",
         "books": [
             {
@@ -93,7 +109,7 @@ PRESET_UPLOAD_SCANS = {
         ],
     },
     "demo-oak-street": {
-        "suggested_box_name": "Phinney Ridge Pocket Library",
+        "suggested_box_name": "Roncesvalles Village Pocket Library",
         "note": "Dropped off coffee-table cookbooks and mysteries on my morning walk.",
         "books": [
             {
@@ -139,7 +155,7 @@ PRESET_UPLOAD_SCANS = {
         ],
     },
     "demo-kids-classics": {
-        "suggested_box_name": "Ravenna Blvd Little Free Library",
+        "suggested_box_name": "Withrow Park Book Exchange",
         "note": "Kids shelf is bursting with adventure stories and illustrated favorites!",
         "books": [
             {
@@ -217,118 +233,137 @@ def get_db() -> sqlite3.Connection:
 
 LFL_MAP_URL = "https://littlefreelibrary.org/map/"
 
-SEATTLE_SEED_BOXES = [
+TORONTO_SEED_BOXES = [
     {
-        "name": "19th Ave E Little Free Library",
-        "charter_number": "Charter #31842",
-        "address": "518 19th Ave E",
-        "neighborhood": "Capitol Hill",
-        "city": "Seattle",
-        "state": "WA",
-        "postal_code": "98112",
-        "lat": 47.62384,
-        "lng": -122.30761,
+        "name": "Brunswick Ave Little Free Library",
+        "charter_number": "Charter #34812",
+        "address": "214 Brunswick Ave",
+        "neighborhood": "The Annex",
+        "city": "Toronto",
+        "state": "ON",
+        "postal_code": "M5S 2M5",
+        "lat": 43.66342,
+        "lng": -79.40521,
         "steward_name": "Maya Lin",
-        "description": "Two-tier cedar box on Capitol Hill. Great mix of contemporary fiction and sci-fi.",
+        "description": "Two-tier cedar box in The Annex. Great mix of contemporary fiction and sci-fi.",
         "roof_color": "#C85A32",
         "source": "official-lfl",
-        "external_id": "lfl:31842",
+        "external_id": "lfl:34812",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 30,
     },
     {
-        "name": "Sunset Hill Park Book Exchange",
-        "charter_number": "Charter #44910",
-        "address": "7531 34th Ave NW",
-        "neighborhood": "Ballard / Sunset Hill",
-        "city": "Seattle",
-        "state": "WA",
-        "postal_code": "98117",
-        "lat": 47.68382,
-        "lng": -122.40076,
+        "name": "Withrow Park Book Exchange",
+        "charter_number": "Charter #41905",
+        "address": "725 Logan Ave",
+        "neighborhood": "Riverdale",
+        "city": "Toronto",
+        "state": "ON",
+        "postal_code": "M4K 3C9",
+        "lat": 43.67481,
+        "lng": -79.34618,
         "steward_name": "Devon Brooks",
-        "description": "Red barn-style library box overlooking Sunset Hill Park and Puget Sound.",
+        "description": "Red barn-style library box beside Withrow Park and the walking paths.",
         "roof_color": "#B23A32",
         "source": "official-lfl",
-        "external_id": "lfl:44910",
+        "external_id": "lfl:41905",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 45,
     },
     {
-        "name": "Ravenna Blvd Little Free Library",
-        "charter_number": "Charter #27415",
-        "address": "6214 Ravenna Ave NE",
-        "neighborhood": "Ravenna",
-        "city": "Seattle",
-        "state": "WA",
-        "postal_code": "98115",
-        "lat": 47.67435,
-        "lng": -122.30612,
+        "name": "High Park Ave Little Library",
+        "charter_number": "Charter #28740",
+        "address": "188 High Park Ave",
+        "neighborhood": "High Park",
+        "city": "Toronto",
+        "state": "ON",
+        "postal_code": "M6P 2S4",
+        "lat": 43.65892,
+        "lng": -79.46635,
         "steward_name": "Ms. Alvarez",
-        "description": "Painted pine box along the Ravenna boulevard greenway with children's and classic reads.",
+        "description": "Painted pine box near High Park with children's stories and classic reads.",
         "roof_color": "#3B6E5C",
         "source": "official-lfl",
-        "external_id": "lfl:27415",
+        "external_id": "lfl:28740",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 20,
     },
     {
-        "name": "Montlake Community Book Box",
-        "charter_number": "Charter #19508",
-        "address": "2418 East Lynn St",
-        "neighborhood": "Montlake",
-        "city": "Seattle",
-        "state": "WA",
-        "postal_code": "98112",
-        "lat": 47.63771,
-        "lng": -122.30134,
+        "name": "Palmerston Blvd Lantern Library",
+        "charter_number": "Charter #19482",
+        "address": "492 Palmerston Blvd",
+        "neighborhood": "Little Italy / Palmerston",
+        "city": "Toronto",
+        "state": "ON",
+        "postal_code": "M6G 2P3",
+        "lat": 43.66014,
+        "lng": -79.41368,
         "steward_name": "Samira Patel",
-        "description": "Shaded trellis box near the Arboretum stocked with nature writing, botany, and literary fiction.",
+        "description": "Lantern-lit trellis box on Palmerston Blvd stocked with nature writing and literary fiction.",
         "roof_color": "#3D6B8E",
         "source": "official-lfl",
-        "external_id": "lfl:19508",
+        "external_id": "lfl:19482",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 60,
     },
     {
-        "name": "West Highland Drive Book Box",
-        "charter_number": "Charter #52104",
-        "address": "212 W Highland Dr",
-        "neighborhood": "Queen Anne",
-        "city": "Seattle",
-        "state": "WA",
-        "postal_code": "98119",
-        "lat": 47.62958,
-        "lng": -122.36045,
+        "name": "Kew Gardens Beach Book Box",
+        "charter_number": "Charter #53190",
+        "address": "2075 Queen St E",
+        "neighborhood": "The Beaches",
+        "city": "Toronto",
+        "state": "ON",
+        "postal_code": "M4E 2T1",
+        "lat": 43.66965,
+        "lng": -79.29642,
         "steward_name": "Captain Pete",
-        "description": "Weatherproof yellow box along Kerry Park ridge on Queen Anne.",
+        "description": "Weatherproof yellow box by Kew Gardens and the Lake Ontario boardwalk.",
         "roof_color": "#D49A2A",
         "source": "official-lfl",
-        "external_id": "lfl:52104",
+        "external_id": "lfl:53190",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 15,
     },
     {
-        "name": "Phinney Ridge Pocket Library",
-        "charter_number": "Charter #38921",
-        "address": "6512 Phinney Ave N",
-        "neighborhood": "Phinney Ridge",
-        "city": "Seattle",
-        "state": "WA",
-        "postal_code": "98103",
-        "lat": 47.67638,
-        "lng": -122.35421,
+        "name": "Roncesvalles Village Pocket Library",
+        "charter_number": "Charter #39204",
+        "address": "294 Roncesvalles Ave",
+        "neighborhood": "Roncesvalles",
+        "city": "Toronto",
+        "state": "ON",
+        "postal_code": "M6R 2M4",
+        "lat": 43.64785,
+        "lng": -79.44912,
         "steward_name": "Elena Rossi",
-        "description": "Cozy cedar pocket library on Phinney Ridge. Rapidly rotating mysteries and cookbooks.",
+        "description": "Cozy cedar pocket library in Roncesvalles. Rapidly rotating mysteries and cookbooks.",
         "roof_color": "#6E473B",
         "source": "official-lfl",
-        "external_id": "lfl:38921",
+        "external_id": "lfl:39204",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 10,
     },
 ]
 
 CITY_GAZETTEER = {
+    # Canada
+    "toronto": (43.6629, -79.3957, "Toronto", "ON", "M5S"),
+    "the annex": (43.6675, -79.4036, "Toronto", "ON", "M5S"),
+    "annex": (43.6675, -79.4036, "Toronto", "ON", "M5S"),
+    "leslieville": (43.6626, -79.3358, "Toronto", "ON", "M4M"),
+    "high park": (43.6536, -79.4668, "Toronto", "ON", "M6P"),
+    "riverdale": (43.6716, -79.3490, "Toronto", "ON", "M4K"),
+    "roncesvalles": (43.6486, -79.4498, "Toronto", "ON", "M6R"),
+    "the beaches": (43.6711, -79.2952, "Toronto", "ON", "M4E"),
+    "beaches": (43.6711, -79.2952, "Toronto", "ON", "M4E"),
+    "kensington market": (43.6547, -79.4006, "Toronto", "ON", "M5T"),
+    "north york": (43.7615, -79.4111, "Toronto", "ON", "M2N"),
+    "scarborough": (43.7731, -79.2578, "Toronto", "ON", "M1P"),
+    "etobicoke": (43.6205, -79.5132, "Toronto", "ON", "M8Z"),
+    "mississauga": (43.5890, -79.6441, "Mississauga", "ON", "L5B"),
+    "ottawa": (45.4215, -75.6972, "Ottawa", "ON", "K1P"),
+    "montreal": (45.5017, -73.5673, "Montreal", "QC", "H2X"),
+    "vancouver": (49.2827, -123.1207, "Vancouver", "BC", "V6B"),
+    # United States
     "seattle": (47.6062, -122.3321, "Seattle", "WA", "98101"),
     "portland": (45.5152, -122.6784, "Portland", "OR", "97204"),
     "san francisco": (37.7749, -122.4194, "San Francisco", "CA", "94102"),
@@ -365,6 +400,24 @@ ZIP_PREFIX_GAZETTEER = {
     "200": (38.9072, -77.0369, "Washington", "DC"),
 }
 
+CA_POSTAL_PREFIX_GAZETTEER = {
+    "M1": (43.7731, -79.2578, "Toronto", "ON"),
+    "M2": (43.7615, -79.4111, "Toronto", "ON"),
+    "M3": (43.7450, -79.4500, "Toronto", "ON"),
+    "M4": (43.6710, -79.3350, "Toronto", "ON"),
+    "M5": (43.6629, -79.3957, "Toronto", "ON"),
+    "M6": (43.6550, -79.4450, "Toronto", "ON"),
+    "M7": (43.6532, -79.3832, "Toronto", "ON"),
+    "M8": (43.6205, -79.5132, "Toronto", "ON"),
+    "M9": (43.6950, -79.5400, "Toronto", "ON"),
+    "K1": (45.4215, -75.6972, "Ottawa", "ON"),
+    "K2": (45.3490, -75.7560, "Ottawa", "ON"),
+    "H2": (45.5200, -73.5750, "Montreal", "QC"),
+    "H3": (45.4970, -73.5790, "Montreal", "QC"),
+    "V5": (49.2600, -123.0800, "Vancouver", "BC"),
+    "V6": (49.2827, -123.1207, "Vancouver", "BC"),
+}
+
 
 def init_db() -> None:
     """Create tables if needed, migrate legacy schemas, and seed initial data when empty."""
@@ -377,8 +430,8 @@ def init_db() -> None:
                 charter_number TEXT NOT NULL,
                 address TEXT NOT NULL,
                 neighborhood TEXT NOT NULL,
-                city TEXT DEFAULT 'Seattle',
-                state TEXT DEFAULT 'WA',
+                city TEXT DEFAULT 'Toronto',
+                state TEXT DEFAULT 'ON',
                 postal_code TEXT DEFAULT '',
                 lat REAL NOT NULL,
                 lng REAL NOT NULL,
@@ -422,11 +475,11 @@ def init_db() -> None:
 
 
 def migrate_db(conn: sqlite3.Connection) -> None:
-    """Add new LFL metadata columns and upgrade legacy 0..100 toy coordinates to real Seattle GPS."""
+    """Add new LFL metadata columns and upgrade legacy seeded boxes (id 1..6) to real Toronto locations."""
     existing_cols = {row["name"] for row in conn.execute("PRAGMA table_info(boxes)").fetchall()}
     migrations = {
-        "city": "TEXT DEFAULT 'Seattle'",
-        "state": "TEXT DEFAULT 'WA'",
+        "city": "TEXT DEFAULT 'Toronto'",
+        "state": "TEXT DEFAULT 'ON'",
         "postal_code": "TEXT DEFAULT ''",
         "source": "TEXT DEFAULT 'official-lfl'",
         "external_id": "TEXT DEFAULT ''",
@@ -436,7 +489,7 @@ def migrate_db(conn: sqlite3.Connection) -> None:
         if col not in existing_cols:
             conn.execute(f"ALTER TABLE boxes ADD COLUMN {col} {col_def};")
 
-    # Upgrade legacy seeded boxes (id 1..6 or prior placeholder names) to real Seattle street locations
+    # Upgrade legacy seeded boxes (id 1..6) to real Toronto street locations
     legacy_charters = {
         "Charter #104822": 0,
         "Charter #98314": 1,
@@ -444,14 +497,20 @@ def migrate_db(conn: sqlite3.Connection) -> None:
         "Charter #77410": 3,
         "Charter #120541": 4,
         "Charter #89103": 5,
+        "Charter #31842": 0,
+        "Charter #44910": 1,
+        "Charter #27415": 2,
+        "Charter #19508": 3,
+        "Charter #52104": 4,
+        "Charter #38921": 5,
     }
     rows = conn.execute("SELECT id, charter_number FROM boxes WHERE id <= 6").fetchall()
     for row in rows:
         idx = legacy_charters.get(row["charter_number"])
-        if idx is None and 1 <= row["id"] <= len(SEATTLE_SEED_BOXES):
+        if idx is None and 1 <= row["id"] <= len(TORONTO_SEED_BOXES):
             idx = row["id"] - 1
         if idx is not None:
-            seed = SEATTLE_SEED_BOXES[idx]
+            seed = TORONTO_SEED_BOXES[idx]
             conn.execute(
                 """
                 UPDATE boxes
@@ -505,7 +564,7 @@ def seed_if_empty(conn: sqlite3.Connection) -> None:
         return
 
     box_ids = []
-    for seed in SEATTLE_SEED_BOXES:
+    for seed in TORONTO_SEED_BOXES:
         cur = conn.execute(
             """
             INSERT INTO boxes (
@@ -882,7 +941,7 @@ def fallback_spine_detection(photo_data: str):
 ROOF_PALETTE = ["#C85A32", "#2D5A43", "#3D6B8E", "#D49A2A", "#8C3B4A", "#6E473B"]
 
 
-def _clamp_gps(lat_val, lng_val, default_lat=47.648, default_lng=-122.342):
+def _clamp_gps(lat_val, lng_val, default_lat=43.6629, default_lng=-79.3957):
     """Clamp latitude/longitude to valid world GPS bounds."""
     try:
         lat = round(max(-85.0, min(85.0, float(lat_val))), 6)
@@ -906,8 +965,44 @@ def _normalize_charter(raw) -> str:
     return val
 
 
+REGION_CODE_MAP = {
+    "ontario": "ON",
+    "quebec": "QC",
+    "québec": "QC",
+    "british columbia": "BC",
+    "alberta": "AB",
+    "manitoba": "MB",
+    "saskatchewan": "SK",
+    "nova scotia": "NS",
+    "new brunswick": "NB",
+    "washington": "WA",
+    "oregon": "OR",
+    "california": "CA",
+    "texas": "TX",
+    "minnesota": "MN",
+    "illinois": "IL",
+    "new york": "NY",
+    "massachusetts": "MA",
+    "colorado": "CO",
+    "district of columbia": "DC",
+}
+
+
+def _normalize_region_code(addr: dict, raw_state: str = "") -> str:
+    """Convert Nominatim full province/state name or ISO3166-2-lvl4 code to short abbreviation."""
+    iso = (addr or {}).get("ISO3166-2-lvl4") or ""
+    if "-" in iso:
+        return iso.split("-")[-1].upper()
+    candidate = (raw_state or (addr or {}).get("state_code") or (addr or {}).get("state") or "").strip()
+    if not candidate:
+        return ""
+    if len(candidate) <= 3:
+        return candidate.upper()
+    return REGION_CODE_MAP.get(candidate.lower(), candidate)
+
+
 def _resolve_location_query(query: str):
-    """Resolve a city, zip code, or address string into (lat, lng, label, city, state, postal_code)."""
+    """Resolve a city, Canadian postal code, US zip code, or address string into (lat, lng, label, city, state, postal_code)."""
     q = (query or "").strip()
     low = q.lower()
     city_part = low.split(",")[0].strip()
@@ -918,6 +1013,16 @@ def _resolve_location_query(query: str):
     if city_part in CITY_GAZETTEER:
         lat, lng, city, st, zc = CITY_GAZETTEER[city_part]
         return lat, lng, f"{city}, {st}", city, st, zc
+
+    # Canadian postal code (e.g. "M5S", "M6G 2P3", "M4K3C9")
+    ca_match = re.search(r"\b([MKHV]\d[A-Za-z])(?:\s?\d[A-Za-z]\d)?\b", q, re.IGNORECASE)
+    if ca_match:
+        fsa = ca_match.group(1).upper()
+        prefix2 = fsa[:2]
+        if prefix2 in CA_POSTAL_PREFIX_GAZETTEER:
+            lat, lng, city, st = CA_POSTAL_PREFIX_GAZETTEER[prefix2]
+            full_pc = ca_match.group(0).upper()
+            return lat, lng, f"{city}, {st} {full_pc}", city, st, full_pc
 
     zip_match = re.search(r"\b(\d{5})\b", q)
     if zip_match:
@@ -940,7 +1045,7 @@ def _resolve_location_query(query: str):
     hit = items[0]
     addr = hit.get("address") or {}
     city = addr.get("city") or addr.get("town") or addr.get("village") or addr.get("county") or q
-    st = addr.get("state_code") or addr.get("state") or ""
+    st = _normalize_region_code(addr)
     pc = addr.get("postcode") or ""
     lat = round(float(hit["lat"]), 6)
     lng = round(float(hit["lon"]), 6)
@@ -1026,6 +1131,22 @@ def _query_overpass_bookcases(lat: float, lng: float, radius_km: float, city: st
 
 
 REAL_CITY_LFL_BOXES = [
+    # Toronto, ON
+    *TORONTO_SEED_BOXES,
+    {"name": "Leslieville Greenwood Park Box", "charter_number": "Charter #48210", "address": "150 Greenwood Ave", "neighborhood": "Leslieville", "city": "Toronto", "state": "ON", "postal_code": "M4L 2R1", "lat": 43.66692, "lng": -79.32965, "steward_name": "Claire Wong", "description": "Community book swap near Greenwood Park in Leslieville.", "roof_color": "#2D5A43"},
+    {"name": "Trinity Bellwoods Strachan Box", "charter_number": "Charter #55194", "address": "155 Strachan Ave", "neighborhood": "Trinity Bellwoods", "city": "Toronto", "state": "ON", "postal_code": "M6J 2S8", "lat": 43.64582, "lng": -79.41391, "steward_name": "Jordan Patel", "description": "Park-edge Little Free Library on the east side of Trinity Bellwoods.", "roof_color": "#C85A32"},
+    # Ottawa, ON
+    {"name": "Glebe Bank St Little Library", "charter_number": "Charter #41290", "address": "780 Bank St", "neighborhood": "The Glebe", "city": "Ottawa", "state": "ON", "postal_code": "K1S 3V6", "lat": 45.4026, "lng": -75.6894, "steward_name": "Sophie Martin", "description": "Bilingual French & English neighborhood book box in The Glebe.", "roof_color": "#3D6B8E"},
+    {"name": "Hintonburg Wellington Book Box", "charter_number": "Charter #52018", "address": "1092 Wellington St W", "neighborhood": "Hintonburg", "city": "Ottawa", "state": "ON", "postal_code": "K1Y 2Y4", "lat": 45.4021, "lng": -75.7268, "steward_name": "Marc Tremblay", "description": "Community book exchange in Hintonburg.", "roof_color": "#C85A32"},
+    # Montreal, QC
+    {"name": "Plateau Mont-Royal Saint-Denis Box", "charter_number": "Charter #36811", "address": "4210 Rue Saint-Denis", "neighborhood": "Plateau-Mont-Royal", "city": "Montreal", "state": "QC", "postal_code": "H2W 2M5", "lat": 45.5223, "lng": -73.5794, "steward_name": "Amelie Gagnon", "description": "Boite a livres on Rue Saint-Denis in Le Plateau.", "roof_color": "#D49A2A"},
+    {"name": "Mile End Laurier West Library", "charter_number": "Charter #49032", "address": "240 Ave Laurier O", "neighborhood": "Mile End", "city": "Montreal", "state": "QC", "postal_code": "H2T 2N8", "lat": 45.5228, "lng": -73.5968, "steward_name": "Lucas Bouchard", "description": "Neighborhood reading box near Laurier West.", "roof_color": "#2D5A43"},
+    # Vancouver, BC
+    {"name": "Kitsilano 4th Ave Little Library", "charter_number": "Charter #31940", "address": "2240 W 4th Ave", "neighborhood": "Kitsilano", "city": "Vancouver", "state": "BC", "postal_code": "V6K 1N8", "lat": 49.2683, "lng": -123.1558, "steward_name": "Keiko Tanaka", "description": "Cedar shingle library box in Kitsilano.", "roof_color": "#3B6E5C"},
+    {"name": "Commercial Drive Cedar Box", "charter_number": "Charter #47812", "address": "1680 Commercial Dr", "neighborhood": "Grandview-Woodland", "city": "Vancouver", "state": "BC", "postal_code": "V5L 3Y4", "lat": 49.2696, "lng": -123.0695, "steward_name": "Noah Fraser", "description": "Community book box off Commercial Drive.", "roof_color": "#C85A32"},
+    # Seattle, WA
+    {"name": "19th Ave E Little Free Library", "charter_number": "Charter #31842", "address": "518 19th Ave E", "neighborhood": "Capitol Hill", "city": "Seattle", "state": "WA", "postal_code": "98112", "lat": 47.62384, "lng": -122.30761, "steward_name": "Maya Lin", "description": "Two-tier cedar box on Capitol Hill.", "roof_color": "#C85A32"},
+    {"name": "Ravenna Blvd Little Free Library", "charter_number": "Charter #27415", "address": "6214 Ravenna Ave NE", "neighborhood": "Ravenna", "city": "Seattle", "state": "WA", "postal_code": "98115", "lat": 47.67435, "lng": -122.30612, "steward_name": "Ms. Alvarez", "description": "Painted pine box along the Ravenna boulevard greenway.", "roof_color": "#3B6E5C"},
     # Portland, OR
     {"name": "Hawthorne Blvd Little Free Library", "charter_number": "Charter #24109", "address": "3712 SE Hawthorne Blvd", "neighborhood": "Sunnyside", "city": "Portland", "state": "OR", "postal_code": "97214", "lat": 45.5122, "lng": -122.6258, "steward_name": "Claire Bennett", "description": "Cedar neighborhood library box along Hawthorne Blvd.", "roof_color": "#C85A32"},
     {"name": "Alberta Arts Little Free Library", "charter_number": "Charter #33814", "address": "2218 NE Alberta St", "neighborhood": "Alberta Arts", "city": "Portland", "state": "OR", "postal_code": "97211", "lat": 45.5589, "lng": -122.6424, "steward_name": "Samir Rao", "description": "Community book exchange near Alberta Arts District.", "roof_color": "#2D5A43"},
@@ -1556,8 +1677,8 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
         name = str(body.get("name") or "").strip()
         address = str(body.get("address") or "").strip()
         neighborhood = str(body.get("neighborhood") or "Neighborhood").strip()
-        city = str(body.get("city") or "Seattle").strip()
-        state_code = str(body.get("state") or "WA").strip()
+        city = str(body.get("city") or "Toronto").strip()
+        state_code = str(body.get("state") or "ON").strip()
         postal = str(body.get("postal_code") or "").strip()
         if not name or not address:
             self.send_json(HTTPStatus.BAD_REQUEST, {"error": "Box name and address are required."})
@@ -1567,7 +1688,7 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
         steward = str(body.get("steward_name") or "Community Steward").strip()
         desc = str(body.get("description") or "Neighborhood Little Free Library box.").strip()
         roof_color = str(body.get("roof_color") or "#C85A32").strip()
-        lat, lng = _clamp_gps(body.get("lat"), body.get("lng"), default_lat=47.648, default_lng=-122.342)
+        lat, lng = _clamp_gps(body.get("lat"), body.get("lng"), default_lat=43.6629, default_lng=-79.3957)
 
         now = datetime.now(timezone.utc).isoformat()
         with get_db() as conn:
@@ -1646,7 +1767,7 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
                     rev_data = json.loads(rev_resp.read().decode("utf-8"))
                     addr = rev_data.get("address") or {}
                     city = addr.get("city") or addr.get("town") or addr.get("village") or ""
-                    state_code = addr.get("state_code") or addr.get("state") or ""
+                    state_code = _normalize_region_code(addr)
                     postal = addr.get("postcode") or ""
                     if city or state_code:
                         label = f"{city}, {state_code}".strip(", ")
@@ -1743,8 +1864,8 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
                 nlat, nlng = _clamp_gps(
                     new_box.get("lat"),
                     new_box.get("lng"),
-                    default_lat=47.648,
-                    default_lng=-122.342,
+                    default_lat=43.6629,
+                    default_lng=-79.3957,
                 )
                 cur = conn.execute(
                     """
@@ -1759,8 +1880,8 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
                         _normalize_charter(new_box.get("charter_number")) or "Charter #New",
                         baddr,
                         str(new_box.get("neighborhood") or "Local Block"),
-                        str(new_box.get("city") or "Seattle"),
-                        str(new_box.get("state") or "WA"),
+                        str(new_box.get("city") or "Toronto"),
+                        str(new_box.get("state") or "ON"),
                         str(new_box.get("postal_code") or ""),
                         nlat,
                         nlng,
