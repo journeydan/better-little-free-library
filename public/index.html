@@ -138,15 +138,43 @@
       <section id="view-map" class="view-section" aria-labelledby="mapHeading">
         <div class="section-toolbar">
           <div>
-            <h1 id="mapHeading" class="section-title">Neighborhood Library Map</h1>
-            <p class="section-desc">Tap a library box pin to inspect its latest shelf photo and available books.</p>
+            <h1 id="mapHeading" class="section-title">Little Free Library World Map</h1>
+            <p class="section-desc">Centralized GPS directory synced with <a href="https://littlefreelibrary.org/map/" target="_blank" rel="noopener">littlefreelibrary.org/map/</a>.</p>
           </div>
           <div class="toolbar-controls">
-            <button id="toggleAddBoxModeBtn" class="btn btn-secondary" type="button">
+            <a href="https://littlefreelibrary.org/map/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+              🌐 Official LFL Map ↗
+            </a>
+            <button id="openLflImportModalBtn" class="btn btn-secondary btn-sm" type="button">
+              📥 Import LFL Data
+            </button>
+            <button id="toggleAddBoxModeBtn" class="btn btn-secondary btn-sm" type="button">
               + Add Library Box on Map
             </button>
           </div>
         </div>
+
+        <div class="lfl-sync-bar">
+          <div class="lfl-sync-input-wrap">
+            <input
+              id="lflLocationSearchInput"
+              class="input-control full-width"
+              type="search"
+              placeholder="Search City, Zip Code, or Charter # (e.g. Portland, OR, 55101, #104822)..."
+              aria-label="Search Little Free Library map by city, zip, or charter number"
+            />
+          </div>
+          <div class="lfl-sync-actions">
+            <button id="lflSyncLocationBtn" class="btn btn-primary btn-sm" type="button">
+              Sync LFL Map
+            </button>
+            <button id="lflNearMeBtn" class="btn btn-secondary btn-sm" type="button">
+              📍 Near Me
+            </button>
+          </div>
+        </div>
+
+        <div id="mapRegionPills" class="genre-pills" aria-label="Filter map by region"></div>
 
         <div id="mapPlacementBanner" class="placement-banner hidden">
           <span>📍 Tap anywhere on the neighborhood map to place a new Little Free Library box.</span>
@@ -338,7 +366,7 @@
       <div class="modal-header">
         <div>
           <h2 id="newMapBoxTitle" class="modal-title">Register New Library Box</h2>
-          <p class="modal-subtitle">Pin coordinates: (<span id="newBoxCoordsLabel">50, 50</span>)</p>
+          <p class="modal-subtitle">GPS coordinates: (<span id="newBoxCoordsLabel">47.6480, -122.3420</span>)</p>
         </div>
         <button id="closeNewMapBoxBtn" class="icon-close-btn" type="button" aria-label="Close modal">✕</button>
       </div>
@@ -394,6 +422,46 @@
         <div id="lightboxPhotoFrame" class="photo-stage">
           <img id="lightboxImg" alt="Shelf check-in photo" />
           <div id="lightboxBboxLayer" class="bbox-layer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import Official LFL Data Modal -->
+  <div id="lflImportModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="lflImportTitle">
+    <div class="modal-dialog modal-md">
+      <div class="modal-header">
+        <div>
+          <h2 id="lflImportTitle" class="modal-title">Import Little Free Library Map Data</h2>
+          <p class="modal-subtitle">
+            Paste or upload Official LFL Map JSON (<code>Library_Name__c</code>, <code>Official_Charter_Number__c</code>, <code>Library_Geolocation__c</code>), Overpass GeoJSON, or CSV.
+          </p>
+        </div>
+        <button id="closeLflImportBtn" class="icon-close-btn" type="button" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body stack-form">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+          <button id="loadSampleLflExportBtn" class="btn btn-secondary btn-sm" type="button">
+            Load Sample Official LFL Map Export (Minneapolis / St. Paul)
+          </button>
+          <label class="btn btn-ghost btn-sm" for="lflImportFileInput" style="cursor:pointer;">
+            Upload .json / .geojson / .csv
+            <input id="lflImportFileInput" type="file" accept=".json,.geojson,.csv,application/json,text/csv" hidden />
+          </label>
+        </div>
+        <div>
+          <label class="form-label" for="lflImportTextarea">LFL Dataset Payload</label>
+          <textarea
+            id="lflImportTextarea"
+            class="input-control full-width"
+            rows="10"
+            placeholder='[{"Library_Name__c": "Summit Hill Book House", "Official_Charter_Number__c": "42108", "Library_Geolocation__c": {"latitude": 44.9412, "longitude": -93.1365}, ...}]'
+          ></textarea>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:flex-end;">
+          <button id="submitLflImportBtn" class="btn btn-primary" type="button">
+            Import Boxes to Map
+          </button>
         </div>
       </div>
     </div>

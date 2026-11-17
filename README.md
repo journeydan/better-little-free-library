@@ -6,7 +6,7 @@ A mobile-first web app for snapping photos of Little Free Library boxes, detecti
 
 - **Photo Check-In Feed**: Chronological community snapshots of Little Free Library boxes with toggleable spine bounding-box overlays and clickable book chips.
 - **Global Book Index**: Real-time search across book titles, authors, genres, and boxes, availability status updates (`Available` / `Picked Up`), shelf-photo inspection, and direct map links.
-- **Interactive Neighborhood Map**: Pan-and-zoom SVG neighborhood map with Little Free Library pins showing available book counts, box inventory drawers, and new-box pin placement.
+- **Real-GPS Little Free Library Map (`littlefreelibrary.org/map/`)**: Interactive lat/lng projected map with region switching, City/Zip/Charter # sync (`/api/lfl/sync` via Nominatim + OpenStreetMap Overpass with offline catalog fallback), Official LFL JSON/GeoJSON/CSV importer (`/api/lfl/import`), box inventory drawers, and links to `https://littlefreelibrary.org/map/` and Google Maps directions.
 - **Snap & Index Workflow**: Upload a photo, capture via live camera (`getUserMedia`), or test with built-in demo shelf photos, then review and edit detected spines before publishing.
 - **AI Provider Support**: Configured for the **DeepSeek API** by default, with optional **Google Gemini API** support and an offline built-in spine detector fallback so the app works out of the box.
 
@@ -33,7 +33,7 @@ You can configure your API key either in the in-app **AI Settings** modal or via
 
 ## Project Structure
 
-- `server.py` — HTTP server, REST API endpoints (`/api/state`, `/api/analyze-shelf`, `/api/checkins`, `/api/books/<id>/status`, `/api/boxes`), SQLite schema/seeding, and AI integrations
+- `server.py` — HTTP server, REST API endpoints (`/api/state`, `/api/analyze-shelf`, `/api/checkins`, `/api/books/<id>/status`, `/api/boxes`, `/api/lfl/sync`, `/api/lfl/import`), SQLite schema/seeding, and AI integrations
 - `public/index.html` — Mobile-first application shell and modals
 - `public/styles.css` — Responsive styling and bounding-box overlays
 - `public/app.js` — Client state, feed/index/map rendering, camera/upload scanner workflow

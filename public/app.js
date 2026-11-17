@@ -39,8 +39,10 @@
 
     // Map state
     selectedBoxId: null,
+    activeRegion: "",
+    mapCenter: { lat: 47.648, lng: -122.342, label: "Seattle, WA" },
     placingBoxMode: false,
-    pendingNewBoxCoords: { lat: 50, lng: 50 },
+    pendingNewBoxCoords: { lat: 47.648, lng: -122.342 },
     mapViewBox: { x: 0, y: 0, w: 1000, h: 720 },
     mapDrag: null,
 
@@ -119,6 +121,12 @@
       state.selectedBoxId = state.boxes[0]?.id || null;
     }
 
+    if (!state.activeRegion && state.boxes.length > 0) {
+      const b0 = state.boxes[0];
+      state.activeRegion = getBoxRegionLabel(b0);
+      state.mapCenter = { lat: b0.lat, lng: b0.lng, label: state.activeRegion };
+    }
+
     renderAll();
   }
 
@@ -145,8 +153,23 @@
     }
   }
 
+  function getBoxRegionLabel(box) {
+    if (!box) return "Seattle, WA";
+    const city = (box.city || "").trim();
+    const st = (box.state || "").trim();
+    if (city && st) return `${city}, ${st}`;
+    if (city) return city;
+    return box.neighborhood || "Local Region";
+  }
+
   function jumpToBoxOnMap(boxId) {
     state.selectedBoxId = boxId;
+    const target = state.boxes.find((b) => b.id === boxId);
+    if (target) {
+      state.activeRegion = getBoxRegionLabel(target);
+      state.mapCenter = { lat: target.lat, lng: target.lng, label: state.activeRegion };
+      state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
+    }
     switchView("map");
     renderMapView();
   }
@@ -285,7 +308,7 @@
                   ${escapeHtml(ch.box_name)}
                 </button>
                 <div class="feed-meta-line">
-                  ${escapeHtml(ch.charter_number)} · ${escapeHtml(ch.neighborhood)} · Spotted ${timeAgo(ch.created_at)} by ${escapeHtml(ch.user_name)}
+                  ${escapeHtml(ch.charter_number)} · ${escapeHtml(ch.neighborhood)}${ch.city ? `, ${escapeHtml(ch.city)}` : ""} · Spotted ${timeAgo(ch.created_at)} by ${escapeHtml(ch.user_name)}
                 </div>
               </div>
               <span class="badge badge-forest">${availableHere} available</span>
@@ -431,93 +454,195 @@
   }
 
   // --- Render Interactive Map View ---
+  function getVisibleMapBoxes() {
+    if (!state.boxes.length) return [];
+    if (state.activeRegion) {
+      const matched = state.boxes.filter((b) => getBoxRegionLabel(b) === state.activeRegion);
+      if (matched.length > 0) return matched;
+    }
+    const cLat = state.mapCenter?.lat ?? state.boxes[0].lat;
+    const cLng = state.mapCenter?.lng ?? state.boxes[0].lng;
+    const nearby = state.boxes.filter(
+      (b) => Math.abs(b.lat - cLat) <= 0.35 && Math.abs(b.lng - cLng) <= 0.45
+    );
+    return nearby.length > 0 ? nearby : state.boxes;
+  }
+
+  function getGeoProjection(visibleBoxes) {
+    const pts = visibleBoxes.length ? visibleBoxes : [{ lat: state.mapCenter.lat, lng: state.mapCenter.lng }];
+    let minLat = Infinity;
+    let maxLat = -Infinity;
+    let minLng = Infinity;
+    let maxLng = -Infinity;
+    for (const b of pts) {
+      minLat = Math.min(minLat, b.lat);
+      maxLat = Math.max(maxLat, b.lat);
+      minLng = Math.min(minLng, b.lng);
+      maxLng = Math.max(maxLng, b.lng);
+    }
+    const centerLat = (minLat + maxLat) / 2;
+    const centerLng = (minLng + maxLng) / 2;
+    const cosLat = Math.max(0.25, Math.cos((centerLat * Math.PI) / 180));
+    const spanLat = Math.max(0.035, (maxLat - minLat) * 1.55);
+    const spanLng = Math.max(0.055, (maxLng - minLng) * 1.55);
+    const pxPerDegLat = Math.min(720 / spanLat, 1000 / (spanLng * cosLat));
+
+    return {
+      centerLat,
+      centerLng,
+      cosLat,
+      pxPerDegLat,
+      spanLat,
+      project(lat, lng) {
+        return {
+          x: 500 + (lng - centerLng) * cosLat * pxPerDegLat,
+          y: 360 - (lat - centerLat) * pxPerDegLat,
+        };
+      },
+      unproject(x, y) {
+        return {
+          lat: Number((centerLat + (360 - y) / pxPerDegLat).toFixed(5)),
+          lng: Number((centerLng + (x - 500) / (cosLat * pxPerDegLat)).toFixed(5)),
+        };
+      },
+    };
+  }
+
+  function formatDegree(val, posHem, negHem) {
+    const hem = val >= 0 ? posHem : negHem;
+    return `${Math.abs(val).toFixed(2)}°${hem}`;
+  }
+
+  function formatSourceBadge(source) {
+    if (source === "official-lfl") return `<span class="badge badge-forest">Official LFL</span>`;
+    if (source === "official-lfl-catalog") return `<span class="badge badge-forest">LFL Catalog</span>`;
+    if (source === "osm-sync") return `<span class="badge badge-terracotta">OSM Sync</span>`;
+    return `<span class="badge badge-neutral">Community</span>`;
+  }
+
+  function renderMapRegionPills() {
+    const container = document.getElementById("mapRegionPills");
+    if (!container) return;
+    const counts = new Map();
+    for (const b of state.boxes) {
+      const label = getBoxRegionLabel(b);
+      counts.set(label, (counts.get(label) || 0) + 1);
+    }
+    container.innerHTML = Array.from(counts.entries())
+      .map(([label, cnt]) => {
+        const active = state.activeRegion === label;
+        return `
+          <button
+            type="button"
+            class="genre-pill ${active ? "active" : ""}"
+            data-region="${escapeHtml(label)}"
+          >
+            ${escapeHtml(label)} (${cnt})
+          </button>
+        `;
+      })
+      .join("");
+  }
+
   function renderMapSvg() {
     const svg = document.getElementById("neighborhoodMapSvg");
     const vb = state.mapViewBox;
     svg.setAttribute("viewBox", `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
 
+    const visibleBoxes = getVisibleMapBoxes();
+    const proj = getGeoProjection(visibleBoxes);
+    state.lastGeoProjection = proj;
+
+    // Choose clean degree graticule step based on viewport span
+    const rawStep = proj.spanLat / 5;
+    const niceSteps = [0.005, 0.01, 0.02, 0.05, 0.1, 0.25, 0.5];
+    const step = niceSteps.find((s) => s >= rawStep) || 0.5;
+
+    const topLeft = proj.unproject(0, 0);
+    const botRight = proj.unproject(1000, 720);
+    const startLat = Math.floor(botRight.lat / step) * step;
+    const endLat = Math.ceil(topLeft.lat / step) * step;
+    const startLng = Math.floor(topLeft.lng / step) * step;
+    const endLng = Math.ceil(botRight.lng / step) * step;
+
+    let graticuleLines = "";
+    for (let lat = startLat; lat <= endLat + 1e-6; lat += step) {
+      const p = proj.project(lat, proj.centerLng);
+      if (p.y < -20 || p.y > 740) continue;
+      graticuleLines += `
+        <line x1="0" y1="${p.y}" x2="1000" y2="${p.y}" stroke="#DFD6C3" stroke-width="1" />
+        <text x="14" y="${p.y - 5}" fill="#8B7E6E" font-size="11" font-weight="600">${formatDegree(lat, "N", "S")}</text>
+      `;
+    }
+    for (let lng = startLng; lng <= endLng + 1e-6; lng += step) {
+      const p = proj.project(proj.centerLat, lng);
+      if (p.x < -20 || p.x > 1020) continue;
+      graticuleLines += `
+        <line x1="${p.x}" y1="0" x2="${p.x}" y2="720" stroke="#DFD6C3" stroke-width="1" />
+        <text x="${p.x + 5}" y="20" fill="#8B7E6E" font-size="11" font-weight="600">${formatDegree(lng, "E", "W")}</text>
+      `;
+    }
+
+    // 1 km scale bar width in SVG px
+    const kmDeg = 1 / 111.32;
+    const kmPx = Math.max(40, Math.min(260, kmDeg * proj.pxPerDegLat));
+    const regionTitle = state.activeRegion || state.mapCenter?.label || "Little Free Library Map";
+
     const staticBackdrop = `
       <defs>
-        <pattern id="mapGridPattern" width="80" height="80" patternUnits="userSpaceOnUse">
-          <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#E5DEC9" stroke-width="1" />
+        <pattern id="mapMinorGrid" width="50" height="50" patternUnits="userSpaceOnUse">
+          <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#EAE2D1" stroke-width="0.7" />
         </pattern>
       </defs>
 
-      <rect x="0" y="0" width="1000" height="720" fill="#F2ECE0" />
-      <rect x="0" y="0" width="1000" height="720" fill="url(#mapGridPattern)" />
+      <rect x="0" y="0" width="1000" height="720" fill="#F4EFE4" />
+      <rect x="0" y="0" width="1000" height="720" fill="url(#mapMinorGrid)" />
 
-      <!-- Green Parks & Conservatory -->
-      <path d="M 360 360 Q 450 340 530 390 Q 540 510 430 530 Q 340 490 360 360 Z" fill="#CFE2C4" stroke="#B4CEAA" stroke-width="2" />
-      <text x="445" y="475" text-anchor="middle" fill="#4C744A" font-size="14" font-weight="700" opacity="0.85">SUNNYVALE PARK</text>
+      <!-- Soft Regional Park / Neighborhood Backdrop Accents -->
+      <circle cx="240" cy="480" r="145" fill="#DCE9D0" opacity="0.55" />
+      <circle cx="760" cy="210" r="165" fill="#DCE9D0" opacity="0.45" />
+      <path d="M 0 660 Q 320 620 620 655 T 1000 620 L 1000 720 L 0 720 Z" fill="#CFE2EC" opacity="0.55" />
 
-      <rect x="130" y="450" width="175" height="165" rx="28" fill="#D4E6C8" stroke="#B2CCA2" stroke-width="2" />
-      <text x="217" y="545" text-anchor="middle" fill="#4C744A" font-size="13" font-weight="700" opacity="0.85">BOTANICAL GARDEN</text>
+      <!-- Real GPS Graticule -->
+      <g>${graticuleLines}</g>
 
-      <rect x="615" y="110" width="140" height="95" rx="18" fill="#DCE9D0" stroke="#BED3AC" stroke-width="2" />
-      <text x="685" y="160" text-anchor="middle" fill="#52744E" font-size="11" font-weight="700" opacity="0.85">ELMWOOD SCHOOL</text>
+      <!-- Region Watermark & Compass / Scale Bar -->
+      <text x="500" y="365" text-anchor="middle" fill="#9E907F" font-size="24" font-weight="700" letter-spacing="3" opacity="0.34">
+        ${escapeHtml(regionTitle.toUpperCase())}
+      </text>
 
-      <!-- Creek / Harbor -->
-      <path d="M 0 655 Q 240 610 470 645 T 920 530 L 1000 500 L 1000 720 L 0 720 Z" fill="#C6DFEA" opacity="0.72" />
-      <path d="M 790 0 Q 860 220 840 460 T 910 720 L 1000 720 L 1000 0 Z" fill="#CBE2EE" opacity="0.78" />
-      <text x="900" y="250" text-anchor="middle" fill="#46768E" font-size="14" font-weight="700" transform="rotate(-82 900 250)" opacity="0.8">HARBOR BAY</text>
-
-      <!-- Neighborhood Streets -->
-      <g stroke="#FFFFFF" stroke-linecap="round">
-        <line x1="60" y1="240" x2="820" y2="240" stroke-width="14" />
-        <line x1="60" y1="390" x2="830" y2="390" stroke-width="14" />
-        <line x1="80" y1="530" x2="820" y2="530" stroke-width="12" />
-        <line x1="255" y1="55" x2="255" y2="620" stroke-width="14" />
-        <line x1="540" y1="55" x2="540" y2="615" stroke-width="14" />
-        <line x1="680" y1="60" x2="680" y2="600" stroke-width="12" />
-        <line x1="795" y1="70" x2="795" y2="570" stroke-width="12" />
-      </g>
-      <g stroke="#DDD4C0" stroke-width="1.5" stroke-dasharray="6 6">
-        <line x1="60" y1="240" x2="820" y2="240" />
-        <line x1="255" y1="55" x2="255" y2="620" />
-        <line x1="540" y1="55" x2="540" y2="615" />
+      <g transform="translate(24, 678)">
+        <rect x="-8" y="-22" width="${kmPx + 24}" height="34" rx="8" fill="rgba(255,255,255,0.88)" stroke="#D9CEBE" />
+        <path d="M 0 0 L 0 -6 M ${kmPx} 0 L ${kmPx} -6 M 0 -3 L ${kmPx} -3" stroke="#2D5A43" stroke-width="2.5" fill="none" />
+        <text x="${kmPx / 2}" y="-9" text-anchor="middle" fill="#241E19" font-size="11" font-weight="700">1 km</text>
       </g>
 
-      <!-- Street Labels -->
-      <g fill="#7A6E61" font-size="11" font-weight="600">
-        <text x="150" y="232">Maple Ave</text>
-        <text x="605" y="232">Elm St</text>
-        <text x="410" y="382">Rosewood Blvd</text>
-        <text x="160" y="522">Conservatory Rd</text>
-        <text x="795" y="425" transform="rotate(-90 785 425)">Pier Walk</text>
-      </g>
-
-      <!-- District Watermarks -->
-      <g fill="#948777" font-size="16" font-weight="700" letter-spacing="2" opacity="0.48">
-        <text x="120" y="135">MAPLE HEIGHTS</text>
-        <text x="560" y="95">ELMWOOD</text>
-        <text x="555" y="325">MIDTOWN</text>
-        <text x="105" y="430">GARDEN DISTRICT</text>
-        <text x="700" y="485">HARBORVIEW</text>
+      <g transform="translate(955, 675)">
+        <circle cx="0" cy="0" r="18" fill="rgba(255,255,255,0.9)" stroke="#D9CEBE" />
+        <path d="M 0 -12 L 5 4 L 0 0 L -5 4 Z" fill="#C85A32" />
+        <text x="0" y="13" text-anchor="middle" fill="#241E19" font-size="9" font-weight="700">N</text>
       </g>
     `;
 
-    const pinsHtml = state.boxes
+    const pinsHtml = visibleBoxes
       .map((box) => {
-        const px = (box.lng || 50) * 10;
-        const py = (box.lat || 50) * 7.2;
+        const pt = proj.project(box.lat, box.lng);
         const selected = box.id === state.selectedBoxId;
         const roof = box.roof_color || "#C85A32";
         return `
-          <g class="map-pin-group" data-box-id="${box.id}" transform="translate(${px}, ${py})">
+          <g class="map-pin-group" data-box-id="${box.id}" transform="translate(${pt.x}, ${pt.y})">
             ${selected ? `<circle cx="0" cy="-12" r="34" fill="#D96B43" opacity="0.22" />` : ""}
             <ellipse cx="0" cy="4" rx="14" ry="5" fill="rgba(0,0,0,0.22)" />
             <g transform="scale(${selected ? 1.18 : 1})">
-              <!-- Little Free Library House Pin -->
               <rect x="-15" y="-22" width="30" height="23" rx="3" fill="#FAF6F0" stroke="#3E2B1D" stroke-width="2.2" />
               <path d="M -20 -20 L 0 -37 L 20 -20 Z" fill="${escapeHtml(roof)}" stroke="#3E2B1D" stroke-width="2" stroke-linejoin="round" />
               <rect x="-9" y="-17" width="5" height="13" rx="1" fill="#2D5A43" />
               <rect x="-2" y="-18" width="5" height="14" rx="1" fill="#D96B43" />
               <rect x="5" y="-16" width="5" height="12" rx="1" fill="#3D6B8E" />
-              <!-- Count Badge -->
               <circle cx="17" cy="-29" r="11" fill="${selected ? "#D96B43" : "#2D5A43"}" stroke="#FFFFFF" stroke-width="2" />
               <text x="17" y="-25" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">${box.available_count}</text>
             </g>
-            <rect x="-70" y="10" width="140" height="20" rx="10" fill="rgba(255,255,255,0.92)" stroke="${selected ? "#D96B43" : "#D9CEBE"}" stroke-width="1.2" />
+            <rect x="-74" y="10" width="148" height="20" rx="10" fill="rgba(255,255,255,0.94)" stroke="${selected ? "#D96B43" : "#D9CEBE"}" stroke-width="1.2" />
             <text x="0" y="24" text-anchor="middle" fill="#241E19" font-size="11" font-weight="700">
               ${escapeHtml(box.name.length > 21 ? box.name.slice(0, 19) + "…" : box.name)}
             </text>
@@ -542,14 +667,21 @@
       ? window.ShelfPhotos.resolveCheckinPhoto({ ...latest, roof_color: box.roof_color, charter_number: box.charter_number })
       : "";
     const availableBooks = (box.books || []).filter((bk) => bk.status === "available");
+    const cityLine = [box.city, box.state, box.postal_code].filter(Boolean).join(", ");
+    const lflLink = box.lfl_url || "https://littlefreelibrary.org/map/";
+    const gmapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${box.lat},${box.lng}`)}`;
 
     drawer.innerHTML = `
       <div class="drawer-header">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
           <div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:5px;">
+              ${formatSourceBadge(box.source)}
+              <span class="badge badge-neutral">${escapeHtml(box.charter_number)}</span>
+            </div>
             <h2>${escapeHtml(box.name)}</h2>
-            <div class="drawer-meta">${escapeHtml(box.charter_number)} · ${escapeHtml(box.address)} (${escapeHtml(box.neighborhood)})</div>
-            <div class="drawer-meta">Steward: ${escapeHtml(box.steward_name || "Community")}</div>
+            <div class="drawer-meta">${escapeHtml(box.address)} · ${escapeHtml(box.neighborhood)}${cityLine ? ` (${escapeHtml(cityLine)})` : ""}</div>
+            <div class="drawer-meta">GPS: ${Number(box.lat).toFixed(4)}, ${Number(box.lng).toFixed(4)} · Steward: ${escapeHtml(box.steward_name || "Community")}</div>
           </div>
           <span class="badge badge-forest">${box.available_count} available</span>
         </div>
@@ -557,9 +689,17 @@
 
       <p class="drawer-desc">${escapeHtml(box.description || "Community Little Free Library box.")}</p>
 
-      <button class="btn btn-primary full-width" type="button" data-action="snap-for-box" data-box-id="${box.id}">
-        📸 Check In New Photo Here
-      </button>
+      <div class="drawer-actions-row">
+        <button class="btn btn-primary" style="flex:1;" type="button" data-action="snap-for-box" data-box-id="${box.id}">
+          📸 Check In Photo Here
+        </button>
+        <a class="btn btn-secondary btn-sm" href="${escapeHtml(lflLink)}" target="_blank" rel="noopener">
+          Official LFL Map ↗
+        </a>
+        <a class="btn btn-ghost btn-sm" href="${gmapsLink}" target="_blank" rel="noopener">
+          Directions ↗
+        </a>
+      </div>
 
       ${
         latest
@@ -573,7 +713,7 @@
           </div>
         </div>
       `
-          : `<div class="info-banner">No photo check-ins yet for this new box. Snap the first photo!</div>`
+          : `<div class="info-banner">No photo check-ins yet for this Little Free Library box. Snap the first photo to index its books!</div>`
       }
 
       <div>
@@ -607,6 +747,7 @@
   }
 
   function renderMapView() {
+    renderMapRegionPills();
     renderMapSvg();
     renderMapDrawer();
   }
@@ -919,13 +1060,18 @@
         showToast("Please enter a name and address for the new library box.");
         return;
       }
+      const centerLat = state.mapCenter?.lat ?? 47.648;
+      const centerLng = state.mapCenter?.lng ?? -122.342;
+      const regionParts = (state.activeRegion || "Seattle, WA").split(",").map((s) => s.trim());
       payload.new_box = {
         name,
         address,
         neighborhood: document.getElementById("inlineBoxNeighborhood").value.trim() || "Neighborhood",
+        city: regionParts[0] || "Seattle",
+        state: regionParts[1] || "WA",
         roof_color: document.getElementById("inlineBoxRoofColor").value,
-        lat: 34 + Math.random() * 34,
-        lng: 30 + Math.random() * 40,
+        lat: Number((centerLat + (Math.random() - 0.5) * 0.01).toFixed(5)),
+        lng: Number((centerLng + (Math.random() - 0.5) * 0.015).toFixed(5)),
       };
     } else {
       payload.box_id = Number(boxSelect);
@@ -1042,6 +1188,174 @@
       else if (action === "inspect-book-photo") openPhotoLightbox(btn.dataset.checkinId, btn.dataset.bookId);
     });
 
+    // LFL World Map Sync, Near Me, Region Pills & Import Modal
+    async function runLflSync(payload) {
+      const syncBtn = document.getElementById("lflSyncLocationBtn");
+      syncBtn.disabled = true;
+      syncBtn.textContent = "Syncing...";
+      try {
+        const resp = await apiPost("/api/lfl/sync", payload);
+        if (resp.center) state.mapCenter = resp.center;
+        if (resp.matched_box_id) state.selectedBoxId = resp.matched_box_id;
+        state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
+        const matched = (resp.state?.boxes || []).find((b) => b.id === resp.matched_box_id);
+        state.activeRegion = matched ? getBoxRegionLabel(matched) : (resp.center?.label || "");
+        applyStatePayload(resp.state);
+        if (resp.source_used === "local-match") {
+          showToast(`Focused on ${resp.center?.label || "matching box"}`);
+        } else {
+          showToast(
+            `Synced ${resp.synced_count} Little Free Library box(es) near ${resp.center?.label || "location"} (${resp.source_used})`
+          );
+        }
+      } catch (err) {
+        showToast(`LFL Sync failed: ${err.message}`);
+      } finally {
+        syncBtn.disabled = false;
+        syncBtn.textContent = "Sync LFL Map";
+      }
+    }
+
+    document.getElementById("lflSyncLocationBtn").addEventListener("click", () => {
+      const query = document.getElementById("lflLocationSearchInput").value.trim();
+      if (!query) {
+        showToast("Enter a city, zip code, or Charter # to sync.");
+        return;
+      }
+      runLflSync({ query });
+    });
+
+    document.getElementById("lflLocationSearchInput").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("lflSyncLocationBtn").click();
+      }
+    });
+
+    document.getElementById("lflNearMeBtn").addEventListener("click", () => {
+      if (!navigator.geolocation) {
+        showToast("Browser geolocation is unavailable; search a city or zip instead.");
+        return;
+      }
+      showToast("Requesting device GPS location...");
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          runLflSync({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        },
+        () => {
+          showToast("Location permission denied; enter a city or zip code to sync.");
+        },
+        { timeout: 8000 }
+      );
+    });
+
+    document.getElementById("mapRegionPills").addEventListener("click", (e) => {
+      const pill = e.target.closest("[data-region]");
+      if (!pill) return;
+      state.activeRegion = pill.dataset.region;
+      const firstInRegion = state.boxes.find((b) => getBoxRegionLabel(b) === state.activeRegion);
+      if (firstInRegion) {
+        state.selectedBoxId = firstInRegion.id;
+        state.mapCenter = { lat: firstInRegion.lat, lng: firstInRegion.lng, label: state.activeRegion };
+      }
+      state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
+      renderMapView();
+    });
+
+    // LFL Import Modal
+    const SAMPLE_OFFICIAL_LFL_EXPORT = [
+      {
+        Library_Name__c: "Summit Hill Little Library",
+        Official_Charter_Number__c: "42108",
+        Street__c: "742 Summit Ave",
+        City__c: "St. Paul",
+        State_Province__c: "MN",
+        Postal_Code__c: "55105",
+        Library_Geolocation__c: { latitude: 44.9412, longitude: -93.1315 },
+        Primary_Steward_s_Name__c: "Claire Novak",
+        Library_Story__c: "Historic brownstone-style Little Free Library near the Summit Ave overlook.",
+      },
+      {
+        Library_Name__c: "Lake Harriet Windmill Box",
+        Official_Charter_Number__c: "18490",
+        Street__c: "4135 W Lake Harriet Pkwy",
+        City__c: "Minneapolis",
+        State_Province__c: "MN",
+        Postal_Code__c: "55409",
+        Library_Geolocation__c: { latitude: 44.9228, longitude: -93.3084 },
+        Primary_Steward_s_Name__c: "Owen Lindqvist",
+        Library_Story__c: "Stocked daily with Twin Cities fiction, children's picture books, and nature guides.",
+      },
+      {
+        Library_Name__c: "Minnehaha Falls Cedar Post",
+        Official_Charter_Number__c: "63512",
+        Street__c: "4801 S Minnehaha Park Dr",
+        City__c: "Minneapolis",
+        State_Province__c: "MN",
+        Postal_Code__c: "55417",
+        Library_Geolocation__c: { latitude: 44.9153, longitude: -93.2110 },
+        Primary_Steward_s_Name__c: "Maya Hernandez",
+        Library_Story__c: "Trailside box welcoming park visitors with rotating paperbacks.",
+      },
+      {
+        Library_Name__c: "Cathedral Hill Reading Cottage",
+        Official_Charter_Number__c: "29405",
+        Street__c: "321 Selby Ave",
+        City__c: "St. Paul",
+        State_Province__c: "MN",
+        Postal_Code__c: "55102",
+        Library_Geolocation__c: { latitude: 44.9465, longitude: -93.1142 },
+        Primary_Steward_s_Name__c: "David Park",
+        Library_Story__c: "Neighborhood mystery and poetry swap box.",
+      },
+    ];
+
+    document.getElementById("openLflImportModalBtn").addEventListener("click", () => {
+      document.getElementById("lflImportModal").classList.remove("hidden");
+    });
+    document.getElementById("closeLflImportBtn").addEventListener("click", () => {
+      document.getElementById("lflImportModal").classList.add("hidden");
+    });
+    document.getElementById("loadSampleLflExportBtn").addEventListener("click", () => {
+      document.getElementById("lflImportTextarea").value = JSON.stringify(SAMPLE_OFFICIAL_LFL_EXPORT, null, 2);
+    });
+    document.getElementById("lflImportFileInput").addEventListener("change", (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        document.getElementById("lflImportTextarea").value = reader.result || "";
+      };
+      reader.readAsText(file);
+      e.target.value = "";
+    });
+    document.getElementById("submitLflImportBtn").addEventListener("click", async () => {
+      const rawData = document.getElementById("lflImportTextarea").value.trim();
+      if (!rawData) {
+        showToast("Paste an LFL JSON/GeoJSON/CSV dataset or load the sample export first.");
+        return;
+      }
+      const btn = document.getElementById("submitLflImportBtn");
+      btn.disabled = true;
+      btn.textContent = "Importing...";
+      try {
+        const resp = await apiPost("/api/lfl/import", { raw_data: rawData });
+        document.getElementById("lflImportModal").classList.add("hidden");
+        if (resp.matched_box_id) state.selectedBoxId = resp.matched_box_id;
+        if (resp.center) state.mapCenter = resp.center;
+        const importedBox = (resp.state?.boxes || []).find((b) => b.id === resp.matched_box_id);
+        state.activeRegion = importedBox ? getBoxRegionLabel(importedBox) : (resp.center?.label || "");
+        state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
+        applyStatePayload(resp.state);
+        showToast(`Imported ${resp.imported_count} Little Free Library box(es)!`);
+      } catch (err) {
+        showToast(`Import failed: ${err.message}`);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Import Boxes to Map";
+      }
+    });
+
     // Map controls & interactions
     document.getElementById("mapZoomInBtn").addEventListener("click", () => zoomMap(0.8));
     document.getElementById("mapZoomOutBtn").addEventListener("click", () => zoomMap(1.25));
@@ -1092,10 +1406,10 @@
         const ctm = mapSvg.getScreenCTM();
         if (ctm) {
           const svgPt = pt.matrixTransform(ctm.inverse());
-          const lng = Math.max(10, Math.min(90, Math.round((svgPt.x / 10) * 10) / 10));
-          const lat = Math.max(10, Math.min(90, Math.round((svgPt.y / 7.2) * 10) / 10));
-          state.pendingNewBoxCoords = { lat, lng };
-          document.getElementById("newBoxCoordsLabel").textContent = `${lat}, ${lng}`;
+          const proj = state.lastGeoProjection || getGeoProjection(getVisibleMapBoxes());
+          const coords = proj.unproject(svgPt.x, svgPt.y);
+          state.pendingNewBoxCoords = coords;
+          document.getElementById("newBoxCoordsLabel").textContent = `${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)}`;
           setAddBoxMode(false);
           document.getElementById("newMapBoxModal").classList.remove("hidden");
         }
@@ -1135,10 +1449,13 @@
     document.getElementById("newMapBoxForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       try {
+        const regionParts = (state.activeRegion || "Seattle, WA").split(",").map((s) => s.trim());
         const resp = await apiPost("/api/boxes", {
           name: document.getElementById("mapBoxName").value.trim(),
           address: document.getElementById("mapBoxAddress").value.trim(),
           neighborhood: document.getElementById("mapBoxNeighborhood").value.trim() || "Neighborhood",
+          city: regionParts[0] || "Seattle",
+          state: regionParts[1] || "WA",
           charter_number: document.getElementById("mapBoxCharter").value.trim(),
           steward_name: document.getElementById("mapBoxSteward").value.trim(),
           roof_color: document.getElementById("mapBoxRoofColor").value,

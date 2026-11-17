@@ -1417,6 +1417,44 @@ body {
 }
 
 /* Mobile Bottom Nav */
+/* LFL Sync Bar */
+.lfl-sync-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+}
+
+.lfl-sync-input-wrap {
+  flex: 1;
+  min-width: 240px;
+}
+
+.lfl-sync-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.drawer-actions-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#lflImportTextarea {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+  resize: vertical;
+}
+
 .mobile-nav {
   display: none;
 }
