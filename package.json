@@ -1,0 +1,11 @@
+{
+  "name": "shelfspot-little-free-library-finder",
+  "version": "1.0.0",
+  "description": "Mobile-first Little Free Library photo feed, AI spine scanner, book index, and neighborhood map.",
+  "scripts": {
+    "start": "python3 server.py"
+  },
+  "engines": {
+    "python": ">=3.9"
+  }
+}

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ShelfSpot — Little Free Library Book Finder</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-inner">
+        <div class="brand" id="brandHomeBtn" role="button" tabindex="0">
+          <div class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28">
+              <path d="M16 3L3 13h3v15h20V13h3L16 3z" fill="#C85A32" />
+              <rect x="8" y="14" width="16" height="12" rx="1.5" fill="#FAF6F0" />
+              <rect x="10" y="16" width="3" height="8" rx="0.5" fill="#2D5A43" />
+              <rect x="14.5" y="15.5" width="3" height="8.5" rx="0.5" fill="#D96B43" />
+              <rect x="19" y="16.5" width="3" height="7.5" rx="0.5" fill="#3D6B8E" />
+            </svg>
+          </div>
+          <div>
+            <div class="brand-title">ShelfSpot</div>
+            <div class="brand-sub">Little Free Library Book Finder</div>
+          </div>
+        </div>
+
+        <nav class="desktop-nav" aria-label="Primary Navigation">
+          <button class="nav-tab active" data-view="feed" type="button">
+            <span class="nav-ico">📷</span> Photo Feed
+          </button>
+          <button class="nav-tab" data-view="index" type="button">
+            <span class="nav-ico">📚</span> Book Index
+          </button>
+          <button class="nav-tab" data-view="map" type="button">
+            <span class="nav-ico">🗺️</span> Map
+          </button>
+        </nav>
+
+        <div class="header-actions">
+          <button id="openSettingsBtn" class="btn btn-ghost btn-sm" type="button" title="AI Provider Settings">
+            <span id="aiStatusDot" class="status-dot"></span>
+            <span class="hide-sm">AI Settings</span>
+          </button>
+          <button id="openSnapModalBtn" class="btn btn-primary" type="button">
+            <span>+ Snap Box Photo</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Stats Ribbon -->
+      <div class="stats-ribbon">
+        <div class="stats-inner">
+          <div class="stat-pill">
+            <strong id="statAvailable">0</strong>
+            <span>Available Books</span>
+          </div>
+          <div class="stat-pill">
+            <strong id="statBoxes">0</strong>
+            <span>Active Boxes</span>
+          </div>
+          <div class="stat-pill">
+            <strong id="statCheckins">0</strong>
+            <span>Photo Check-Ins</span>
+          </div>
+          <div class="stat-spacer"></div>
+          <div class="quick-find">
+            <input
+              id="headerQuickSearch"
+              type="search"
+              placeholder="Quick search a title (e.g. Dune, Hail Mary)..."
+              aria-label="Quick search book titles"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- View 1: Photo Check-In Feed -->
+      <section id="view-feed" class="view-section active" aria-labelledby="feedHeading">
+        <div class="section-toolbar">
+          <div>
+            <h1 id="feedHeading" class="section-title">Neighborhood Photo Feed</h1>
+            <p class="section-desc">Recent Little Free Library shelf snapshots with clickable AI spine overlays.</p>
+          </div>
+          <div class="toolbar-controls">
+            <input
+              id="feedSearchInput"
+              class="input-control"
+              type="search"
+              placeholder="Filter feed by book or note..."
+            />
+            <select id="feedBoxFilter" class="select-control" aria-label="Filter feed by box">
+              <option value="">All Library Boxes</option>
+            </select>
+          </div>
+        </div>
+        <div id="feedList" class="feed-grid"></div>
+      </section>
+
+      <!-- View 2: Global Book Index -->
+      <section id="view-index" class="view-section" aria-labelledby="indexHeading">
+        <div class="section-toolbar">
+          <div>
+            <h1 id="indexHeading" class="section-title">Global Book Index</h1>
+            <p class="section-desc">Search every title spotted across neighborhood boxes and verify availability.</p>
+          </div>
+          <div class="toolbar-controls">
+            <input
+              id="indexSearchInput"
+              class="input-control search-lg"
+              type="search"
+              placeholder="Search by title, author, or box..."
+            />
+            <select id="indexStatusFilter" class="select-control" aria-label="Filter by availability">
+              <option value="available">Available Now</option>
+              <option value="all">All Spotted Books</option>
+              <option value="picked_up">Picked Up</option>
+            </select>
+            <select id="indexSortSelect" class="select-control" aria-label="Sort books">
+              <option value="newest">Newest Spotted</option>
+              <option value="title">Title A–Z</option>
+              <option value="box">Box Name</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="genreFilterPills" class="genre-pills" role="tablist" aria-label="Filter by genre"></div>
+        <div id="indexCountBar" class="result-count-bar"></div>
+        <div id="bookIndexGrid" class="book-index-grid"></div>
+      </section>
+
+      <!-- View 3: Interactive Neighborhood Map -->
+      <section id="view-map" class="view-section" aria-labelledby="mapHeading">
+        <div class="section-toolbar">
+          <div>
+            <h1 id="mapHeading" class="section-title">Neighborhood Library Map</h1>
+            <p class="section-desc">Tap a library box pin to inspect its latest shelf photo and available books.</p>
+          </div>
+          <div class="toolbar-controls">
+            <button id="toggleAddBoxModeBtn" class="btn btn-secondary" type="button">
+              + Add Library Box on Map
+            </button>
+          </div>
+        </div>
+
+        <div id="mapPlacementBanner" class="placement-banner hidden">
+          <span>📍 Tap anywhere on the neighborhood map to place a new Little Free Library box.</span>
+          <button id="cancelAddBoxModeBtn" class="btn btn-ghost btn-sm" type="button">Cancel</button>
+        </div>
+
+        <div class="map-layout">
+          <div class="map-canvas-card">
+            <div class="map-controls">
+              <button id="mapZoomInBtn" class="map-ctrl-btn" type="button" title="Zoom In">+</button>
+              <button id="mapZoomOutBtn" class="map-ctrl-btn" type="button" title="Zoom Out">−</button>
+              <button id="mapResetBtn" class="map-ctrl-btn" type="button" title="Reset View">⟲</button>
+            </div>
+            <div id="mapViewport" class="map-viewport">
+              <svg id="neighborhoodMapSvg" viewBox="0 0 1000 720" preserveAspectRatio="xMidYMid meet"></svg>
+            </div>
+            <div class="map-legend">
+              <span class="legend-item"><span class="legend-dot available"></span> Library Box + Available Book Count</span>
+              <span class="legend-hint">Drag to pan · Scroll or use +/− to zoom</span>
+            </div>
+          </div>
+
+          <aside id="mapBoxDrawer" class="map-drawer" aria-live="polite"></aside>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" aria-label="Mobile Navigation">
+      <button class="mobile-nav-btn active" data-view="feed" type="button">
+        <span>📷</span>
+        <span>Feed</span>
+      </button>
+      <button class="mobile-nav-btn" data-view="index" type="button">
+        <span>📚</span>
+        <span>Books</span>
+      </button>
+      <button class="mobile-nav-btn" data-view="map" type="button">
+        <span>🗺️</span>
+        <span>Map</span>
+      </button>
+      <button class="mobile-nav-btn snap-highlight" id="mobileSnapBtn" type="button">
+        <span>➕</span>
+        <span>Snap Box</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Snap / Upload Photo & AI Spine Review Modal -->
+  <div id="snapModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="snapModalTitle">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-header">
+        <div>
+          <h2 id="snapModalTitle" class="modal-title">Snap &amp; Index Little Free Library</h2>
+          <p class="modal-subtitle">Capture or upload a shelf photo — AI Vision detects book spines for instant indexing.</p>
+        </div>
+        <button id="closeSnapModalBtn" class="icon-close-btn" type="button" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Step 1: Capture / Choose Photo -->
+        <div id="snapStep1" class="snap-step">
+          <div class="capture-tabs" role="tablist">
+            <button class="capture-tab active" data-capture-tab="upload" type="button">Upload Photo</button>
+            <button class="capture-tab" data-capture-tab="camera" type="button">Live Camera</button>
+            <button class="capture-tab" data-capture-tab="samples" type="button">Demo Shelf Photos</button>
+          </div>
+
+          <!-- Upload Tab -->
+          <div id="capturePanelUpload" class="capture-panel active">
+            <label id="uploadDropzone" class="upload-dropzone" for="photoFileInput">
+              <div class="dropzone-icon">📸</div>
+              <div class="dropzone-title">Take a photo or choose an image from your device</div>
+              <div class="dropzone-sub">Supports JPG, PNG, WebP · Mobile opens camera directly</div>
+              <span class="btn btn-secondary btn-sm">Choose Photo</span>
+              <input id="photoFileInput" type="file" accept="image/*" capture="environment" hidden />
+            </label>
+          </div>
+
+          <!-- Camera Tab -->
+          <div id="capturePanelCamera" class="capture-panel">
+            <div class="camera-stage">
+              <video id="cameraVideo" autoplay playsinline muted class="camera-video"></video>
+              <canvas id="cameraCanvas" hidden></canvas>
+              <div id="cameraFallbackMsg" class="camera-fallback hidden">
+                Camera preview is unavailable in this browser or permission was declined.
+                Switch to <strong>Upload Photo</strong> or try a <strong>Demo Shelf Photo</strong>.
+              </div>
+            </div>
+            <div class="camera-actions">
+              <button id="startCameraBtn" class="btn btn-secondary" type="button">Start Camera</button>
+              <button id="captureFrameBtn" class="btn btn-primary" type="button" disabled>Capture Shelf Photo</button>
+            </div>
+          </div>
+
+          <!-- Sample Shelf Photos Tab -->
+          <div id="capturePanelSamples" class="capture-panel">
+            <p class="samples-intro">
+              Pick a realistic sample Little Free Library shelf photo to test AI Vision spine detection in one click:
+            </p>
+            <div id="demoPresetsGrid" class="demo-presets-grid"></div>
+          </div>
+        </div>
+
+        <!-- Step 2: AI Vision Scan & Review -->
+        <div id="snapStep2" class="snap-step hidden">
+          <div class="review-layout">
+            <div class="review-photo-col">
+              <div class="review-photo-header">
+                <span id="scanSourceBadge" class="badge badge-forest">AI Vision</span>
+                <button id="backToStep1Btn" class="btn btn-ghost btn-sm" type="button">← Choose Different Photo</button>
+              </div>
+              <div id="reviewPhotoFrame" class="photo-stage">
+                <img id="reviewPhotoImg" alt="Uploaded Little Free Library shelf preview" />
+                <div id="reviewBboxLayer" class="bbox-layer"></div>
+                <div id="scanningOverlay" class="scanning-overlay hidden">
+                  <div class="scan-laser"></div>
+                  <div class="scan-label">Scanning book spines with AI Vision...</div>
+                </div>
+              </div>
+              <p id="scanStatusMessage" class="scan-status-msg"></p>
+            </div>
+
+            <div class="review-form-col">
+              <div class="review-section-head">
+                <h3>Detected Books (<span id="detectedCount">0</span>)</h3>
+                <button id="addManualBookRowBtn" class="btn btn-secondary btn-sm" type="button">+ Add Book Manually</button>
+              </div>
+              <p class="review-hint">Click any bounding box on the photo or edit any title, author, or genre below.</p>
+
+              <div id="detectedBooksList" class="detected-books-list"></div>
+
+              <div class="checkin-meta-card">
+                <div class="form-row">
+                  <label class="form-label" for="checkinBoxSelect">Little Free Library Box</label>
+                  <select id="checkinBoxSelect" class="select-control full-width"></select>
+                </div>
+
+                <div id="inlineNewBoxFields" class="inline-new-box hidden">
+                  <div class="form-grid-2">
+                    <div>
+                      <label class="form-label" for="inlineBoxName">Box Name *</label>
+                      <input id="inlineBoxName" class="input-control full-width" type="text" placeholder="e.g. Oak & 9th Blue Box" />
+                    </div>
+                    <div>
+                      <label class="form-label" for="inlineBoxAddress">Address / Cross Street *</label>
+                      <input id="inlineBoxAddress" class="input-control full-width" type="text" placeholder="e.g. 214 Oak St" />
+                    </div>
+                  </div>
+                  <div class="form-grid-2">
+                    <div>
+                      <label class="form-label" for="inlineBoxNeighborhood">Neighborhood</label>
+                      <input id="inlineBoxNeighborhood" class="input-control full-width" type="text" placeholder="e.g. Oakridge" />
+                    </div>
+                    <div>
+                      <label class="form-label" for="inlineBoxRoofColor">Roof Color</label>
+                      <input id="inlineBoxRoofColor" class="input-color" type="color" value="#C85A32" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-grid-2">
+                  <div>
+                    <label class="form-label" for="checkinUserInput">Your Name</label>
+                    <input id="checkinUserInput" class="input-control full-width" type="text" placeholder="Neighbor Reader" value="Maya Lin" />
+                  </div>
+                  <div>
+                    <label class="form-label" for="checkinNoteInput">Check-In Note</label>
+                    <input id="checkinNoteInput" class="input-control full-width" type="text" placeholder="What did you drop off or spot?" />
+                  </div>
+                </div>
+
+                <div class="publish-bar">
+                  <button id="publishCheckinBtn" class="btn btn-primary btn-lg full-width" type="button">
+                    Publish Check-In &amp; Index Books
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add New Map Box Modal -->
+  <div id="newMapBoxModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="newMapBoxTitle">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-header">
+        <div>
+          <h2 id="newMapBoxTitle" class="modal-title">Register New Library Box</h2>
+          <p class="modal-subtitle">Pin coordinates: (<span id="newBoxCoordsLabel">50, 50</span>)</p>
+        </div>
+        <button id="closeNewMapBoxBtn" class="icon-close-btn" type="button" aria-label="Close modal">✕</button>
+      </div>
+      <form id="newMapBoxForm" class="modal-body stack-form">
+        <div>
+          <label class="form-label" for="mapBoxName">Box Name *</label>
+          <input id="mapBoxName" class="input-control full-width" type="text" required placeholder="e.g. Birchwood Corner Box" />
+        </div>
+        <div>
+          <label class="form-label" for="mapBoxAddress">Street Address *</label>
+          <input id="mapBoxAddress" class="input-control full-width" type="text" required placeholder="e.g. 540 Birchwood Ln" />
+        </div>
+        <div class="form-grid-2">
+          <div>
+            <label class="form-label" for="mapBoxNeighborhood">Neighborhood</label>
+            <input id="mapBoxNeighborhood" class="input-control full-width" type="text" placeholder="e.g. Birchwood" />
+          </div>
+          <div>
+            <label class="form-label" for="mapBoxCharter">Charter #</label>
+            <input id="mapBoxCharter" class="input-control full-width" type="text" placeholder="Charter #145002" />
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div>
+            <label class="form-label" for="mapBoxSteward">Steward Name</label>
+            <input id="mapBoxSteward" class="input-control full-width" type="text" placeholder="Community Steward" />
+          </div>
+          <div>
+            <label class="form-label" for="mapBoxRoofColor">Roof Accent</label>
+            <input id="mapBoxRoofColor" class="input-color" type="color" value="#2D5A43" />
+          </div>
+        </div>
+        <div>
+          <label class="form-label" for="mapBoxDesc">Description</label>
+          <textarea id="mapBoxDesc" class="input-control full-width" rows="2" placeholder="What kinds of books are usually stocked here?"></textarea>
+        </div>
+        <button class="btn btn-primary full-width" type="submit">Save Library Box Pin</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Photo Inspection Lightbox Modal -->
+  <div id="photoLightboxModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+    <div class="modal-dialog modal-md">
+      <div class="modal-header">
+        <div>
+          <h2 id="lightboxTitle" class="modal-title">Shelf Photo Inspection</h2>
+          <p id="lightboxSubtitle" class="modal-subtitle"></p>
+        </div>
+        <button id="closeLightboxBtn" class="icon-close-btn" type="button" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="lightboxPhotoFrame" class="photo-stage">
+          <img id="lightboxImg" alt="Shelf check-in photo" />
+          <div id="lightboxBboxLayer" class="bbox-layer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Provider Settings Modal -->
+  <div id="settingsModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-header">
+        <div>
+          <h2 id="settingsTitle" class="modal-title">AI Settings</h2>
+          <p class="modal-subtitle">Configure DeepSeek API (default) or Gemini API for shelf scanning.</p>
+        </div>
+        <button id="closeSettingsBtn" class="icon-close-btn" type="button" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body stack-form">
+        <div id="envKeyStatusBox" class="info-banner"></div>
+        <div>
+          <label class="form-label" for="aiProviderSelect">AI Provider</label>
+          <select id="aiProviderSelect" class="select-control full-width">
+            <option value="deepseek">DeepSeek API (Recommended)</option>
+            <option value="gemini">Google Gemini API</option>
+          </select>
+        </div>
+        <div id="deepseekSettingsGroup" class="stack-form">
+          <div>
+            <label class="form-label" for="deepseekApiKeyInput">DeepSeek API Key (stored locally in your browser)</label>
+            <input id="deepseekApiKeyInput" class="input-control full-width" type="password" placeholder="sk-..." />
+          </div>
+          <div class="form-grid-2">
+            <div>
+              <label class="form-label" for="deepseekModelInput">DeepSeek Model</label>
+              <input id="deepseekModelInput" class="input-control full-width" type="text" placeholder="deepseek-chat" />
+            </div>
+            <div>
+              <label class="form-label" for="deepseekBaseUrlInput">Base URL</label>
+              <input id="deepseekBaseUrlInput" class="input-control full-width" type="text" placeholder="https://api.deepseek.com/chat/completions" />
+            </div>
+          </div>
+        </div>
+        <div id="geminiSettingsGroup" class="stack-form hidden">
+          <div>
+            <label class="form-label" for="geminiApiKeyInput">Gemini API Key (stored locally in your browser)</label>
+            <input id="geminiApiKeyInput" class="input-control full-width" type="password" placeholder="AIza..." />
+          </div>
+        </div>
+        <p class="review-hint">
+          Without an API key, ShelfSpot still works locally using sample shelf presets and the built-in spine detector with manual editing.
+        </p>
+        <div class="form-grid-2">
+          <button id="clearApiKeyBtn" class="btn btn-ghost" type="button">Clear Saved Key</button>
+          <button id="saveApiKeyBtn" class="btn btn-primary" type="button">Save Settings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script src="/sample-shelves.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
