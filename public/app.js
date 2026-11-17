@@ -468,6 +468,25 @@
     return nearby.length > 0 ? nearby : state.boxes;
   }
 
+  function lngToWorldX(lng, z) {
+    return ((lng + 180) / 360) * 256 * Math.pow(2, z);
+  }
+
+  function latToWorldY(lat, z) {
+    const clamped = Math.max(-85.0511, Math.min(85.0511, lat));
+    const rad = (clamped * Math.PI) / 180;
+    return ((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * 256 * Math.pow(2, z);
+  }
+
+  function worldXToLng(wx, z) {
+    return (wx / (256 * Math.pow(2, z))) * 360 - 180;
+  }
+
+  function worldYToLat(wy, z) {
+    const n = Math.PI - (2 * Math.PI * wy) / (256 * Math.pow(2, z));
+    return (180 / Math.PI) * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)));
+  }
+
   function getGeoProjection(visibleBoxes) {
     const pts = visibleBoxes.length ? visibleBoxes : [{ lat: state.mapCenter.lat, lng: state.mapCenter.lng }];
     let minLat = Infinity;
@@ -482,35 +501,46 @@
     }
     const centerLat = (minLat + maxLat) / 2;
     const centerLng = (minLng + maxLng) / 2;
-    const cosLat = Math.max(0.25, Math.cos((centerLat * Math.PI) / 180));
-    const spanLat = Math.max(0.035, (maxLat - minLat) * 1.55);
-    const spanLng = Math.max(0.055, (maxLng - minLng) * 1.55);
-    const pxPerDegLat = Math.min(720 / spanLat, 1000 / (spanLng * cosLat));
+
+    let zoom = 14;
+    if (pts.length > 1) {
+      zoom = 11;
+      for (let z = 15; z >= 11; z--) {
+        const dx = Math.abs(lngToWorldX(maxLng, z) - lngToWorldX(minLng, z));
+        const dy = Math.abs(latToWorldY(minLat, z) - latToWorldY(maxLat, z));
+        if (dx <= 760 && dy <= 520) {
+          zoom = z;
+          break;
+        }
+      }
+    }
+
+    const centerWx = lngToWorldX(centerLng, zoom);
+    const centerWy = latToWorldY(centerLat, zoom);
+    const originWx = centerWx - 500;
+    const originWy = centerWy - 360;
 
     return {
+      zoom,
       centerLat,
       centerLng,
-      cosLat,
-      pxPerDegLat,
-      spanLat,
+      centerWx,
+      centerWy,
+      originWx,
+      originWy,
       project(lat, lng) {
         return {
-          x: 500 + (lng - centerLng) * cosLat * pxPerDegLat,
-          y: 360 - (lat - centerLat) * pxPerDegLat,
+          x: 500 + (lngToWorldX(lng, zoom) - centerWx),
+          y: 360 + (latToWorldY(lat, zoom) - centerWy),
         };
       },
       unproject(x, y) {
         return {
-          lat: Number((centerLat + (360 - y) / pxPerDegLat).toFixed(5)),
-          lng: Number((centerLng + (x - 500) / (cosLat * pxPerDegLat)).toFixed(5)),
+          lat: Number(worldYToLat(centerWy + (y - 360), zoom).toFixed(5)),
+          lng: Number(worldXToLng(centerWx + (x - 500), zoom).toFixed(5)),
         };
       },
     };
-  }
-
-  function formatDegree(val, posHem, negHem) {
-    const hem = val >= 0 ? posHem : negHem;
-    return `${Math.abs(val).toFixed(2)}°${hem}`;
   }
 
   function formatSourceBadge(source) {
@@ -553,39 +583,26 @@
     const proj = getGeoProjection(visibleBoxes);
     state.lastGeoProjection = proj;
 
-    // Choose clean degree graticule step based on viewport span
-    const rawStep = proj.spanLat / 5;
-    const niceSteps = [0.005, 0.01, 0.02, 0.05, 0.1, 0.25, 0.5];
-    const step = niceSteps.find((s) => s >= rawStep) || 0.5;
+    const z = proj.zoom;
+    const nTiles = Math.pow(2, z);
+    const minTx = Math.floor(proj.originWx / 256);
+    const maxTx = Math.floor((proj.originWx + 1000) / 256);
+    const minTy = Math.max(0, Math.floor(proj.originWy / 256));
+    const maxTy = Math.min(nTiles - 1, Math.floor((proj.originWy + 720) / 256));
 
-    const topLeft = proj.unproject(0, 0);
-    const botRight = proj.unproject(1000, 720);
-    const startLat = Math.floor(botRight.lat / step) * step;
-    const endLat = Math.ceil(topLeft.lat / step) * step;
-    const startLng = Math.floor(topLeft.lng / step) * step;
-    const endLng = Math.ceil(botRight.lng / step) * step;
-
-    let graticuleLines = "";
-    for (let lat = startLat; lat <= endLat + 1e-6; lat += step) {
-      const p = proj.project(lat, proj.centerLng);
-      if (p.y < -20 || p.y > 740) continue;
-      graticuleLines += `
-        <line x1="0" y1="${p.y}" x2="1000" y2="${p.y}" stroke="#DFD6C3" stroke-width="1" />
-        <text x="14" y="${p.y - 5}" fill="#8B7E6E" font-size="11" font-weight="600">${formatDegree(lat, "N", "S")}</text>
-      `;
-    }
-    for (let lng = startLng; lng <= endLng + 1e-6; lng += step) {
-      const p = proj.project(proj.centerLat, lng);
-      if (p.x < -20 || p.x > 1020) continue;
-      graticuleLines += `
-        <line x1="${p.x}" y1="0" x2="${p.x}" y2="720" stroke="#DFD6C3" stroke-width="1" />
-        <text x="${p.x + 5}" y="20" fill="#8B7E6E" font-size="11" font-weight="600">${formatDegree(lng, "E", "W")}</text>
-      `;
+    let tilesHtml = "";
+    for (let tx = minTx; tx <= maxTx; tx++) {
+      const wrappedTx = ((tx % nTiles) + nTiles) % nTiles;
+      const tileX = tx * 256 - proj.originWx;
+      for (let ty = minTy; ty <= maxTy; ty++) {
+        const tileY = ty * 256 - proj.originWy;
+        tilesHtml += `<image href="https://tile.openstreetmap.org/${z}/${wrappedTx}/${ty}.png" x="${tileX}" y="${tileY}" width="256.5" height="256.5" preserveAspectRatio="none" />`;
+      }
     }
 
-    // 1 km scale bar width in SVG px
-    const kmDeg = 1 / 111.32;
-    const kmPx = Math.max(40, Math.min(260, kmDeg * proj.pxPerDegLat));
+    // 1 km scale bar width in Web Mercator px
+    const metersPerPx = (156543.03392 * Math.cos((proj.centerLat * Math.PI) / 180)) / Math.pow(2, z);
+    const kmPx = Math.max(40, Math.min(260, 1000 / Math.max(0.1, metersPerPx)));
     const regionTitle = state.activeRegion || state.mapCenter?.label || "Little Free Library Map";
 
     const staticBackdrop = `
@@ -598,27 +615,23 @@
       <rect x="0" y="0" width="1000" height="720" fill="#F4EFE4" />
       <rect x="0" y="0" width="1000" height="720" fill="url(#mapMinorGrid)" />
 
-      <!-- Soft Regional Park / Neighborhood Backdrop Accents -->
-      <circle cx="240" cy="480" r="145" fill="#DCE9D0" opacity="0.55" />
-      <circle cx="760" cy="210" r="165" fill="#DCE9D0" opacity="0.45" />
-      <path d="M 0 660 Q 320 620 620 655 T 1000 620 L 1000 720 L 0 720 Z" fill="#CFE2EC" opacity="0.55" />
+      <!-- Real OpenStreetMap Street Tiles -->
+      <g>${tilesHtml}</g>
 
-      <!-- Real GPS Graticule -->
-      <g>${graticuleLines}</g>
-
-      <!-- Region Watermark & Compass / Scale Bar -->
-      <text x="500" y="365" text-anchor="middle" fill="#9E907F" font-size="24" font-weight="700" letter-spacing="3" opacity="0.34">
-        ${escapeHtml(regionTitle.toUpperCase())}
-      </text>
+      <!-- Subtle Region Badge + Scale Bar + Compass -->
+      <g transform="translate(18, 16)">
+        <rect x="0" y="0" width="${Math.max(150, regionTitle.length * 8.5 + 24)}" height="28" rx="14" fill="rgba(255,255,255,0.92)" stroke="#D9CEBE" />
+        <text x="12" y="18" fill="#214432" font-size="12" font-weight="700">${escapeHtml(regionTitle)} · z${z}</text>
+      </g>
 
       <g transform="translate(24, 678)">
-        <rect x="-8" y="-22" width="${kmPx + 24}" height="34" rx="8" fill="rgba(255,255,255,0.88)" stroke="#D9CEBE" />
+        <rect x="-8" y="-22" width="${kmPx + 24}" height="34" rx="8" fill="rgba(255,255,255,0.9)" stroke="#D9CEBE" />
         <path d="M 0 0 L 0 -6 M ${kmPx} 0 L ${kmPx} -6 M 0 -3 L ${kmPx} -3" stroke="#2D5A43" stroke-width="2.5" fill="none" />
         <text x="${kmPx / 2}" y="-9" text-anchor="middle" fill="#241E19" font-size="11" font-weight="700">1 km</text>
       </g>
 
       <g transform="translate(955, 675)">
-        <circle cx="0" cy="0" r="18" fill="rgba(255,255,255,0.9)" stroke="#D9CEBE" />
+        <circle cx="0" cy="0" r="18" fill="rgba(255,255,255,0.92)" stroke="#D9CEBE" />
         <path d="M 0 -12 L 5 4 L 0 0 L -5 4 Z" fill="#C85A32" />
         <text x="0" y="13" text-anchor="middle" fill="#241E19" font-size="9" font-weight="700">N</text>
       </g>
@@ -1189,11 +1202,166 @@
     });
 
     // LFL World Map Sync, Near Me, Region Pills & Import Modal
+    async function fetchWithTimeout(url, options = {}, timeoutMs = 9000) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+      try {
+        const res = await fetch(url, { ...options, signal: ctrl.signal });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    async function fetchLiveOsmBookcasesInBrowser({ query, lat, lng }) {
+      let targetLat = lat;
+      let targetLng = lng;
+      let city = "";
+      let stateCode = "";
+      let postcode = "";
+
+      if (query && (targetLat == null || targetLng == null)) {
+        const nomData = await fetchWithTimeout(
+          `https://nominatim.openstreetmap.org/search?format=json&limit=1&addressdetails=1&q=${encodeURIComponent(query)}`,
+          {},
+          7000
+        );
+        if (!Array.isArray(nomData) || nomData.length === 0) {
+          throw new Error(`No geocoding match for "${query}"`);
+        }
+        const hit = nomData[0];
+        const addr = hit.address || {};
+        targetLat = Number(hit.lat);
+        targetLng = Number(hit.lon);
+        city = addr.city || addr.town || addr.village || addr.county || "";
+        stateCode = addr.state || "";
+        postcode = addr.postcode || "";
+      } else if (targetLat != null && targetLng != null) {
+        try {
+          const revData = await fetchWithTimeout(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${targetLat}&lon=${targetLng}`,
+            {},
+            6000
+          );
+          const addr = revData.address || {};
+          city = addr.city || addr.town || addr.village || addr.county || "";
+          stateCode = addr.state || "";
+          postcode = addr.postcode || "";
+        } catch (_err) {
+          // Reverse geocode optional; continue with GPS coordinates
+        }
+      }
+
+      const south = (targetLat - 0.03).toFixed(5);
+      const north = (targetLat + 0.03).toFixed(5);
+      const west = (targetLng - 0.04).toFixed(5);
+      const east = (targetLng + 0.04).toFixed(5);
+      const ql = `[out:json][timeout:8];(node["amenity"="public_bookcase"](${south},${west},${north},${east});way["amenity"="public_bookcase"](${south},${west},${north},${east}););out center tags 35;`;
+      const body = `data=${encodeURIComponent(ql)}`;
+      const endpoints = [
+        "https://overpass-api.de/api/interpreter",
+        "https://overpass.kumi.systems/api/interpreter",
+      ];
+
+      let osmJson = null;
+      for (const endpoint of endpoints) {
+        try {
+          osmJson = await fetchWithTimeout(
+            endpoint,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body,
+            },
+            9000
+          );
+          break;
+        } catch (_err) {
+          continue;
+        }
+      }
+      if (!osmJson) {
+        throw new Error("Overpass endpoints unreachable from browser");
+      }
+
+      const records = [];
+      for (const el of osmJson.elements || []) {
+        const elLat = el.lat ?? el.center?.lat;
+        const elLng = el.lon ?? el.center?.lon;
+        if (elLat == null || elLng == null) continue;
+        const tags = el.tags || {};
+        const rawRef = tags["ref:littlefreelibrary"] || tags.ref || "";
+        const charter = rawRef ? rawRef : `OSM #${el.id}`;
+        const name = tags.name || (rawRef ? `Little Free Library #${rawRef}` : `Community Book Box #${el.id}`);
+        const street = [tags["addr:housenumber"], tags["addr:street"]].filter(Boolean).join(" ").trim();
+        const boxCity = tags["addr:city"] || city || "";
+        const boxState = tags["addr:state"] || stateCode || "";
+        const boxZip = tags["addr:postcode"] || postcode || "";
+        const neighborhood = tags["addr:suburb"] || tags["addr:neighbourhood"] || boxCity || "Local";
+        const address = street || tags.description || `GPS ${Number(elLat).toFixed(4)}, ${Number(elLng).toFixed(4)}`;
+        records.push({
+          name,
+          charter_number: charter,
+          address,
+          neighborhood,
+          city: boxCity,
+          state: boxState,
+          postal_code: boxZip,
+          lat: Number(Number(elLat).toFixed(6)),
+          lng: Number(Number(elLng).toFixed(6)),
+          steward_name: tags.operator || "Community Steward",
+          description: tags.description || "Synced live from OpenStreetMap public bookcase directory.",
+          source: "osm-sync",
+          external_id: `osm:${el.type || "node"}:${el.id}`,
+          lfl_url: "https://littlefreelibrary.org/map/",
+        });
+      }
+
+      const label = [city, stateCode].filter(Boolean).join(", ") || `${targetLat.toFixed(4)}, ${targetLng.toFixed(4)}`;
+      return { records, center: { lat: targetLat, lng: targetLng, label } };
+    }
+
     async function runLflSync(payload) {
       const syncBtn = document.getElementById("lflSyncLocationBtn");
       syncBtn.disabled = true;
       syncBtn.textContent = "Syncing...";
       try {
+        if (payload.query) {
+          const normQ = payload.query.toLowerCase().replace(/charter/g, "").replace(/#/g, "").trim();
+          const localMatch = state.boxes.find((b) => {
+            const chClean = (b.charter_number || "").toLowerCase().replace(/charter/g, "").replace(/#/g, "").trim();
+            return (normQ && chClean === normQ) || (b.name || "").toLowerCase().includes(payload.query.toLowerCase());
+          });
+          if (localMatch) {
+            state.selectedBoxId = localMatch.id;
+            state.activeRegion = getBoxRegionLabel(localMatch);
+            state.mapCenter = { lat: localMatch.lat, lng: localMatch.lng, label: state.activeRegion };
+            state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
+            renderMapView();
+            showToast(`Focused on ${localMatch.name} (${localMatch.charter_number})`);
+            return;
+          }
+        }
+
+        // Try live browser-side Nominatim + Overpass sync first
+        try {
+          const live = await fetchLiveOsmBookcasesInBrowser(payload);
+          if (live.records.length > 0) {
+            const imp = await apiPost("/api/lfl/import", { raw_data: live.records });
+            state.mapCenter = live.center;
+            if (imp.matched_box_id) state.selectedBoxId = imp.matched_box_id;
+            state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
+            const matched = (imp.state?.boxes || []).find((b) => b.id === imp.matched_box_id);
+            state.activeRegion = matched ? getBoxRegionLabel(matched) : live.center.label;
+            applyStatePayload(imp.state);
+            showToast(`Synced ${live.records.length} live Little Free Library box(es) near ${live.center.label}`);
+            return;
+          }
+        } catch (_browserErr) {
+          // Fall back cleanly to server-side sync/catalog
+        }
+
         const resp = await apiPost("/api/lfl/sync", payload);
         if (resp.center) state.mapCenter = resp.center;
         if (resp.matched_box_id) state.selectedBoxId = resp.matched_box_id;
@@ -1203,10 +1371,12 @@
         applyStatePayload(resp.state);
         if (resp.source_used === "local-match") {
           showToast(`Focused on ${resp.center?.label || "matching box"}`);
-        } else {
+        } else if (resp.synced_count > 0) {
           showToast(
             `Synced ${resp.synced_count} Little Free Library box(es) near ${resp.center?.label || "location"} (${resp.source_used})`
           );
+        } else {
+          showToast(`Centered map on ${resp.center?.label || "location"}; no new mapped boxes found nearby.`);
         }
       } catch (err) {
         showToast(`LFL Sync failed: ${err.message}`);

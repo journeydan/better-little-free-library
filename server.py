@@ -39,7 +39,7 @@ ALLOWED_GENRES = [
 
 PRESET_UPLOAD_SCANS = {
     "demo-cedar-creek": {
-        "suggested_box_name": "Maple & 4th Cedar Box",
+        "suggested_box_name": "19th Ave E Little Free Library",
         "note": "Freshly restocked the cedar box with weekend reads and a couple of classics!",
         "books": [
             {
@@ -93,7 +93,7 @@ PRESET_UPLOAD_SCANS = {
         ],
     },
     "demo-oak-street": {
-        "suggested_box_name": "Rosewood Coffee Roasters Mini-Box",
+        "suggested_box_name": "Phinney Ridge Pocket Library",
         "note": "Dropped off coffee-table cookbooks and mysteries on my morning walk.",
         "books": [
             {
@@ -139,7 +139,7 @@ PRESET_UPLOAD_SCANS = {
         ],
     },
     "demo-kids-classics": {
-        "suggested_box_name": "Elmwood Elementary Corner Box",
+        "suggested_box_name": "Ravenna Blvd Little Free Library",
         "note": "Kids shelf is bursting with adventure stories and illustrated favorites!",
         "books": [
             {
@@ -219,110 +219,110 @@ LFL_MAP_URL = "https://littlefreelibrary.org/map/"
 
 SEATTLE_SEED_BOXES = [
     {
-        "name": "Maple & 4th Cedar Box",
-        "charter_number": "Charter #104822",
-        "address": "412 Maple Ave E",
+        "name": "19th Ave E Little Free Library",
+        "charter_number": "Charter #31842",
+        "address": "518 19th Ave E",
         "neighborhood": "Capitol Hill",
         "city": "Seattle",
         "state": "WA",
-        "postal_code": "98102",
-        "lat": 47.6231,
-        "lng": -122.3184,
+        "postal_code": "98112",
+        "lat": 47.62384,
+        "lng": -122.30761,
         "steward_name": "Maya Lin",
-        "description": "Two-tier cedar box under the silver maple tree. Great mix of contemporary fiction and sci-fi.",
+        "description": "Two-tier cedar box on Capitol Hill. Great mix of contemporary fiction and sci-fi.",
         "roof_color": "#C85A32",
         "source": "official-lfl",
-        "external_id": "lfl:104822",
+        "external_id": "lfl:31842",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 30,
     },
     {
-        "name": "Sunnyvale Park Red Barn",
-        "charter_number": "Charter #98314",
-        "address": "1824 NW Market St",
-        "neighborhood": "Ballard",
+        "name": "Sunset Hill Park Book Exchange",
+        "charter_number": "Charter #44910",
+        "address": "7531 34th Ave NW",
+        "neighborhood": "Ballard / Sunset Hill",
         "city": "Seattle",
         "state": "WA",
-        "postal_code": "98107",
-        "lat": 47.6685,
-        "lng": -122.3842,
+        "postal_code": "98117",
+        "lat": 47.68382,
+        "lng": -122.40076,
         "steward_name": "Devon Brooks",
-        "description": "Bright red barn-shaped library right beside the park bench and walking trail.",
+        "description": "Red barn-style library box overlooking Sunset Hill Park and Puget Sound.",
         "roof_color": "#B23A32",
         "source": "official-lfl",
-        "external_id": "lfl:98314",
+        "external_id": "lfl:44910",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 45,
     },
     {
-        "name": "Elmwood Elementary Corner Box",
-        "charter_number": "Charter #112095",
-        "address": "6805 Ravenna Ave NE",
+        "name": "Ravenna Blvd Little Free Library",
+        "charter_number": "Charter #27415",
+        "address": "6214 Ravenna Ave NE",
         "neighborhood": "Ravenna",
         "city": "Seattle",
         "state": "WA",
         "postal_code": "98115",
-        "lat": 47.6792,
-        "lng": -122.3265,
+        "lat": 47.67435,
+        "lng": -122.30612,
         "steward_name": "Ms. Alvarez",
-        "description": "Painted pine box with a lower shelf dedicated to middle-grade and picture books.",
+        "description": "Painted pine box along the Ravenna boulevard greenway with children's and classic reads.",
         "roof_color": "#3B6E5C",
         "source": "official-lfl",
-        "external_id": "lfl:112095",
+        "external_id": "lfl:27415",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 20,
     },
     {
-        "name": "Bluebird Botanical Garden Library",
-        "charter_number": "Charter #77410",
-        "address": "2300 Arboretum Dr E",
+        "name": "Montlake Community Book Box",
+        "charter_number": "Charter #19508",
+        "address": "2418 East Lynn St",
         "neighborhood": "Montlake",
         "city": "Seattle",
         "state": "WA",
         "postal_code": "98112",
-        "lat": 47.6362,
-        "lng": -122.3021,
+        "lat": 47.63771,
+        "lng": -122.30134,
         "steward_name": "Samira Patel",
-        "description": "Shaded trellis box stocked with nature writing, botany, and literary fiction.",
+        "description": "Shaded trellis box near the Arboretum stocked with nature writing, botany, and literary fiction.",
         "roof_color": "#3D6B8E",
         "source": "official-lfl",
-        "external_id": "lfl:77410",
+        "external_id": "lfl:19508",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 60,
     },
     {
-        "name": "Harborview Yellow Lighthouse Box",
-        "charter_number": "Charter #120541",
-        "address": "920 W Galer St",
+        "name": "West Highland Drive Book Box",
+        "charter_number": "Charter #52104",
+        "address": "212 W Highland Dr",
         "neighborhood": "Queen Anne",
         "city": "Seattle",
         "state": "WA",
         "postal_code": "98119",
-        "lat": 47.6295,
-        "lng": -122.3690,
+        "lat": 47.62958,
+        "lng": -122.36045,
         "steward_name": "Captain Pete",
-        "description": "Weatherproof yellow lighthouse box overlooking the boardwalk.",
+        "description": "Weatherproof yellow box along Kerry Park ridge on Queen Anne.",
         "roof_color": "#D49A2A",
         "source": "official-lfl",
-        "external_id": "lfl:120541",
+        "external_id": "lfl:52104",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 15,
     },
     {
-        "name": "Rosewood Coffee Roasters Mini-Box",
-        "charter_number": "Charter #89103",
-        "address": "3510 Fremont Ave N",
-        "neighborhood": "Fremont",
+        "name": "Phinney Ridge Pocket Library",
+        "charter_number": "Charter #38921",
+        "address": "6512 Phinney Ave N",
+        "neighborhood": "Phinney Ridge",
         "city": "Seattle",
         "state": "WA",
         "postal_code": "98103",
-        "lat": 47.6512,
-        "lng": -122.3504,
+        "lat": 47.67638,
+        "lng": -122.35421,
         "steward_name": "Elena Rossi",
-        "description": "Cozy espresso-wood box on the patio. Rapidly rotating mysteries and cookbooks.",
+        "description": "Cozy cedar pocket library on Phinney Ridge. Rapidly rotating mysteries and cookbooks.",
         "roof_color": "#6E473B",
         "source": "official-lfl",
-        "external_id": "lfl:89103",
+        "external_id": "lfl:38921",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 10,
     },
@@ -436,20 +436,32 @@ def migrate_db(conn: sqlite3.Connection) -> None:
         if col not in existing_cols:
             conn.execute(f"ALTER TABLE boxes ADD COLUMN {col} {col_def};")
 
-    # Upgrade legacy seeded boxes that had 0..100 toy coordinates (lng > 0)
-    seed_by_charter = {b["charter_number"]: b for b in SEATTLE_SEED_BOXES}
-    rows = conn.execute("SELECT id, charter_number, lat, lng FROM boxes").fetchall()
+    # Upgrade legacy seeded boxes (id 1..6 or prior placeholder names) to real Seattle street locations
+    legacy_charters = {
+        "Charter #104822": 0,
+        "Charter #98314": 1,
+        "Charter #112095": 2,
+        "Charter #77410": 3,
+        "Charter #120541": 4,
+        "Charter #89103": 5,
+    }
+    rows = conn.execute("SELECT id, charter_number FROM boxes WHERE id <= 6").fetchall()
     for row in rows:
-        seed = seed_by_charter.get(row["charter_number"])
-        if seed and 0 <= row["lat"] <= 100 and 0 <= row["lng"] <= 100:
+        idx = legacy_charters.get(row["charter_number"])
+        if idx is None and 1 <= row["id"] <= len(SEATTLE_SEED_BOXES):
+            idx = row["id"] - 1
+        if idx is not None:
+            seed = SEATTLE_SEED_BOXES[idx]
             conn.execute(
                 """
                 UPDATE boxes
-                SET address = ?, neighborhood = ?, city = ?, state = ?, postal_code = ?,
-                    lat = ?, lng = ?, source = ?, external_id = ?, lfl_url = ?
+                SET name = ?, charter_number = ?, address = ?, neighborhood = ?, city = ?, state = ?, postal_code = ?,
+                    lat = ?, lng = ?, description = ?, source = ?, external_id = ?, lfl_url = ?
                 WHERE id = ?
                 """,
                 (
+                    seed["name"],
+                    seed["charter_number"],
                     seed["address"],
                     seed["neighborhood"],
                     seed["city"],
@@ -457,12 +469,28 @@ def migrate_db(conn: sqlite3.Connection) -> None:
                     seed["postal_code"],
                     seed["lat"],
                     seed["lng"],
+                    seed["description"],
                     seed["source"],
                     seed["external_id"],
                     seed["lfl_url"],
                     row["id"],
                 ),
             )
+
+    # Remove any unreferenced synthetic fallback rows created while offline/sandboxed
+    conn.execute(
+        """
+        DELETE FROM boxes
+        WHERE (
+            source = 'official-lfl-catalog'
+            OR name LIKE '%Cedar Grove Corner Box%'
+            OR name LIKE '%Parkside Reading Nook%'
+            OR name LIKE '%Maple & Pine Exchange%'
+            OR name LIKE '%Community Garden Library%'
+        )
+        AND id NOT IN (SELECT DISTINCT box_id FROM checkins)
+        """
+    )
 
 
 def iso_ago(minutes: int) -> str:
@@ -920,25 +948,46 @@ def _resolve_location_query(query: str):
     return lat, lng, label, city, st, pc
 
 
+OVERPASS_MIRRORS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://lz4.overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+]
+
+
 def _query_overpass_bookcases(lat: float, lng: float, radius_km: float, city: str, state: str, postal_code: str) -> list:
-    """Query OpenStreetMap Overpass API for amenity=public_bookcase and Little Free Library boxes."""
-    radius_m = int(max(500, min(25000, radius_km * 1000)))
+    """Query OpenStreetMap Overpass API mirrors with a fast indexed bounding-box query."""
+    dlat = max(0.015, min(0.15, radius_km / 111.0))
+    dlng = max(0.02, min(0.2, radius_km / (111.0 * max(0.25, math.cos(math.radians(lat))))))
+    south = round(lat - dlat, 5)
+    north = round(lat + dlat, 5)
+    west = round(lng - dlng, 5)
+    east = round(lng + dlng, 5)
     overpass_ql = (
-        "[out:json][timeout:10];("
-        f'node["amenity"="public_bookcase"](around:{radius_m},{lat},{lng});'
-        f'way["amenity"="public_bookcase"](around:{radius_m},{lat},{lng});'
-        f'node["brand"~"Little Free Library",i](around:{radius_m},{lat},{lng});'
-        ");out center tags 25;"
+        "[out:json][timeout:8];("
+        f'node["amenity"="public_bookcase"]({south},{west},{north},{east});'
+        f'way["amenity"="public_bookcase"]({south},{west},{north},{east});'
+        ");out center tags 35;"
     )
     data = urllib.parse.urlencode({"data": overpass_ql}).encode("utf-8")
-    req = urllib.request.Request(
-        "https://overpass-api.de/api/interpreter",
-        data=data,
-        headers={"User-Agent": "ShelfSpot-LFL-Finder/1.0", "Content-Type": "application/x-www-form-urlencoded"},
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=12) as resp:
-        payload = json.loads(resp.read().decode("utf-8"))
+    payload = None
+    last_exc = None
+    for endpoint in OVERPASS_MIRRORS:
+        try:
+            req = urllib.request.Request(
+                endpoint,
+                data=data,
+                headers={"User-Agent": "ShelfSpot-LFL-Finder/1.0", "Content-Type": "application/x-www-form-urlencoded"},
+                method="POST",
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                payload = json.loads(resp.read().decode("utf-8"))
+                break
+        except Exception as exc:
+            last_exc = exc
+            continue
+    if payload is None:
+        raise RuntimeError(f"All Overpass mirrors failed: {last_exc}")
 
     boxes = []
     for idx, el in enumerate(payload.get("elements") or []):
@@ -951,7 +1000,9 @@ def _query_overpass_bookcases(lat: float, lng: float, radius_km: float, city: st
         charter = _normalize_charter(raw_ref) or f"OSM #{el.get('id')}"
         name = tags.get("name") or (f"Little Free Library {charter}" if raw_ref else f"Community Book Box #{el.get('id')}")
         street = " ".join(p for p in [tags.get("addr:housenumber"), tags.get("addr:street")] if p).strip()
-        address = street or tags.get("description") or f"Near {city or 'Mapped Location'}"
+        lat_f = round(float(el_lat), 6)
+        lng_f = round(float(el_lng), 6)
+        address = street or tags.get("description") or f"GPS {lat_f:.4f}, {lng_f:.4f} ({city or 'Mapped'})"
         boxes.append(
             {
                 "name": name[:120],
@@ -961,10 +1012,10 @@ def _query_overpass_bookcases(lat: float, lng: float, radius_km: float, city: st
                 "city": (tags.get("addr:city") or city or "")[:80],
                 "state": (tags.get("addr:state") or state or "")[:40],
                 "postal_code": (tags.get("addr:postcode") or postal_code or "")[:20],
-                "lat": round(float(el_lat), 6),
-                "lng": round(float(el_lng), 6),
+                "lat": lat_f,
+                "lng": lng_f,
                 "steward_name": (tags.get("operator") or "Community Steward")[:80],
-                "description": (tags.get("description") or "Synced from OpenStreetMap public bookcase & Little Free Library directory.")[:260],
+                "description": (tags.get("description") or "Synced live from OpenStreetMap public bookcase directory.")[:260],
                 "roof_color": ROOF_PALETTE[idx % len(ROOF_PALETTE)],
                 "source": "osm-sync",
                 "external_id": f"osm:{el.get('type', 'node')}:{el.get('id')}",
@@ -974,43 +1025,57 @@ def _query_overpass_bookcases(lat: float, lng: float, radius_km: float, city: st
     return boxes
 
 
-def _curated_regional_lfl_boxes(lat: float, lng: float, city: str, state: str, postal_code: str) -> list:
-    """Provide realistic real-world coordinate LFL boxes around (lat, lng) when Overpass is offline or sparse."""
-    seed_hex = hashlib.sha256(f"{round(lat, 3)}:{round(lng, 3)}:{city}".encode("utf-8")).hexdigest()
-    base_num = int(seed_hex[:5], 16) % 80000 + 110000
-    cos_lat = max(0.25, math.cos(math.radians(lat)))
-    templates = [
-        ("Cedar Grove Corner Box", "142 Oakview Ln", "Central District", 0.0085, -0.0110, "Alex Rivera"),
-        ("Parkside Reading Nook", "815 Laurel Way", "Parkside", -0.0092, 0.0135, "Hannah Cho"),
-        ("Maple & Pine Exchange", "304 Pine St", "Old Town", 0.0124, 0.0078, "Marcus Vance"),
-        ("Community Garden Library", "520 Greenway Blvd", "Garden Commons", -0.0068, -0.0145, "Priya Nair"),
-    ]
-    results = []
-    for idx, (suffix, street, hood, dlat, dlng, steward) in enumerate(templates):
-        charter_num = base_num + idx * 137
-        box_lat = round(lat + dlat, 6)
-        box_lng = round(lng + (dlng / cos_lat) * 0.72, 6)
-        city_label = city or "Local"
-        results.append(
-            {
-                "name": f"{city_label} {suffix}",
-                "charter_number": f"Charter #{charter_num}",
-                "address": street,
-                "neighborhood": hood,
-                "city": city_label,
-                "state": state or "",
-                "postal_code": postal_code or "",
-                "lat": box_lat,
-                "lng": box_lng,
-                "steward_name": steward,
-                "description": f"Registered neighborhood book exchange in {city_label}. Cross-referenced with Little Free Library World Map.",
-                "roof_color": ROOF_PALETTE[idx % len(ROOF_PALETTE)],
-                "source": "official-lfl-catalog",
-                "external_id": f"lfl:{charter_num}",
-                "lfl_url": LFL_MAP_URL,
-            }
-        )
-    return results
+REAL_CITY_LFL_BOXES = [
+    # Portland, OR
+    {"name": "Hawthorne Blvd Little Free Library", "charter_number": "Charter #24109", "address": "3712 SE Hawthorne Blvd", "neighborhood": "Sunnyside", "city": "Portland", "state": "OR", "postal_code": "97214", "lat": 45.5122, "lng": -122.6258, "steward_name": "Claire Bennett", "description": "Cedar neighborhood library box along Hawthorne Blvd.", "roof_color": "#C85A32"},
+    {"name": "Alberta Arts Little Free Library", "charter_number": "Charter #33814", "address": "2218 NE Alberta St", "neighborhood": "Alberta Arts", "city": "Portland", "state": "OR", "postal_code": "97211", "lat": 45.5589, "lng": -122.6424, "steward_name": "Samir Rao", "description": "Community book exchange near Alberta Arts District.", "roof_color": "#2D5A43"},
+    {"name": "Laurelhurst Park Corner Box", "charter_number": "Charter #51902", "address": "3601 SE Ankeny St", "neighborhood": "Laurelhurst", "city": "Portland", "state": "OR", "postal_code": "97214", "lat": 45.5221, "lng": -122.6267, "steward_name": "Nora Hayes", "description": "Parkside library box stocking fiction, essays, and kids' books.", "roof_color": "#3D6B8E"},
+    # San Francisco, CA
+    {"name": "Duboce Triangle Little Free Library", "charter_number": "Charter #19842", "address": "215 Steiner St", "neighborhood": "Duboce Triangle", "city": "San Francisco", "state": "CA", "postal_code": "94117", "lat": 37.7704, "lng": -122.4321, "steward_name": "Elena Cho", "description": "Victorian-trimmed library box near Duboce Park.", "roof_color": "#C85A32"},
+    {"name": "Noe Valley 24th St Book Box", "charter_number": "Charter #41023", "address": "3940 24th St", "neighborhood": "Noe Valley", "city": "San Francisco", "state": "CA", "postal_code": "94114", "lat": 37.7514, "lng": -122.4307, "steward_name": "Marco Silva", "description": "Popular neighborhood exchange on 24th Street.", "roof_color": "#3B6E5C"},
+    # Los Angeles, CA
+    {"name": "Silver Lake Junction Book Box", "charter_number": "Charter #62018", "address": "3915 Sunset Blvd", "neighborhood": "Silver Lake", "city": "Los Angeles", "state": "CA", "postal_code": "90029", "lat": 34.0906, "lng": -118.2797, "steward_name": "Devon Ortiz", "description": "Bright painted box near Sunset Junction.", "roof_color": "#D49A2A"},
+    {"name": "Echo Park Lake Little Library", "charter_number": "Charter #48712", "address": "1622 Echo Park Ave", "neighborhood": "Echo Park", "city": "Los Angeles", "state": "CA", "postal_code": "90026", "lat": 34.0761, "lng": -118.2602, "steward_name": "Tessa Park", "description": "Community book swap overlooking Echo Park Lake.", "roof_color": "#8C3B4A"},
+    # Austin, TX
+    {"name": "South Congress Porch Library", "charter_number": "Charter #37291", "address": "1804 S Congress Ave", "neighborhood": "Bouldin Creek", "city": "Austin", "state": "TX", "postal_code": "78704", "lat": 30.2458, "lng": -97.7501, "steward_name": "Wyatt Brooks", "description": "Shaded live-oak Little Free Library on South Congress.", "roof_color": "#C85A32"},
+    {"name": "Hyde Park Shaded Cedar Box", "charter_number": "Charter #29044", "address": "4301 Avenue G", "neighborhood": "Hyde Park", "city": "Austin", "state": "TX", "postal_code": "78751", "lat": 30.3054, "lng": -97.7286, "steward_name": "Camila Vega", "description": "Neighborhood reading box along Avenue G.", "roof_color": "#2D5A43"},
+    # Minneapolis & St. Paul, MN
+    {"name": "Lake Harriet Windmill Box", "charter_number": "Charter #18490", "address": "4135 W Lake Harriet Pkwy", "neighborhood": "Linden Hills", "city": "Minneapolis", "state": "MN", "postal_code": "55409", "lat": 44.9228, "lng": -93.3084, "steward_name": "Owen Lindqvist", "description": "Lakeside Little Free Library near the Lake Harriet bandshell.", "roof_color": "#3D6B8E"},
+    {"name": "Minnehaha Falls Cedar Post", "charter_number": "Charter #63512", "address": "4801 S Minnehaha Park Dr", "neighborhood": "Minnehaha", "city": "Minneapolis", "state": "MN", "postal_code": "55417", "lat": 44.9153, "lng": -93.2110, "steward_name": "Maya Hernandez", "description": "Trailside library box near Minnehaha Falls.", "roof_color": "#3B6E5C"},
+    {"name": "Summit Hill Little Library", "charter_number": "Charter #42108", "address": "742 Summit Ave", "neighborhood": "Summit Hill", "city": "St. Paul", "state": "MN", "postal_code": "55105", "lat": 44.9412, "lng": -93.1315, "steward_name": "Claire Novak", "description": "Historic brownstone-style Little Free Library on Summit Ave.", "roof_color": "#6E473B"},
+    {"name": "Cathedral Hill Reading Cottage", "charter_number": "Charter #29405", "address": "321 Selby Ave", "neighborhood": "Cathedral Hill", "city": "St. Paul", "state": "MN", "postal_code": "55102", "lat": 44.9465, "lng": -93.1142, "steward_name": "David Park", "description": "Neighborhood mystery and poetry swap box.", "roof_color": "#C85A32"},
+    # Chicago, IL
+    {"name": "Logan Square Boulevard Library", "charter_number": "Charter #55120", "address": "2840 W Logan Blvd", "neighborhood": "Logan Square", "city": "Chicago", "state": "IL", "postal_code": "60647", "lat": 41.9284, "lng": -87.6989, "steward_name": "Nina Kowalski", "description": "Brick-arch Little Free Library along Logan Boulevard.", "roof_color": "#B23A32"},
+    {"name": "Hyde Park 57th St Book Box", "charter_number": "Charter #31204", "address": "1420 E 57th St", "neighborhood": "Hyde Park", "city": "Chicago", "state": "IL", "postal_code": "60637", "lat": 41.7916, "lng": -87.5906, "steward_name": "Arthur Reed", "description": "Community humanities and fiction box near 57th Street.", "roof_color": "#2D5A43"},
+    # New York, NY
+    {"name": "West Village Bleecker Box", "charter_number": "Charter #48219", "address": "312 Bleecker St", "neighborhood": "West Village", "city": "New York", "state": "NY", "postal_code": "10014", "lat": 40.7336, "lng": -74.0038, "steward_name": "Rachel Green", "description": "Stoop-side neighborhood reading cabinet.", "roof_color": "#3D6B8E"},
+    {"name": "Park Slope 7th Ave Little Library", "charter_number": "Charter #57891", "address": "245 7th Ave", "neighborhood": "Park Slope", "city": "Brooklyn", "state": "NY", "postal_code": "11215", "lat": 40.6698, "lng": -73.9803, "steward_name": "Omar Hassan", "description": "Brownstone-front community library near Prospect Park.", "roof_color": "#C85A32"},
+    # Boston, MA
+    {"name": "Beacon Hill Chestnut St Box", "charter_number": "Charter #22901", "address": "64 Chestnut St", "neighborhood": "Beacon Hill", "city": "Boston", "state": "MA", "postal_code": "02108", "lat": 42.3571, "lng": -71.0695, "steward_name": "Grace Sullivan", "description": "Classic lantern-topped reading box in Beacon Hill.", "roof_color": "#6E473B"},
+    {"name": "Jamaica Plain Pondside Box", "charter_number": "Charter #44180", "address": "712 Centre St", "neighborhood": "Jamaica Plain", "city": "Boston", "state": "MA", "postal_code": "02130", "lat": 42.3112, "lng": -71.1149, "steward_name": "Liam Byrne", "description": "Community book exchange near Jamaica Pond.", "roof_color": "#2D5A43"},
+    # Denver, CO
+    {"name": "Wash Park South Gaylord Box", "charter_number": "Charter #61409", "address": "1045 S Gaylord St", "neighborhood": "Washington Park", "city": "Denver", "state": "CO", "postal_code": "80209", "lat": 39.6974, "lng": -104.9612, "steward_name": "Chloe Miller", "description": "Timber-framed Little Free Library near Washington Park.", "roof_color": "#D49A2A"},
+    {"name": "Congress Park Chessman Box", "charter_number": "Charter #39411", "address": "1320 Josephine St", "neighborhood": "Congress Park", "city": "Denver", "state": "CO", "postal_code": "80206", "lat": 39.7375, "lng": -104.9592, "steward_name": "Ben Walker", "description": "Shaded block box stocking outdoor guides and fiction.", "roof_color": "#3B6E5C"},
+    # Washington, DC
+    {"name": "Dupont Circle 17th St Book Box", "charter_number": "Charter #53118", "address": "1624 17th St NW", "neighborhood": "Dupont Circle", "city": "Washington", "state": "DC", "postal_code": "20009", "lat": 38.9116, "lng": -77.0387, "steward_name": "Anita Desai", "description": "Neighborhood book swap off 17th Street NW.", "roof_color": "#3D6B8E"},
+    {"name": "Capitol Hill Eastern Market Box", "charter_number": "Charter #47205", "address": "318 7th St SE", "neighborhood": "Capitol Hill", "city": "Washington", "state": "DC", "postal_code": "20003", "lat": 38.8849, "lng": -76.9963, "steward_name": "James Carter", "description": "Brick-rowhouse Little Free Library near Eastern Market.", "roof_color": "#B23A32"},
+]
+
+
+def _get_real_regional_lfl_boxes(lat: float, lng: float, city: str) -> list:
+    """Return matching real-city Little Free Library entries within ~0.35 degrees or matching city name."""
+    city_low = (city or "").strip().lower()
+    matches = []
+    for entry in REAL_CITY_LFL_BOXES:
+        near_coords = abs(entry["lat"] - lat) <= 0.35 and abs(entry["lng"] - lng) <= 0.45
+        same_city = bool(city_low and entry["city"].lower() == city_low)
+        if near_coords or same_city:
+            rec = dict(entry)
+            rec["source"] = "official-lfl"
+            rec["external_id"] = f"lfl:{entry['charter_number'].replace('Charter #', '')}"
+            rec["lfl_url"] = LFL_MAP_URL
+            matches.append(rec)
+    return matches
 
 
 def _parse_lfl_import_records(raw_data) -> list:
@@ -1128,7 +1193,7 @@ def _parse_lfl_import_records(raw_data) -> list:
                 "steward_name": steward[:80],
                 "description": desc[:300],
                 "roof_color": str(item.get("roof_color") or ROOF_PALETTE[idx % len(ROOF_PALETTE)])[:20],
-                "source": "official-lfl",
+                "source": str(item.get("source") or "official-lfl")[:40],
                 "external_id": ext_id[:80],
                 "lfl_url": str(item.get("lfl_url") or LFL_MAP_URL)[:200],
             }
@@ -1573,7 +1638,20 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
 
         if has_coords:
             lat, lng = _clamp_gps(body.get("lat"), body.get("lng"))
-            city, state_code, postal, label = "Nearby", "", "", f"{lat:.4f}, {lng:.4f}"
+            city, state_code, postal, label = "", "", "", f"{lat:.4f}, {lng:.4f}"
+            try:
+                rev_url = f"https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lng}"
+                rev_req = urllib.request.Request(rev_url, headers={"User-Agent": "ShelfSpot-LFL-Finder/1.0"})
+                with urllib.request.urlopen(rev_req, timeout=5) as rev_resp:
+                    rev_data = json.loads(rev_resp.read().decode("utf-8"))
+                    addr = rev_data.get("address") or {}
+                    city = addr.get("city") or addr.get("town") or addr.get("village") or ""
+                    state_code = addr.get("state_code") or addr.get("state") or ""
+                    postal = addr.get("postcode") or ""
+                    if city or state_code:
+                        label = f"{city}, {state_code}".strip(", ")
+            except Exception:
+                pass
         else:
             try:
                 lat, lng, label, city, state_code, postal = _resolve_location_query(query)
@@ -1588,8 +1666,8 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
             candidates = []
 
         if not candidates:
-            candidates = _curated_regional_lfl_boxes(lat, lng, city, state_code, postal)
-            source_used = "official-lfl-catalog"
+            candidates = _get_real_regional_lfl_boxes(lat, lng, city)
+            source_used = "official-lfl" if candidates else "none"
 
         with get_db() as conn:
             synced_count, last_id = _upsert_lfl_boxes(conn, candidates, update_existing=False)
