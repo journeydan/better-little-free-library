@@ -1392,25 +1392,21 @@
           }
         }
 
-        // Try live browser-side Nominatim + Overpass sync first
-        try {
-          const live = await fetchLiveOsmBookcasesInBrowser(payload);
-          if (live.records.length > 0) {
-            const imp = await apiPost("/api/lfl/import", { raw_data: live.records });
-            state.mapCenter = live.center;
-            if (imp.matched_box_id) state.selectedBoxId = imp.matched_box_id;
-            state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
-            const matched = (imp.state?.boxes || []).find((b) => b.id === imp.matched_box_id);
-            state.activeRegion = matched ? getBoxRegionLabel(matched) : live.center.label;
-            applyStatePayload(imp.state);
-            showToast(`Synced ${live.records.length} live Little Free Library box(es) near ${live.center.label}`);
-            return;
+        let resp = await apiPost("/api/lfl/sync", payload);
+
+        if (resp.synced_count === 0 && resp.source_used === "none") {
+          try {
+            const live = await fetchLiveOsmBookcasesInBrowser(payload);
+            if (live.records.length > 0) {
+              resp = await apiPost("/api/lfl/import", { raw_data: live.records });
+              resp.center = live.center;
+              resp.source_used = "osm-sync";
+            }
+          } catch (_browserErr) {
+            // Keep server response when browser-side OSM fallback is unavailable
           }
-        } catch (_browserErr) {
-          // Fall back cleanly to server-side sync/catalog
         }
 
-        const resp = await apiPost("/api/lfl/sync", payload);
         if (resp.center) state.mapCenter = resp.center;
         if (resp.matched_box_id) state.selectedBoxId = resp.matched_box_id;
         state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };

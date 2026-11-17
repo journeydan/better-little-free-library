@@ -510,6 +510,40 @@ def migrate_db(conn: sqlite3.Connection) -> None:
         "Charter #53190": 4,
         "Charter #39204": 5,
     }
+    # Remove any unreferenced synthetic fallback rows created while offline/sandboxed
+    conn.execute(
+        """
+        DELETE FROM boxes
+        WHERE (
+            source = 'official-lfl-catalog'
+            OR name LIKE '%Cedar Grove Corner Box%'
+            OR name LIKE '%Parkside Reading Nook%'
+            OR name LIKE '%Maple & Pine Exchange%'
+            OR name LIKE '%Community Garden Library%'
+            OR external_id IN ('lfl:48210', 'lfl:55194', 'a060W0000116BfVQAU')
+        )
+        AND id NOT IN (SELECT DISTINCT box_id FROM checkins)
+        """
+    )
+
+    # Ensure all live registered Toronto Little Free Libraries from the official LFL snapshot are populated
+    toronto_official = [r for r in _load_official_lfl_canada_records() if r.get("city") == "Toronto"]
+    if toronto_official:
+        live_charters = [r["charter_number"] for r in toronto_official if r.get("charter_number")]
+        if live_charters:
+            placeholders = ",".join("?" for _ in live_charters)
+            conn.execute(
+                f"""
+                DELETE FROM boxes
+                WHERE city = 'Toronto'
+                  AND id NOT IN (SELECT DISTINCT box_id FROM checkins)
+                  AND charter_number NOT IN ({placeholders})
+                """,
+                live_charters,
+            )
+        _upsert_lfl_boxes(conn, toronto_official, update_existing=True)
+        conn.execute("UPDATE boxes SET state = 'ON' WHERE city = 'Toronto' AND state != 'ON'")
+
     rows = conn.execute("SELECT id, charter_number FROM boxes WHERE id <= 6").fetchall()
     for row in rows:
         idx = legacy_charters.get(row["charter_number"])
@@ -542,28 +576,6 @@ def migrate_db(conn: sqlite3.Connection) -> None:
                     row["id"],
                 ),
             )
-
-    # Remove any unreferenced synthetic fallback rows created while offline/sandboxed
-    conn.execute(
-        """
-        DELETE FROM boxes
-        WHERE (
-            source = 'official-lfl-catalog'
-            OR name LIKE '%Cedar Grove Corner Box%'
-            OR name LIKE '%Parkside Reading Nook%'
-            OR name LIKE '%Maple & Pine Exchange%'
-            OR name LIKE '%Community Garden Library%'
-            OR external_id IN ('lfl:48210', 'lfl:55194', 'a060W0000116BfVQAU')
-        )
-        AND id NOT IN (SELECT DISTINCT box_id FROM checkins)
-        """
-    )
-
-    # Ensure all real Toronto Little Free Libraries from the official LFL snapshot are populated
-    toronto_official = [r for r in _load_official_lfl_canada_records() if r.get("city") == "Toronto"]
-    if toronto_official:
-        _upsert_lfl_boxes(conn, toronto_official, update_existing=False)
-        conn.execute("UPDATE boxes SET state = 'ON' WHERE city = 'Toronto' AND state != 'ON'")
 
 
 def iso_ago(minutes: int) -> str:
@@ -1189,19 +1201,20 @@ REAL_CITY_LFL_BOXES = [
 
 
 _OFFICIAL_LFL_CANADA_CACHE = None
-TORONTO_METRO_ALIASES = {"toronto", "etobicoke", "scarborough", "north york", "east york", "york"}
+TORONTO_METRO_ALIASES = {"toronto", "etobicoke", "scarborough", "north york", "east york", "york", "weston"}
 
 
 def _clean_lfl_state(raw_state: str, city_name: str = "") -> str:
-    """Clean Salesforce state/province strings (e.g., 'OH ON', 'WY ON' -> 'ON')."""
+    """Clean Salesforce state/province strings (e.g., 'OH ON', 'WY ON', 'Ontario' -> 'ON')."""
     s = (raw_state or "").strip()
-    if s.upper().endswith(" ON") or s.upper() == "ONTARIO":
+    up = s.upper()
+    if up in ("ON", "ONTARIO") or up.endswith(" ON"):
         return "ON"
-    if s.upper().endswith(" QC") or s.upper() in ("QUEBEC", "QUÉBEC"):
+    if up in ("QC", "QUEBEC", "QUÉBEC") or up.endswith(" QC"):
         return "QC"
-    if s.upper().endswith(" BC") or s.upper() in ("BRITISH COLUMBIA", "B.C."):
+    if up in ("BC", "BRITISH COLUMBIA", "B.C.") or up.endswith(" BC"):
         return "BC"
-    if s.upper() in ("", "MB") and city_name.lower() in TORONTO_METRO_ALIASES | {"ottawa", "mississauga"}:
+    if up in ("", "MB") and city_name.lower() in TORONTO_METRO_ALIASES | {"ottawa", "mississauga"}:
         return "ON"
     if not s and city_name.lower() in {"montreal", "montréal"}:
         return "QC"
@@ -1227,6 +1240,84 @@ def _load_official_lfl_canada_records() -> list:
     except Exception:
         _OFFICIAL_LFL_CANADA_CACHE = []
     return _OFFICIAL_LFL_CANADA_CACHE
+
+
+def _query_live_lfl_map_api(
+    query: str = "",
+    lat: float = None,
+    lng: float = None,
+    radius_km: float = 15.0,
+    max_pages: int = 2,
+) -> tuple:
+    """Query the live official LFL map JSON API (appapi.littlefreelibrary.org/library/map.json)."""
+    q = (query or "").strip()
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+        ),
+        "Accept": "application/json",
+        "Origin": "https://app.littlefreelibrary.org",
+        "Referer": "https://app.littlefreelibrary.org/",
+    }
+
+    explicit_charter = re.match(r"^(?:charter\s*|#)\s*(\d{1,8})$", q, flags=re.IGNORECASE)
+    bare_digits = re.match(r"^(\d{1,8})$", q)
+    is_charter_only = bool(explicit_charter or (bare_digits and len(q) != 5))
+
+    def _run_params(base_params: dict, limit_pages: int) -> tuple:
+        libs = []
+        center_lat = None
+        center_lng = None
+        for page in range(1, max(1, limit_pages) + 1):
+            req_params = dict(base_params)
+            if "charter" not in req_params:
+                req_params["page"] = page
+            url = f"https://appapi.littlefreelibrary.org/library/map.json?{urllib.parse.urlencode(req_params)}"
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=12) as resp:
+                payload = json.loads(resp.read().decode("utf-8"))
+            if page == 1:
+                try:
+                    if payload.get("latitude") is not None and payload.get("longitude") is not None:
+                        center_lat = float(payload["latitude"])
+                        center_lng = float(payload["longitude"])
+                except (TypeError, ValueError):
+                    pass
+            batch = payload.get("libraries") or []
+            libs.extend(batch)
+            page_count = int(payload.get("page_count") or 1)
+            if "charter" in req_params or page >= page_count or not batch:
+                break
+        return libs, center_lat, center_lng
+
+    if is_charter_only:
+        digits = (explicit_charter or bare_digits).group(1)
+        raw_libs, api_lat, api_lng = _run_params({"charter": digits}, 1)
+    else:
+        near_val = q
+        if q and q.lower() in CITY_GAZETTEER:
+            _, _, g_city, g_st, _ = CITY_GAZETTEER[q.lower()]
+            near_val = f"{g_city}, {g_st}".strip(", ")
+        elif not near_val and lat is not None and lng is not None:
+            clamped_lat, clamped_lng = _clamp_gps(lat, lng)
+            near_val = f"{clamped_lat},{clamped_lng}"
+        if not near_val:
+            return ([], None, None)
+
+        dist_miles = max(5 if (lat is not None and lng is not None and not q) else 10, int(round(radius_km * 0.621371)))
+        raw_libs, api_lat, api_lng = _run_params(
+            {"near": near_val, "distance": dist_miles, "page_size": 100},
+            max_pages,
+        )
+        if not raw_libs and bare_digits and len(q) == 5:
+            raw_libs, api_lat, api_lng = _run_params({"charter": q}, 1)
+
+    records = _parse_lfl_import_records(raw_libs)
+    if (api_lat is None or api_lng is None) and records:
+        api_lat = records[0]["lat"]
+        api_lng = records[0]["lng"]
+    return (records, api_lat, api_lng)
 
 
 def _get_real_regional_lfl_boxes(lat: float, lng: float, city: str) -> list:
@@ -1303,6 +1394,8 @@ def _parse_lfl_import_records(raw_data) -> list:
         lat_val = (
             geo.get("latitude")
             if geo.get("latitude") is not None
+            else item.get("Library_Geolocation__Latitude__s")
+            if item.get("Library_Geolocation__Latitude__s") is not None
             else item.get("lat")
             if item.get("lat") is not None
             else item.get("latitude")
@@ -1310,6 +1403,8 @@ def _parse_lfl_import_records(raw_data) -> list:
         lng_val = (
             geo.get("longitude")
             if geo.get("longitude") is not None
+            else item.get("Library_Geolocation__Longitude__s")
+            if item.get("Library_Geolocation__Longitude__s") is not None
             else item.get("lng")
             if item.get("lng") is not None
             else item.get("lon")
@@ -1334,7 +1429,8 @@ def _parse_lfl_import_records(raw_data) -> list:
         )
         charter = _normalize_charter(raw_charter) or f"Charter #{150000 + idx}"
         name = str(
-            item.get("Library_Name__c")
+            item.get("List_As_Name__c")
+            or item.get("Library_Name__c")
             or item.get("name")
             or item.get("title")
             or f"Little Free Library {charter}"
@@ -1369,9 +1465,23 @@ def _parse_lfl_import_records(raw_data) -> list:
             or postal.startswith("M")
             or (43.5 <= lat <= 43.95 and -79.75 <= lng <= -79.05)
         )
-        if raw_city_low in (TORONTO_METRO_ALIASES - {"york"}) or is_toronto_york:
+        if raw_city_low == "kennedy park rd.":
+            if address == "61":
+                address = "61 Kennedy Park Rd."
+            city = "Toronto"
+            borough = "Toronto"
+        elif raw_city_low in (TORONTO_METRO_ALIASES - {"york"}) or is_toronto_york:
             city = "Toronto"
             borough = raw_city.title() if raw_city_low != "toronto" else "Toronto"
+        elif not raw_city_low and 43.58 <= lat <= 43.855 and -79.64 <= lng <= -79.115:
+            city = "Toronto"
+            borough = "Scarborough"
+        elif not raw_city_low and lat > 43.855 and -79.64 <= lng <= -79.115:
+            city = "Markham"
+            borough = "Markham"
+        elif raw_city_low == "mossissauga":
+            city = "Mississauga"
+            borough = "Mississauga"
         elif raw_city_low in ("montreal", "montréal"):
             city = "Montreal"
             borough = "Montreal"
@@ -1397,7 +1507,12 @@ def _parse_lfl_import_records(raw_data) -> list:
             or f"Registered Little Free Library ({charter}) at {address}, {city}."
         ).strip()
         desc = re.sub(r"\s+", " ", raw_desc)
-        ext_id = str(item.get("Id") or item.get("external_id") or f"lfl:{charter.replace('Charter #', '')}").strip()
+        ext_id = str(
+            item.get("Id")
+            or (f"lfl-app:{item.get('id')}" if item.get("id") is not None else "")
+            or item.get("external_id")
+            or f"lfl:{charter.replace('Charter #', '')}"
+        ).strip()
 
         normalized.append(
             {
@@ -1856,38 +1971,67 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
                         )
                         return
 
-        if has_coords:
-            lat, lng = _clamp_gps(body.get("lat"), body.get("lng"))
-            city, state_code, postal, label = "", "", "", f"{lat:.4f}, {lng:.4f}"
-            try:
-                rev_url = f"https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lng}"
-                rev_req = urllib.request.Request(rev_url, headers={"User-Agent": "ShelfSpot-LFL-Finder/1.0"})
-                with urllib.request.urlopen(rev_req, timeout=5) as rev_resp:
-                    rev_data = json.loads(rev_resp.read().decode("utf-8"))
-                    addr = rev_data.get("address") or {}
-                    city = addr.get("city") or addr.get("town") or addr.get("village") or ""
-                    state_code = _normalize_region_code(addr)
-                    postal = addr.get("postcode") or ""
-                    if city or state_code:
-                        label = f"{city}, {state_code}".strip(", ")
-            except Exception:
-                pass
-        else:
-            try:
-                lat, lng, label, city, state_code, postal = _resolve_location_query(query)
-            except Exception as exc:
-                self.send_json(HTTPStatus.BAD_REQUEST, {"error": f"Location lookup failed: {exc}"})
-                return
+        source_used = "official-lfl"
+        candidates = []
+        lat = lng = None
+        label = query or ""
+        city = state_code = postal = ""
 
-        source_used = "osm-sync"
         try:
-            candidates = _query_overpass_bookcases(lat, lng, radius_km, city, state_code, postal)
+            live_records, api_lat, api_lng = _query_live_lfl_map_api(
+                query=query,
+                lat=body.get("lat"),
+                lng=body.get("lng"),
+                radius_km=max(radius_km, 15.0),
+            )
+            if live_records:
+                candidates = live_records
+                lat, lng = api_lat, api_lng
+                first = live_records[0]
+                if query and query.lower() in CITY_GAZETTEER:
+                    _, _, g_city, g_st, _ = CITY_GAZETTEER[query.lower()]
+                    label = f"{g_city}, {g_st}".strip(", ")
+                elif first.get("city") or first.get("state"):
+                    label = ", ".join(p for p in [first.get("city"), first.get("state")] if p)
+                else:
+                    label = query or f"{lat:.4f}, {lng:.4f}"
         except Exception:
             candidates = []
 
         if not candidates:
+            if has_coords:
+                lat, lng = _clamp_gps(body.get("lat"), body.get("lng"))
+                city, state_code, postal, label = "", "", "", f"{lat:.4f}, {lng:.4f}"
+                try:
+                    rev_url = f"https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lng}"
+                    rev_req = urllib.request.Request(rev_url, headers={"User-Agent": "ShelfSpot-LFL-Finder/1.0"})
+                    with urllib.request.urlopen(rev_req, timeout=5) as rev_resp:
+                        rev_data = json.loads(rev_resp.read().decode("utf-8"))
+                        addr = rev_data.get("address") or {}
+                        city = addr.get("city") or addr.get("town") or addr.get("village") or ""
+                        state_code = _normalize_region_code(addr)
+                        postal = addr.get("postcode") or ""
+                        if city or state_code:
+                            label = f"{city}, {state_code}".strip(", ")
+                except Exception:
+                    pass
+            else:
+                try:
+                    lat, lng, label, city, state_code, postal = _resolve_location_query(query)
+                except Exception as exc:
+                    self.send_json(HTTPStatus.BAD_REQUEST, {"error": f"Location lookup failed: {exc}"})
+                    return
+
             candidates = _get_real_regional_lfl_boxes(lat, lng, city)
-            source_used = "official-lfl" if candidates else "none"
+            if candidates:
+                source_used = "official-lfl"
+            else:
+                try:
+                    candidates = _query_overpass_bookcases(lat, lng, radius_km, city, state_code, postal)
+                    source_used = "osm-sync" if candidates else "none"
+                except Exception:
+                    candidates = []
+                    source_used = "none"
 
         with get_db() as conn:
             synced_count, last_id = _upsert_lfl_boxes(conn, candidates, update_existing=False)
