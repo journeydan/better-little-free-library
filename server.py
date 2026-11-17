@@ -55,7 +55,7 @@ ALLOWED_GENRES = [
 
 PRESET_UPLOAD_SCANS = {
     "demo-cedar-creek": {
-        "suggested_box_name": "Brunswick Ave Little Free Library",
+        "suggested_box_name": "Patricia Broadbent #779 Toronto ON",
         "note": "Freshly restocked the cedar box with weekend reads and a couple of classics!",
         "books": [
             {
@@ -109,7 +109,7 @@ PRESET_UPLOAD_SCANS = {
         ],
     },
     "demo-oak-street": {
-        "suggested_box_name": "Roncesvalles Village Pocket Library",
+        "suggested_box_name": "Claire Franceschetti #39931 Toronto ON",
         "note": "Dropped off coffee-table cookbooks and mysteries on my morning walk.",
         "books": [
             {
@@ -155,7 +155,7 @@ PRESET_UPLOAD_SCANS = {
         ],
     },
     "demo-kids-classics": {
-        "suggested_box_name": "Withrow Park Book Exchange",
+        "suggested_box_name": "Michael Lundholm #47425 Toronto ON",
         "note": "Kids shelf is bursting with adventure stories and illustrated favorites!",
         "books": [
             {
@@ -235,110 +235,110 @@ LFL_MAP_URL = "https://littlefreelibrary.org/map/"
 
 TORONTO_SEED_BOXES = [
     {
-        "name": "Brunswick Ave Little Free Library",
-        "charter_number": "Charter #34812",
-        "address": "214 Brunswick Ave",
-        "neighborhood": "The Annex",
+        "name": "Patricia Broadbent #779 Toronto ON",
+        "charter_number": "Charter #779",
+        "address": "98 Swanwick Ave",
+        "neighborhood": "The Beaches",
         "city": "Toronto",
         "state": "ON",
-        "postal_code": "M5S 2M5",
-        "lat": 43.66342,
-        "lng": -79.40521,
-        "steward_name": "Maya Lin",
-        "description": "Two-tier cedar box in The Annex. Great mix of contemporary fiction and sci-fi.",
+        "postal_code": "M4E 1Z9",
+        "lat": 43.68311,
+        "lng": -79.29607,
+        "steward_name": "Patricia Broadbent",
+        "description": "Registered Little Free Library Charter #779 on Swanwick Ave in Toronto's east end.",
         "roof_color": "#C85A32",
         "source": "official-lfl",
-        "external_id": "lfl:34812",
+        "external_id": "a06d000000owSyfAAE",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 30,
     },
     {
-        "name": "Withrow Park Book Exchange",
-        "charter_number": "Charter #41905",
-        "address": "725 Logan Ave",
-        "neighborhood": "Riverdale",
+        "name": "Clancy P. #21870 Toronto ON",
+        "charter_number": "Charter #21870",
+        "address": "1 Parr St.",
+        "neighborhood": "Brockton / Little Portugal",
         "city": "Toronto",
         "state": "ON",
-        "postal_code": "M4K 3C9",
-        "lat": 43.67481,
-        "lng": -79.34618,
-        "steward_name": "Devon Brooks",
-        "description": "Red barn-style library box beside Withrow Park and the walking paths.",
+        "postal_code": "M6J 2E2",
+        "lat": 43.65122,
+        "lng": -79.43113,
+        "steward_name": "Clancy P.",
+        "description": "This Little Free Library was a gift from my mom, who loves books and community.",
         "roof_color": "#B23A32",
         "source": "official-lfl",
-        "external_id": "lfl:41905",
+        "external_id": "a060W00000xBE7hQAG",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 45,
     },
     {
-        "name": "High Park Ave Little Library",
-        "charter_number": "Charter #28740",
-        "address": "188 High Park Ave",
-        "neighborhood": "High Park",
+        "name": "Michael Lundholm #47425 Toronto ON",
+        "charter_number": "Charter #47425",
+        "address": "235 Quebec Avenue",
+        "neighborhood": "High Park North",
         "city": "Toronto",
         "state": "ON",
-        "postal_code": "M6P 2S4",
-        "lat": 43.65892,
-        "lng": -79.46635,
-        "steward_name": "Ms. Alvarez",
-        "description": "Painted pine box near High Park with children's stories and classic reads.",
+        "postal_code": "M6P 2T9",
+        "lat": 43.65919,
+        "lng": -79.46906,
+        "steward_name": "Michael Lundholm",
+        "description": "Two-shelf library built from recycled materials including butternut flooring cut in Grey County, Ontario.",
         "roof_color": "#3B6E5C",
         "source": "official-lfl",
-        "external_id": "lfl:28740",
+        "external_id": "a06d000000thsZKAAY",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 20,
     },
     {
-        "name": "Palmerston Blvd Lantern Library",
-        "charter_number": "Charter #19482",
-        "address": "492 Palmerston Blvd",
-        "neighborhood": "Little Italy / Palmerston",
+        "name": "Patricia Michael #20916 Toronto ON",
+        "charter_number": "Charter #20916",
+        "address": "24 Empire Avenue",
+        "neighborhood": "Leslieville",
         "city": "Toronto",
         "state": "ON",
-        "postal_code": "M6G 2P3",
-        "lat": 43.66014,
-        "lng": -79.41368,
-        "steward_name": "Samira Patel",
-        "description": "Lantern-lit trellis box on Palmerston Blvd stocked with nature writing and literary fiction.",
+        "postal_code": "M4M 2L4",
+        "lat": 43.65793,
+        "lng": -79.34378,
+        "steward_name": "Patricia Michael",
+        "description": "Since setting up our little library, I have found many other book lovers who live on Empire Avenue.",
         "roof_color": "#3D6B8E",
         "source": "official-lfl",
-        "external_id": "lfl:19482",
+        "external_id": "a06d000000i8MVHAA2",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 60,
     },
     {
-        "name": "Kew Gardens Beach Book Box",
-        "charter_number": "Charter #53190",
-        "address": "2075 Queen St E",
-        "neighborhood": "The Beaches",
+        "name": "Jana Reid #33651 Toronto ON",
+        "charter_number": "Charter #33651",
+        "address": "12 Mackenzie Cres",
+        "neighborhood": "West Queen West",
         "city": "Toronto",
         "state": "ON",
-        "postal_code": "M4E 2T1",
-        "lat": 43.66965,
-        "lng": -79.29642,
-        "steward_name": "Captain Pete",
-        "description": "Weatherproof yellow box by Kew Gardens and the Lake Ontario boardwalk.",
+        "postal_code": "M6J 1T1",
+        "lat": 43.64798,
+        "lng": -79.42485,
+        "steward_name": "Jana Reid",
+        "description": "Built as a 2015 Christmas gift! Instagram @mackenzielittlefreelibrary",
         "roof_color": "#D49A2A",
         "source": "official-lfl",
-        "external_id": "lfl:53190",
+        "external_id": "a06d000000pVmoPAAS",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 15,
     },
     {
-        "name": "Roncesvalles Village Pocket Library",
-        "charter_number": "Charter #39204",
-        "address": "294 Roncesvalles Ave",
-        "neighborhood": "Roncesvalles",
+        "name": "Claire Franceschetti #39931 Toronto ON",
+        "charter_number": "Charter #39931",
+        "address": "149 Pacific Ave",
+        "neighborhood": "Bloor West Village",
         "city": "Toronto",
         "state": "ON",
-        "postal_code": "M6R 2M4",
-        "lat": 43.64785,
-        "lng": -79.44912,
-        "steward_name": "Elena Rossi",
-        "description": "Cozy cedar pocket library in Roncesvalles. Rapidly rotating mysteries and cookbooks.",
+        "postal_code": "M6P 2P6",
+        "lat": 43.65774,
+        "lng": -79.46505,
+        "steward_name": "Claire Franceschetti",
+        "description": "Bustling corner in the heart of Toronto's Bloor West Village seeing 20-30 visits a day.",
         "roof_color": "#6E473B",
         "source": "official-lfl",
-        "external_id": "lfl:39204",
+        "external_id": "a06d000000rjlpgAAA",
         "lfl_url": LFL_MAP_URL,
         "days_ago": 10,
     },
@@ -489,7 +489,7 @@ def migrate_db(conn: sqlite3.Connection) -> None:
         if col not in existing_cols:
             conn.execute(f"ALTER TABLE boxes ADD COLUMN {col} {col_def};")
 
-    # Upgrade legacy seeded boxes (id 1..6) to real Toronto street locations
+    # Upgrade legacy seeded boxes (id 1..6) to real registered Toronto Little Free Libraries
     legacy_charters = {
         "Charter #104822": 0,
         "Charter #98314": 1,
@@ -503,6 +503,12 @@ def migrate_db(conn: sqlite3.Connection) -> None:
         "Charter #19508": 3,
         "Charter #52104": 4,
         "Charter #38921": 5,
+        "Charter #34812": 0,
+        "Charter #41905": 1,
+        "Charter #28740": 2,
+        "Charter #19482": 3,
+        "Charter #53190": 4,
+        "Charter #39204": 5,
     }
     rows = conn.execute("SELECT id, charter_number FROM boxes WHERE id <= 6").fetchall()
     for row in rows:
@@ -515,7 +521,7 @@ def migrate_db(conn: sqlite3.Connection) -> None:
                 """
                 UPDATE boxes
                 SET name = ?, charter_number = ?, address = ?, neighborhood = ?, city = ?, state = ?, postal_code = ?,
-                    lat = ?, lng = ?, description = ?, source = ?, external_id = ?, lfl_url = ?
+                    lat = ?, lng = ?, steward_name = ?, description = ?, source = ?, external_id = ?, lfl_url = ?
                 WHERE id = ?
                 """,
                 (
@@ -528,6 +534,7 @@ def migrate_db(conn: sqlite3.Connection) -> None:
                     seed["postal_code"],
                     seed["lat"],
                     seed["lng"],
+                    seed["steward_name"],
                     seed["description"],
                     seed["source"],
                     seed["external_id"],
@@ -546,10 +553,17 @@ def migrate_db(conn: sqlite3.Connection) -> None:
             OR name LIKE '%Parkside Reading Nook%'
             OR name LIKE '%Maple & Pine Exchange%'
             OR name LIKE '%Community Garden Library%'
+            OR external_id IN ('lfl:48210', 'lfl:55194', 'a060W0000116BfVQAU')
         )
         AND id NOT IN (SELECT DISTINCT box_id FROM checkins)
         """
     )
+
+    # Ensure all real Toronto Little Free Libraries from the official LFL snapshot are populated
+    toronto_official = [r for r in _load_official_lfl_canada_records() if r.get("city") == "Toronto"]
+    if toronto_official:
+        _upsert_lfl_boxes(conn, toronto_official, update_existing=False)
+        conn.execute("UPDATE boxes SET state = 'ON' WHERE city = 'Toronto' AND state != 'ON'")
 
 
 def iso_ago(minutes: int) -> str:
@@ -704,6 +718,10 @@ def seed_if_empty(conn: sqlite3.Connection) -> None:
                 """,
                 (checkin_id, box_id, title, author, genre, color, conf, json.dumps(bbox), ts, ts),
             )
+
+    toronto_official = [r for r in _load_official_lfl_canada_records() if r.get("city") == "Toronto"]
+    if toronto_official:
+        _upsert_lfl_boxes(conn, toronto_official, update_existing=False)
 
 
 def normalize_genre(raw: str) -> str:
@@ -1131,19 +1149,6 @@ def _query_overpass_bookcases(lat: float, lng: float, radius_km: float, city: st
 
 
 REAL_CITY_LFL_BOXES = [
-    # Toronto, ON
-    *TORONTO_SEED_BOXES,
-    {"name": "Leslieville Greenwood Park Box", "charter_number": "Charter #48210", "address": "150 Greenwood Ave", "neighborhood": "Leslieville", "city": "Toronto", "state": "ON", "postal_code": "M4L 2R1", "lat": 43.66692, "lng": -79.32965, "steward_name": "Claire Wong", "description": "Community book swap near Greenwood Park in Leslieville.", "roof_color": "#2D5A43"},
-    {"name": "Trinity Bellwoods Strachan Box", "charter_number": "Charter #55194", "address": "155 Strachan Ave", "neighborhood": "Trinity Bellwoods", "city": "Toronto", "state": "ON", "postal_code": "M6J 2S8", "lat": 43.64582, "lng": -79.41391, "steward_name": "Jordan Patel", "description": "Park-edge Little Free Library on the east side of Trinity Bellwoods.", "roof_color": "#C85A32"},
-    # Ottawa, ON
-    {"name": "Glebe Bank St Little Library", "charter_number": "Charter #41290", "address": "780 Bank St", "neighborhood": "The Glebe", "city": "Ottawa", "state": "ON", "postal_code": "K1S 3V6", "lat": 45.4026, "lng": -75.6894, "steward_name": "Sophie Martin", "description": "Bilingual French & English neighborhood book box in The Glebe.", "roof_color": "#3D6B8E"},
-    {"name": "Hintonburg Wellington Book Box", "charter_number": "Charter #52018", "address": "1092 Wellington St W", "neighborhood": "Hintonburg", "city": "Ottawa", "state": "ON", "postal_code": "K1Y 2Y4", "lat": 45.4021, "lng": -75.7268, "steward_name": "Marc Tremblay", "description": "Community book exchange in Hintonburg.", "roof_color": "#C85A32"},
-    # Montreal, QC
-    {"name": "Plateau Mont-Royal Saint-Denis Box", "charter_number": "Charter #36811", "address": "4210 Rue Saint-Denis", "neighborhood": "Plateau-Mont-Royal", "city": "Montreal", "state": "QC", "postal_code": "H2W 2M5", "lat": 45.5223, "lng": -73.5794, "steward_name": "Amelie Gagnon", "description": "Boite a livres on Rue Saint-Denis in Le Plateau.", "roof_color": "#D49A2A"},
-    {"name": "Mile End Laurier West Library", "charter_number": "Charter #49032", "address": "240 Ave Laurier O", "neighborhood": "Mile End", "city": "Montreal", "state": "QC", "postal_code": "H2T 2N8", "lat": 45.5228, "lng": -73.5968, "steward_name": "Lucas Bouchard", "description": "Neighborhood reading box near Laurier West.", "roof_color": "#2D5A43"},
-    # Vancouver, BC
-    {"name": "Kitsilano 4th Ave Little Library", "charter_number": "Charter #31940", "address": "2240 W 4th Ave", "neighborhood": "Kitsilano", "city": "Vancouver", "state": "BC", "postal_code": "V6K 1N8", "lat": 49.2683, "lng": -123.1558, "steward_name": "Keiko Tanaka", "description": "Cedar shingle library box in Kitsilano.", "roof_color": "#3B6E5C"},
-    {"name": "Commercial Drive Cedar Box", "charter_number": "Charter #47812", "address": "1680 Commercial Dr", "neighborhood": "Grandview-Woodland", "city": "Vancouver", "state": "BC", "postal_code": "V5L 3Y4", "lat": 49.2696, "lng": -123.0695, "steward_name": "Noah Fraser", "description": "Community book box off Commercial Drive.", "roof_color": "#C85A32"},
     # Seattle, WA
     {"name": "19th Ave E Little Free Library", "charter_number": "Charter #31842", "address": "518 19th Ave E", "neighborhood": "Capitol Hill", "city": "Seattle", "state": "WA", "postal_code": "98112", "lat": 47.62384, "lng": -122.30761, "steward_name": "Maya Lin", "description": "Two-tier cedar box on Capitol Hill.", "roof_color": "#C85A32"},
     {"name": "Ravenna Blvd Little Free Library", "charter_number": "Charter #27415", "address": "6214 Ravenna Ave NE", "neighborhood": "Ravenna", "city": "Seattle", "state": "WA", "postal_code": "98115", "lat": 47.67435, "lng": -122.30612, "steward_name": "Ms. Alvarez", "description": "Painted pine box along the Ravenna boulevard greenway.", "roof_color": "#3B6E5C"},
@@ -1183,18 +1188,64 @@ REAL_CITY_LFL_BOXES = [
 ]
 
 
+_OFFICIAL_LFL_CANADA_CACHE = None
+TORONTO_METRO_ALIASES = {"toronto", "etobicoke", "scarborough", "north york", "east york", "york"}
+
+
+def _clean_lfl_state(raw_state: str, city_name: str = "") -> str:
+    """Clean Salesforce state/province strings (e.g., 'OH ON', 'WY ON' -> 'ON')."""
+    s = (raw_state or "").strip()
+    if s.upper().endswith(" ON") or s.upper() == "ONTARIO":
+        return "ON"
+    if s.upper().endswith(" QC") or s.upper() in ("QUEBEC", "QUÉBEC"):
+        return "QC"
+    if s.upper().endswith(" BC") or s.upper() in ("BRITISH COLUMBIA", "B.C."):
+        return "BC"
+    if s.upper() in ("", "MB") and city_name.lower() in TORONTO_METRO_ALIASES | {"ottawa", "mississauga"}:
+        return "ON"
+    if not s and city_name.lower() in {"montreal", "montréal"}:
+        return "QC"
+    if not s and city_name.lower() == "vancouver":
+        return "BC"
+    return s
+
+
+def _load_official_lfl_canada_records() -> list:
+    """Load and normalize real Canadian Little Free Library records from public/lfl-canada-official.json."""
+    global _OFFICIAL_LFL_CANADA_CACHE
+    if _OFFICIAL_LFL_CANADA_CACHE is not None:
+        return _OFFICIAL_LFL_CANADA_CACHE
+
+    dataset_path = PUBLIC_DIR / "lfl-canada-official.json"
+    if not dataset_path.is_file():
+        _OFFICIAL_LFL_CANADA_CACHE = []
+        return _OFFICIAL_LFL_CANADA_CACHE
+
+    try:
+        raw_items = json.loads(dataset_path.read_text(encoding="utf-8"))
+        _OFFICIAL_LFL_CANADA_CACHE = _parse_lfl_import_records(raw_items)
+    except Exception:
+        _OFFICIAL_LFL_CANADA_CACHE = []
+    return _OFFICIAL_LFL_CANADA_CACHE
+
+
 def _get_real_regional_lfl_boxes(lat: float, lng: float, city: str) -> list:
     """Return matching real-city Little Free Library entries within ~0.35 degrees or matching city name."""
     city_low = (city or "").strip().lower()
     matches = []
-    for entry in REAL_CITY_LFL_BOXES:
+    seen_ext = set()
+
+    for entry in [*_load_official_lfl_canada_records(), *REAL_CITY_LFL_BOXES]:
         near_coords = abs(entry["lat"] - lat) <= 0.35 and abs(entry["lng"] - lng) <= 0.45
-        same_city = bool(city_low and entry["city"].lower() == city_low)
+        same_city = bool(city_low and (entry["city"].lower() == city_low or entry["neighborhood"].lower() == city_low))
         if near_coords or same_city:
             rec = dict(entry)
-            rec["source"] = "official-lfl"
-            rec["external_id"] = f"lfl:{entry['charter_number'].replace('Charter #', '')}"
-            rec["lfl_url"] = LFL_MAP_URL
+            rec["source"] = rec.get("source") or "official-lfl"
+            rec["external_id"] = rec.get("external_id") or f"lfl:{rec['charter_number'].replace('Charter #', '')}"
+            rec["lfl_url"] = rec.get("lfl_url") or LFL_MAP_URL
+            if rec["external_id"] in seen_ext:
+                continue
+            seen_ext.add(rec["external_id"])
             matches.append(rec)
     return matches
 
@@ -1215,8 +1266,12 @@ def _parse_lfl_import_records(raw_data) -> list:
             parsed = None
 
     if parsed is not None:
-        if isinstance(parsed, dict):
-            if parsed.get("type") == "FeatureCollection" and isinstance(parsed.get("features"), list):
+        if isinstance(parsed, list) and len(parsed) >= 1 and isinstance(parsed[0], dict) and isinstance(parsed[0].get("result"), list):
+            items = parsed[0]["result"]
+        elif isinstance(parsed, dict):
+            if isinstance(parsed.get("result"), list):
+                items = parsed["result"]
+            elif parsed.get("type") == "FeatureCollection" and isinstance(parsed.get("features"), list):
                 for feat in parsed["features"]:
                     geom = feat.get("geometry") or {}
                     coords = geom.get("coordinates") or []
@@ -1288,16 +1343,60 @@ def _parse_lfl_import_records(raw_data) -> list:
         address = str(
             item.get("Street__c") or item.get("address") or item.get("street") or street or "Mapped Location"
         ).strip()
-        city = str(item.get("City__c") or item.get("city") or item.get("addr:city") or "").strip()
-        state = str(item.get("State_Province__c") or item.get("state") or item.get("addr:state") or "").strip()
-        postal = str(item.get("Postal_Code__c") or item.get("postal_code") or item.get("zip") or item.get("addr:postcode") or "").strip()
-        neighborhood = str(item.get("neighborhood") or item.get("addr:suburb") or city or "Neighborhood").strip()
+
+        raw_city = str(item.get("City__c") or item.get("city") or item.get("addr:city") or "").strip()
+        raw_state = str(
+            item.get("State_Province__c")
+            or item.get("State_Province_Region__c")
+            or item.get("state")
+            or item.get("addr:state")
+            or ""
+        ).strip()
+        postal = str(
+            item.get("Postal_Code__c")
+            or item.get("Postal_Zip_Code__c")
+            or item.get("postal_code")
+            or item.get("zip")
+            or item.get("addr:postcode")
+            or ""
+        ).strip().upper()
+
+        raw_city_low = raw_city.lower()
+        raw_state_up = raw_state.upper()
+        is_toronto_york = raw_city_low == "york" and (
+            raw_state_up in ("", "ON", "ONTARIO")
+            or raw_state_up.endswith(" ON")
+            or postal.startswith("M")
+            or (43.5 <= lat <= 43.95 and -79.75 <= lng <= -79.05)
+        )
+        if raw_city_low in (TORONTO_METRO_ALIASES - {"york"}) or is_toronto_york:
+            city = "Toronto"
+            borough = raw_city.title() if raw_city_low != "toronto" else "Toronto"
+        elif raw_city_low in ("montreal", "montréal"):
+            city = "Montreal"
+            borough = "Montreal"
+        else:
+            city = raw_city.title() if raw_city.islower() else raw_city
+            borough = city
+
+        state = _clean_lfl_state(raw_state, city if city == "Toronto" else (raw_city or city))
+        neighborhood = str(item.get("neighborhood") or item.get("addr:suburb") or borough or "Neighborhood").strip()
+
+        inferred_steward = re.sub(r"\s*#\d+.*$", "", name).strip()
         steward = str(
-            item.get("Primary_Steward_s_Name__c") or item.get("steward_name") or item.get("steward") or "LFL Steward"
+            item.get("Primary_Steward_s_Name__c")
+            or item.get("steward_name")
+            or item.get("steward")
+            or inferred_steward
+            or "LFL Steward"
         ).strip()
-        desc = str(
-            item.get("Library_Story__c") or item.get("description") or item.get("story") or "Imported from Little Free Library World Map."
+        raw_desc = str(
+            item.get("Library_Story__c")
+            or item.get("description")
+            or item.get("story")
+            or f"Registered Little Free Library ({charter}) at {address}, {city}."
         ).strip()
+        desc = re.sub(r"\s+", " ", raw_desc)
         ext_id = str(item.get("Id") or item.get("external_id") or f"lfl:{charter.replace('Charter #', '')}").strip()
 
         normalized.append(

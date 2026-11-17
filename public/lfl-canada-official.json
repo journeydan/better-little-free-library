@@ -1,0 +1,4089 @@
+[
+  {
+    "Library_Name__c": "Patricia Broadbent #779 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68311,
+      "longitude": -79.29607
+    },
+    "Official_Charter_Number__c": "779",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "98 Swanwick Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4E 1Z9",
+    "Id": "a06d000000owSyfAAE"
+  },
+  {
+    "Library_Name__c": "Roxies Reads #86493 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.25036,
+      "longitude": -123.17595
+    },
+    "List_As_Name__c": "Roxies Reads",
+    "Primary_Steward_s_Email__c": "lornajroxburgh@gmail.com",
+    "Official_Charter_Number__c": "86493",
+    "Library_Story__c": "I love reading and, altho I've been lending my best reads out to friends for years, I found by lovely bookshelves filling up and that's not the purpose of books. Please feel free to take books without dropping off but if you have some to share I would love you to place them in my Little Free Library. Happy Reading!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "3205 West King Edward Ave",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6L 1V6",
+    "Id": "a060W000013uAwFQAU"
+  },
+  {
+    "Library_Name__c": "Tardis #91578 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.44208,
+      "longitude": -75.60426
+    },
+    "List_As_Name__c": "Tardis",
+    "Official_Charter_Number__c": "91578",
+    "Library_Story__c": "Our library pays homage to the British SF show, \"Doctor Who\". A book is like the Tardis. It is bigger on the inside and able to transport you through Time and Space.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "1829 Elmridge Dr.",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1J 6R8",
+    "Id": "a060W000013xCzdQAE"
+  },
+  {
+    "Library_Name__c": "Roshell and Nadya Bissett #54545 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.4118659,
+      "longitude": -75.6888471
+    },
+    "Primary_Steward_s_Email__c": "roshell@hotmail.ca",
+    "Official_Charter_Number__c": "54545",
+    "Library_Story__c": "John and Bill, who created the award winning guerrilla-garden on the corner of Argyle Ave & Metcalfe, raised funds from their building to build a child-friendly little free library to support the already existing one in their garden. We readily agreed (along with our landlord CCOC) to use our front yard for the installation. Robert J. designed the structure, while Nadya & I added the colourful paintings. It has been a total hit!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "103-160 Argyle Avenue",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K2P 0N2",
+    "Id": "a060W00000yTeAYQA0"
+  },
+  {
+    "Library_Name__c": "Making Life Simple For You Inc. #83634 etobicoke ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.61547,
+      "longitude": -79.50146
+    },
+    "List_As_Name__c": "Making Life Simple For You Inc.",
+    "Primary_Steward_s_Email__c": "giles_sarah@hotmail.com",
+    "Official_Charter_Number__c": "83634",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "62 Judson Street",
+    "City__c": "etobicoke",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M8Z 1A7",
+    "Id": "a060W000013AhKiQAK"
+  },
+  {
+    "Library_Name__c": "Clancy P. #21870 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65122,
+      "longitude": -79.43113
+    },
+    "Primary_Steward_s_Email__c": "cpryde2@yahoo.com",
+    "Official_Charter_Number__c": "21870",
+    "Library_Story__c": "This Little Free Library was a gift from my mom, who loves books and community.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "1 Parr St.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6J2E2",
+    "Id": "a060W00000xBE7hQAG"
+  },
+  {
+    "Library_Name__c": "Shelley Henderson-Whale #44975 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.64619,
+      "longitude": -79.4772
+    },
+    "List_As_Name__c": "Shelley Henderson-Whale",
+    "Official_Charter_Number__c": "44975",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "53 Lavinia Ave.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6S 3H9",
+    "Id": "a06d000000rpzQ7AAI"
+  },
+  {
+    "Library_Name__c": "Michelle de Braux #13877 Toronto",
+    "Library_Geolocation__c": {
+      "latitude": 43.7142,
+      "longitude": -79.37442
+    },
+    "Official_Charter_Number__c": "13877",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "429 Broadway Avenue",
+    "City__c": "Toronto",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4G 2R3",
+    "Id": "a06d000000gH6UYAA0"
+  },
+  {
+    "Library_Name__c": "Jamie Girouard #69912 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.2626599,
+      "longitude": -123.15728
+    },
+    "Official_Charter_Number__c": "69912",
+    "Library_Story__c": "We created our first Little Library as a high school shop project. It was part of our \"Week Without Walls\" event in which our school reaches out to our community.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "2294 West 10th Ave",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6K 2H8",
+    "Id": "a060W000010IDXEQA4"
+  },
+  {
+    "Library_Name__c": "Michael Lundholm #47425 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65919,
+      "longitude": -79.46906
+    },
+    "Official_Charter_Number__c": "47425",
+    "Library_Story__c": "This two shelf library was built mostly from recycled materials including some butternut flooring cut in Grey County, Ontario. It carries a fleur de lis decoration to recognize the location on Quebec Avenue. The fleur de lis is a symbol for the province of Quebec and appears on the provincial flag. The Little Library has a sunburst design to mimic the sunbursts on the house behind and uses the same trim colours as the house.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "235 Quebec Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6P 2T9",
+    "Id": "a06d000000thsZKAAY"
+  },
+  {
+    "Library_Name__c": "Windsor Arms #28532 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.41191,
+      "longitude": -75.68826
+    },
+    "List_As_Name__c": "Windsor Arms",
+    "Official_Charter_Number__c": "28532",
+    "Library_Story__c": "Surrounded by lush gardens, a historic 1930's building and The Museum of Nature, the neighbours at Windsor Arms are proud to share our love of books and reading with the community. Take a book, leave a book, or sit down and read in our garden chairs!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "150 Argyle Ave",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K2P 2R1",
+    "Id": "a06d000000iAMQ9AAO"
+  },
+  {
+    "Library_Name__c": "Melissa Luu #27291 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.39316,
+      "longitude": -75.6659899
+    },
+    "List_As_Name__c": "Melissa Luu",
+    "Primary_Steward_s_Email__c": "lissaluu@gmail.com",
+    "Official_Charter_Number__c": "27291",
+    "Library_Story__c": "I wanted to share my love of reading with others.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "187 Pleasant Park Road",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1H 5M4",
+    "Id": "a06d000000iooIDAAY"
+  },
+  {
+    "Library_Name__c": "Sandra Sarner #37553 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68357,
+      "longitude": -79.44841
+    },
+    "Primary_Steward_s_Email__c": "sandra.sarner@gmail.com",
+    "Official_Charter_Number__c": "37553",
+    "Library_Story__c": "Built by my amazing artist daughter-in-law according to the plans on line. This is a highly populated city neighbourhood with a mix of ages and nationalities.Getting a fair amount of use but need more books for kids and especially for teens and pre-teens.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "253 Boon Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6E3Z7",
+    "Id": "a06d000000qecf1AAA"
+  },
+  {
+    "Library_Name__c": "Louis Brier Home & Hospital #82540 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.234117,
+      "longitude": -123.1293595
+    },
+    "List_As_Name__c": "Louis Brier Home & Hospital",
+    "Official_Charter_Number__c": "82540",
+    "Library_Story__c": "This library was created and decorated in collaboration with residents, staff and VanCity.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "1055 West 41st ave",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6M 1W9",
+    "Id": "a060W000012gaDOQAY"
+  },
+  {
+    "Library_Name__c": "Cheryl Geller #18052 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68181,
+      "longitude": -79.41985
+    },
+    "Official_Charter_Number__c": "18052",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "17 Ellsworth Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6g2k4",
+    "Id": "a06d000000jWH9TAAW"
+  },
+  {
+    "Library_Name__c": "Dearham Wood Library #98021 Scarborough ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.75279,
+      "longitude": -79.18947
+    },
+    "List_As_Name__c": "Dearham Wood Library",
+    "Official_Charter_Number__c": "98021",
+    "Library_Story__c": "The Dearham Wood Library is made out of an upcycled filing cabinet. It has a drawer for kids books and a drawer for grownup books.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "41 Dearham Wood",
+    "City__c": "Scarborough",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1E 1S2",
+    "Id": "a060W000016CQNwQAO"
+  },
+  {
+    "Library_Name__c": "The Taylor Library #76601 Scarborough ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.7817099,
+      "longitude": -79.16537
+    },
+    "List_As_Name__c": "The Taylor Library",
+    "Primary_Steward_s_Email__c": "corinna26@rogers.com",
+    "Official_Charter_Number__c": "76601",
+    "Library_Story__c": "In loving memory of Olivia and Mere",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "9 Bonacres Ave",
+    "City__c": "Scarborough",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1c1P6",
+    "Id": "a060W000011szsHQAQ"
+  },
+  {
+    "Library_Name__c": "Andreia Betti #27639 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.69163,
+      "longitude": -79.32038
+    },
+    "Official_Charter_Number__c": "27639",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "207 Glebemount Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4C 3T3",
+    "Id": "a06d000000iAP1qAAG"
+  },
+  {
+    "Library_Name__c": "Chris Butler #21804 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.40404,
+      "longitude": -75.6725699
+    },
+    "Primary_Steward_s_Email__c": "johnsonbutler@hotmail.com",
+    "Official_Charter_Number__c": "21804",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "23 Belgrave Rd",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1S0L9",
+    "Id": "a06d000000inzOxAAI"
+  },
+  {
+    "Library_Name__c": "Kathleen Paiero #21396 Mississauga ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.59357,
+      "longitude": -79.57593
+    },
+    "Official_Charter_Number__c": "21396",
+    "Library_Story__c": "The Little Free Library has been installed by the members of Applewood United Church as a means of outreach to the community. We have also placed a bench in the hope that neighbours will sit and enjoy a few moments of relaxation as they peruse the books. The children's books are already proving popular and a second library is planned.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "2067 Stanfield Road",
+    "City__c": "Mississauga",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "L4Y1R4",
+    "Id": "a06d000000hPmF9AAK"
+  },
+  {
+    "Library_Name__c": "MTL Queer Little Library #15175 Montreal QC",
+    "Library_Geolocation__c": {
+      "latitude": 45.52076,
+      "longitude": -73.56087
+    },
+    "List_As_Name__c": "MTL Queer Little Library",
+    "Primary_Steward_s_Email__c": "aroseartist@gmail.com",
+    "Official_Charter_Number__c": "15175",
+    "Library_Story__c": "This little library started off in Oakland, CA bursting with inclusive, social justice inspired, and feminist books for our incredibly diverse and active neighborhood.\n\nIt has since immigrated with me to Montréal, Canada and the Gay Village. The local queer community rallied after it was emptied and refilled with bibles on the first night. Within hours of hearing about this people came to refill it with a new colorful and diverse selection!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "1854 rue Beaudry",
+    "City__c": "Montreal",
+    "State_Province_Region__c": "QC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "H2L 3E9",
+    "Id": "a060W0000117o46QAA"
+  },
+  {
+    "Library_Name__c": "Nicholas Dasko #74062 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67859,
+      "longitude": -79.39197
+    },
+    "List_As_Name__c": "Nicholas Dasko",
+    "Official_Charter_Number__c": "74062",
+    "Library_Story__c": "My little steampunk library has a kid's/young adult section on the bottom, and an adult section up top.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "53 MacPherson Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M5R1W7",
+    "Id": "a060W0000115L8JQAU"
+  },
+  {
+    "Library_Name__c": "Debra Donohue #54999 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.25468,
+      "longitude": -123.0474
+    },
+    "List_As_Name__c": "Debra Donohue",
+    "Official_Charter_Number__c": "54999",
+    "Library_Story__c": "Community of Christ church in east Vancouver",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "3333 Kaslo Street",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "VM-3H3",
+    "Id": "a060W000010NmCJQA0"
+  },
+  {
+    "Library_Name__c": "Natalie Zend #26966 Toronto OH ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67514,
+      "longitude": -79.43253
+    },
+    "List_As_Name__c": "Natalie Zend",
+    "Primary_Steward_s_Email__c": "andizend@yahoo.ca",
+    "Official_Charter_Number__c": "26966",
+    "Library_Story__c": "Grand Opening happening soon!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "9 Mount Royal Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "OH ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6H 2S2",
+    "Id": "a06d000000jWoqfAAC"
+  },
+  {
+    "Library_Name__c": "Rob Stonehouse #54279 Etobicoke ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.63899,
+      "longitude": -79.51166
+    },
+    "List_As_Name__c": "Rob Stonehouse",
+    "Primary_Steward_s_Email__c": "rob.stonehouse@outlook.com",
+    "Official_Charter_Number__c": "54279",
+    "Library_Story__c": "When we left the little house, that served us for many years, we wanted to remember it. This little library is a spitting image of our old house. That house was also full of books. This little library was painted by local artist, Susan Hall, to capture all our memories.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "5 Leamington Ave",
+    "City__c": "Etobicoke",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M8Z2W5",
+    "Id": "a060W00000wLwMlQAK"
+  },
+  {
+    "Library_Name__c": "Kirin Wright #70902 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65769,
+      "longitude": -79.47154
+    },
+    "Official_Charter_Number__c": "70902",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "216 Clendenan Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6P 2X2",
+    "Id": "a060W000010Nq9iQAC"
+  },
+  {
+    "Library_Name__c": "Patricia Michael #20916 Toronto OH ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65793,
+      "longitude": -79.34378
+    },
+    "List_As_Name__c": "Patricia Michael",
+    "Primary_Steward_s_Email__c": "pmichael@sympatico.ca",
+    "Official_Charter_Number__c": "20916",
+    "Library_Story__c": "Since setting up our little library, I have found many other book lovers who live on Empire Avenue. While I am the curator, there are many others who have contributed with love and wisdom to the books that line the little library in my garden.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "24 Empire Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "OH ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4M2L4",
+    "Id": "a06d000000i8MVHAA2"
+  },
+  {
+    "Library_Name__c": "Anne Montgomery #31614 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.23979,
+      "longitude": -123.0973
+    },
+    "List_As_Name__c": "Anne Montgomery",
+    "Primary_Steward_s_Email__c": "annemontgomery@yahoo.com",
+    "Official_Charter_Number__c": "31614",
+    "Library_Story__c": "My neighbours and I are constantly swapping books so I decided a library would enable us to pass on the books once we've all read them.\nI found an old cabinet and my neighbour, Paul, thought a copy of my house would be fun so he added the roof, \"windows\" and \"doors\" to the sides. I painted plants and paths all around. It's a work in progress.\nEveryday someone comes by to pick up or drop off a book and sometimes little neighbourhood kids find a small toy left by the toy fairy. We all love it!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "4991 Prince Edward St",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V5W 2X1",
+    "Id": "a06d000000l4NikAAE"
+  },
+  {
+    "Library_Name__c": "Peveril Little Free Library #96166 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.24655,
+      "longitude": -123.10735
+    },
+    "List_As_Name__c": "Peveril Little Free Library",
+    "Official_Charter_Number__c": "96166",
+    "Library_Story__c": "The Peveril Library has a variety of books for people in the neighborhood to enjoy at home or as they relax in Hillcrest park.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "87 Peveril Ave",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V5Y 2L3",
+    "Id": "a060W000016K9BnQAK"
+  },
+  {
+    "Library_Name__c": "Jana Reid #33651 Toronto WY ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6479799,
+      "longitude": -79.42485
+    },
+    "Official_Charter_Number__c": "33651",
+    "Library_Story__c": "This library was built by my husband as my 2015 Christmas gift!!\r\n\r\nYou can find us (and our favourite books) on Instagram @mackenzielittlefreelibrary",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "12 Mackenzie Cres",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "WY ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6J1T1",
+    "Id": "a06d000000pVmoPAAS"
+  },
+  {
+    "Library_Name__c": "Ombretta Debois-Masson #39593 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6741,
+      "longitude": -79.34163
+    },
+    "Primary_Steward_s_Email__c": "ombretta.debois@gmail.com",
+    "Official_Charter_Number__c": "39593",
+    "Library_Story__c": "In walking through our neighbourhood we saw a few little free libraries. We stopped at one, took a book with such enjoyment and went home to get a few books to put back in there. We were sold and over a weekend, as a family project, we built our own Little Free Library.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "46 Dingwall Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4J 1C3",
+    "Id": "a06d000000pVmkIAAS"
+  },
+  {
+    "Library_Name__c": "Gerda de Vries #36443 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.35075,
+      "longitude": -75.72524
+    },
+    "List_As_Name__c": "Gerda de Vries",
+    "Primary_Steward_s_Email__c": "gerda_devries@yahoo.ca",
+    "Official_Charter_Number__c": "36443",
+    "Library_Story__c": "My children made this library for my 75th birthday and then installed it. Our local counsellor then cut the ribbon and we celebrated the opening with champagne.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "50 Bowhill Ave",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K2E 6S7",
+    "Id": "a06d000000pVmjPAAS"
+  },
+  {
+    "Library_Name__c": "Vasu Naik #39809 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.4072,
+      "longitude": -75.6788
+    },
+    "Official_Charter_Number__c": "39809",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "155, Drummond St.",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1S 1K1",
+    "Id": "a06d000000pWUPVAA4"
+  },
+  {
+    "Library_Name__c": "Robert Wallis #26159 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68909,
+      "longitude": -79.2949
+    },
+    "List_As_Name__c": "Robert Wallis",
+    "Official_Charter_Number__c": "26159",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "36 Kelvin Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4C 5C8",
+    "Id": "a06d000000hPqq5AAC"
+  },
+  {
+    "Library_Name__c": "Claire Franceschetti #39931 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6577399,
+      "longitude": -79.46505
+    },
+    "List_As_Name__c": "Claire Franceschetti",
+    "Primary_Steward_s_Email__c": "claire@call-claire.com",
+    "Official_Charter_Number__c": "39931",
+    "Library_Story__c": "Our little corner of the world is a bustling corner in the heart of Toronto's Bloor West Village. There are lot of people walking, biking, skate boarding, and driving by. Being next to several large apartment buildings, we have between 20-30 visits a day, and since we established our Little Free Library, we have seen a wide range of books in many languages.\n\nI always encourage passers by to stop and check out the library; & especially kids. I try to make sure there are books of the youngsters!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "149 Pacific Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6P2P6",
+    "Id": "a06d000000rjlpgAAA"
+  },
+  {
+    "Library_Name__c": "Vancouver Self Storage #44685 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.20661,
+      "longitude": -123.14432
+    },
+    "List_As_Name__c": "Vancouver Self Storage",
+    "Primary_Steward_s_Email__c": "vancouver.self.storage@gmail.com",
+    "Official_Charter_Number__c": "44685",
+    "Library_Story__c": "Welcome! We are Vancouver Self Storage, in the Marpole area of Vancouver, BC, between Vancouver Montessori School (a couple doors up), and Fraserview Park (down at the end of Barnard Street). Our Little Free Library, ‘Owlbert Einstein,’ landed on our front lawn in September 2016, and houses both adult and kids’ books. We also have some seats here for you if you’re too eager to get reading! Come by and check us out, we look forward to exchanging some of our favourites with you!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "8700 Barnard St",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6P 5G5",
+    "Id": "a06d000000sNa77AAC"
+  },
+  {
+    "Library_Name__c": "Ariel Troster #42639 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.40778,
+      "longitude": -75.70276
+    },
+    "Official_Charter_Number__c": "42639",
+    "Library_Story__c": "We set up this library so our four year old daughter could enjoy sharing books with the kids on the street. And also to build community with our neighbours.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "577 McLeod Street",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1R 5R2",
+    "Id": "a06d000000rjOcVAAU"
+  },
+  {
+    "Library_Name__c": "Jill Eason #10027 Scarborough ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.71016,
+      "longitude": -79.29358
+    },
+    "Official_Charter_Number__c": "10027",
+    "Library_Story__c": "This Little Free Library sits on the front lawn of Our Lady of Fatima School. It was built by a former student and her father. It is enjoyed by many students at the school.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "3176 St. Clair Ave. East",
+    "City__c": "Scarborough",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1L 1V6",
+    "Id": "a06d000000sNImoAAG"
+  },
+  {
+    "Library_Name__c": "The John Liket Memorial Library #88728 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.25846,
+      "longitude": -123.12042
+    },
+    "List_As_Name__c": "The John Liket Memorial Library",
+    "Official_Charter_Number__c": "88728",
+    "Library_Story__c": "To honour my Dad’s passing we’ve combined my love of books with his love of making things. Plus, he loved to salvage free stuff!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "3005 Heather Street",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V5Z 3K1",
+    "Id": "a060W000014V6yvQAC"
+  },
+  {
+    "Library_Name__c": "LAKELAND LIBRARY #77843 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.77015,
+      "longitude": -79.21332
+    },
+    "List_As_Name__c": "LAKELAND LIBRARY",
+    "Official_Charter_Number__c": "77843",
+    "Library_Story__c": "A library built from lovingly repurposed cedar scraps, nestled into an eclectic front yard vegetable, fruit and pollinator garden. A large selection of books fiction and non fiction for all age categories and many interests.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "20 LAKELAND CRES",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1G2L3",
+    "Id": "a060W000012AkvDQAS"
+  },
+  {
+    "Library_Name__c": "Natalie Cakebread #54376 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65663,
+      "longitude": -79.48846
+    },
+    "List_As_Name__c": "Natalie Cakebread",
+    "Official_Charter_Number__c": "54376",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "11 Raymond avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6s2b1",
+    "Id": "a060W00000wNaUcQAK"
+  },
+  {
+    "Library_Name__c": "Herrie ten Cate #34974 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67752,
+      "longitude": -79.42682
+    },
+    "List_As_Name__c": "Herrie ten Cate",
+    "Primary_Steward_s_Email__c": "h10cate@mac.com",
+    "Official_Charter_Number__c": "34974",
+    "Library_Story__c": "We are avid readers and feel this is a fabulous way to share. So far so good...books have been taken and others added.\nThe only downside...religious propaganda left by a Jesus freak. Oh well...it's now in the recycling bin.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "123 Tyrrel Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6G 2G6",
+    "Id": "a06d000000lpkKsAAI"
+  },
+  {
+    "Library_Name__c": "Cheryl Nakamura #40651 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.42771,
+      "longitude": -75.66482
+    },
+    "Official_Charter_Number__c": "40651",
+    "Library_Story__c": "Our little library is made completely of recycled materials - the wood is from when we installed new stair treads and the shingles from when we reshingled our roof. We are very happy to share our love of reading with our friends and neighbours!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "80 Ontario Street",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1K1K9",
+    "Id": "a06d000000pVyhoAAC"
+  },
+  {
+    "Library_Name__c": "Alexandra MacDonald #20834 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6901,
+      "longitude": -79.41009
+    },
+    "List_As_Name__c": "Alexandra MacDonald",
+    "Primary_Steward_s_Email__c": "alexandra.macdonald@gmail.com",
+    "Official_Charter_Number__c": "20834",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "356 Russell Hill Rd",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4V2T9",
+    "Id": "a06d000000fj6dRAAQ"
+  },
+  {
+    "Library_Name__c": "Brookridge Drive Little Free Library #88356 Toronto MB",
+    "Library_Geolocation__c": {
+      "latitude": 43.7587199,
+      "longitude": -79.26648
+    },
+    "List_As_Name__c": "Brookridge Drive Little Free Library",
+    "Official_Charter_Number__c": "88356",
+    "Library_Story__c": "We love books and we love to share books. Wherever we go, our family brings books to read. A few years ago we started putting sticky notes on finished books that said, \"Ready for the next reader\" and left the book wherever we happened to be. Now, we have a place to share our love or reading and books with our community. We finished the library in two weekends and it has been operational since Victoria Day 2019.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "7 Brookridge Drive",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "MB",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1P 3M2",
+    "Id": "a060W000014Ur72QAC"
+  },
+  {
+    "Library_Name__c": "Ann, David, Jack and Emily Stevens #21573 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6595299,
+      "longitude": -79.47623
+    },
+    "List_As_Name__c": "Ann, David, Jack and Emily Stevens",
+    "Primary_Steward_s_Email__c": "shiskoa@me.com",
+    "Official_Charter_Number__c": "21573",
+    "Library_Story__c": "After installing a Little Free Library at Ann’s school (Charter #20198), we were all keen to have one of our own. Neighbours and friends like to drop by for a chat and a look in the Fairview Avenue Little Free Library. We try to make sure the library is stocked with a variety of books for kids and adults (but kids seem to get the most excited when they find a book that interests them!).",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "66 Fairview Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6P3A4",
+    "Id": "a06d000000iAZKJAA4"
+  },
+  {
+    "Library_Name__c": "Historic Joy Kogawa House #77845 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.21286,
+      "longitude": -123.13847
+    },
+    "List_As_Name__c": "Historic Joy Kogawa House",
+    "Official_Charter_Number__c": "77845",
+    "Library_Story__c": "The Historic Joy Kogawa House Little Free Library has wood shingle siding painted dark brown and looks exactly like the 1912 house it stands outside. Historic Joy Kogawa House has undergone many renovations over the years, and our Little Free Library with its wood shingle siding shows the way the house looked in the late 1930s when author Joy Kogawa lived there as a child. Our goal is to keep the free library filled with books to share.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "1450 West 64th Avenue",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6P 2N4",
+    "Id": "a060W000013adFhQAI"
+  },
+  {
+    "Library_Name__c": "Lorna Killam #21766 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67178,
+      "longitude": -79.30206
+    },
+    "Official_Charter_Number__c": "21766",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "156 Waverley Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "m4l3t3",
+    "Id": "a06d000000eYNV2AAO"
+  },
+  {
+    "Library_Name__c": "Katarina Vukobratovic #23254 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.64062,
+      "longitude": -79.47701
+    },
+    "Primary_Steward_s_Email__c": "lfl@sts-home.com",
+    "Official_Charter_Number__c": "23254",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "18 Innisfree Ct",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6S 3N8",
+    "Id": "a06d000000fjFweAAE"
+  },
+  {
+    "Library_Name__c": "Gail Johnson #28159 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68886,
+      "longitude": -79.47587
+    },
+    "Official_Charter_Number__c": "28159",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "68 Yarrow Rd",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6m-4E3",
+    "Id": "a06d000000k01T1AAI"
+  },
+  {
+    "Library_Name__c": "Rosemary O'Malley #19132 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.70859,
+      "longitude": -79.3805299
+    },
+    "List_As_Name__c": "Rosemary O'Malley",
+    "Primary_Steward_s_Email__c": "roseomalley@hotmail.com",
+    "Official_Charter_Number__c": "19132",
+    "Library_Story__c": "I have been wanting to set-up a Little Free Library for a very long time. The challenge for me was finding someone in Ontario to make the library box itself. I finally found someone online. \nI like to stock books for all ages in my library. My neighbours have really helped me by donating lots of books.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "332'Clevelamd St.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4S2W9",
+    "Id": "a06d000000fjyg7AAA"
+  },
+  {
+    "Library_Name__c": "Oriole Park CG #16738 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.69748,
+      "longitude": -79.4027
+    },
+    "List_As_Name__c": "Oriole Park CG",
+    "Primary_Steward_s_Email__c": "orioleparkcommunitygarden@gmail.com",
+    "Official_Charter_Number__c": "16738",
+    "Library_Story__c": "Our Little Free Library is a great addition to our community garden and the park.\r\nThe Little Free Library had fostered community engagement.\r\nOur Little Free Library is very popular and is used so much sometime we have to add books daily.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "201 Oriole Pkwy",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M5P 2H1",
+    "Id": "a06d000000fjXORAA2"
+  },
+  {
+    "Library_Name__c": "Neeta Logsetty #23649 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65318,
+      "longitude": -79.52072
+    },
+    "List_As_Name__c": "Neeta Logsetty",
+    "Primary_Steward_s_Email__c": "neetalogsetty@sympatico.ca",
+    "Official_Charter_Number__c": "23649",
+    "Library_Story__c": "This Little Free Library is located in a neighbourhood park, Donnybrook Park, in a quiet suburb of the City of Toronto, Canada.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "43 Loyalist Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M9A 3P2",
+    "Id": "a06d000000jWT6tAAG"
+  },
+  {
+    "Library_Name__c": "Margot Willoughby #31887 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.72101,
+      "longitude": -79.39598
+    },
+    "List_As_Name__c": "Margot Willoughby",
+    "Official_Charter_Number__c": "31887",
+    "Library_Story__c": "A perfect mother's day gift from my three kids! Bringing neighbours and book lovers together...",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "87 Dawlish Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4N 1H2",
+    "Id": "a06d000000pV2O7AAK"
+  },
+  {
+    "Library_Name__c": "Oscar's #93992 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.71064,
+      "longitude": -79.36853
+    },
+    "List_As_Name__c": "Oscar's",
+    "Primary_Steward_s_Email__c": "67minor@gmail.com",
+    "Official_Charter_Number__c": "93992",
+    "Library_Story__c": "Named in memory of my beloved pug, this little library is to encourage a sense of community in an ever-changing world and to share and encourage reading - one of life's simple pleasures.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "215 Rumsey Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4G 1P7",
+    "Id": "a060W000015hhSSQAY"
+  },
+  {
+    "Library_Name__c": "Jeremy McLay #45321 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.39224,
+      "longitude": -75.72917
+    },
+    "List_As_Name__c": "Jeremy McLay",
+    "Official_Charter_Number__c": "45321",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "125 Ruskin Street",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1Y 4B7",
+    "Id": "a06d000000sLX7TAAW"
+  },
+  {
+    "Library_Name__c": "Shannon Cavanagh #25143 York ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67536,
+      "longitude": -79.50169
+    },
+    "List_As_Name__c": "Shannon Cavanagh",
+    "Primary_Steward_s_Email__c": "shannon.haise@gmail.com",
+    "Official_Charter_Number__c": "25143",
+    "Library_Story__c": "Greetings! Our LFL is located slightly off the beaten path ... tucked away in between busy Jane St and Scarlett Rd, our neighbourhood is a quiet hamlet full of families with readers young & old. Those that visit our LFL should enjoy a stroll along the picturesque paths of Smythe Park along the Black Creek & Humber river. Several benches with scenic views and quiet places to read await ;)",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "86 Black Creek Blvd",
+    "City__c": "York",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6N 2K9",
+    "Id": "a06d000000sL6crAAC"
+  },
+  {
+    "Library_Name__c": "Darren Smith #43417 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65298,
+      "longitude": -79.43843
+    },
+    "Primary_Steward_s_Email__c": "dsmith1@gmail.com",
+    "Official_Charter_Number__c": "43417",
+    "Library_Story__c": "We put in a Little Free Library to encourage a love of reading in our daughter and hopefully others. We live directly across from a junior public school (Brock PS), so it is a perfect location for supporting young readers, although it caters to all. The house itself was built by Karol Kosnik of Studio Kosnik. The artwork was painted by Margaret Lawrence, an established artist who lived in Sanikiluaq, Nunavut at the time and now lives in Iqaluit.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "102 Margueretta St.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6H 3S3",
+    "Id": "a06d000000qymfFAAQ"
+  },
+  {
+    "Library_Name__c": "Danielle Lyrette #40650 Ottawa",
+    "Library_Geolocation__c": {
+      "latitude": 45.39593,
+      "longitude": -75.63882
+    },
+    "List_As_Name__c": "Danielle Lyrette",
+    "Primary_Steward_s_Email__c": "daniellelyrette@gmail.com",
+    "Official_Charter_Number__c": "40650",
+    "Library_Story__c": "@booksonweston",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "681 Weston Dr",
+    "City__c": "Ottawa",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1G1V7",
+    "Id": "a06d000000qyHKAAA2"
+  },
+  {
+    "Library_Name__c": "Elina Calzavara #31173 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.76768,
+      "longitude": -79.42963
+    },
+    "List_As_Name__c": "Elina Calzavara",
+    "Primary_Steward_s_Email__c": "elinacalzavara@hotmail.ca",
+    "Official_Charter_Number__c": "31173",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "315 Ellerslie Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M2R1B6",
+    "Id": "a06d000000jXCxpAAG"
+  },
+  {
+    "Library_Name__c": "Marnie Wellar #27815 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.39991,
+      "longitude": -75.69241
+    },
+    "List_As_Name__c": "Marnie Wellar",
+    "Official_Charter_Number__c": "27815",
+    "Library_Story__c": "This library was designed and built by Marnie Wellar, who wanted a Little Free Library for a long time before finally making one. Most of the materials were salvaged.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "237 Fifth Avenue",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1S 2N1",
+    "Id": "a06d000000iAhxJAAS"
+  },
+  {
+    "Library_Name__c": "Jewel Envy #21369 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.64092,
+      "longitude": -79.44675
+    },
+    "List_As_Name__c": "Jewel Envy",
+    "Primary_Steward_s_Email__c": "gillian@jewelenvy.ca",
+    "Official_Charter_Number__c": "21369",
+    "Library_Story__c": "Our little free library has been placed on the grounds of a century home that has been converted into a jewellery store and studio. Jewel Envy is home to over 10 local goldsmiths. As a small community within we have found we all share a love of reading and have been trading books with each other for years. We wanted to share this love with our neighborhood. Moments after we installed the library neighbors came by with books and to say thank you for supporting literacy!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "151 Marion St",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6R1E6",
+    "Id": "a06d000000ghH3kAAE"
+  },
+  {
+    "Library_Name__c": "Megan Williams #27314 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66583,
+      "longitude": -79.45683
+    },
+    "List_As_Name__c": "Megan Williams",
+    "Primary_Steward_s_Email__c": "megan.williams999@gmail.com",
+    "Official_Charter_Number__c": "27314",
+    "Library_Story__c": "I love to read and I know a wonderful carpenter, my tenant and friend Brandon. He made us a Library in the shape of a house. I made the paintings of the readers in it's windows. \n\nWe live in an urban area in transition. There is public housing, social services and a wonderful Portuguese garden centre on, yes, the other side of the tracks half a block up. Our neighbours hark from Eritrea and Granada. Galleries, espresso bars and fun bistros are opening up close by. \n\nHope we are good glue",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "53 Osler Street,",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6P 4A1",
+    "Id": "a06d000000i7ZV9AAM"
+  },
+  {
+    "Library_Name__c": "Janine & Michael Dalton #23692 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66157,
+      "longitude": -79.45565
+    },
+    "List_As_Name__c": "Janine & Michael Dalton",
+    "Primary_Steward_s_Email__c": "jframst@yahoo.com",
+    "Official_Charter_Number__c": "23692",
+    "Library_Story__c": "As people who enjoy reading, we wanted to both share our love, and help build a stronger community with our Little Free Library. \n\nWe launched it on April 4th, 2015, and have enjoyed seeing the turnover of books as well as people's excitement about the library in general.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "14 Jerome Street",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6P1H7",
+    "Id": "a06d000000ghNdBAAU"
+  },
+  {
+    "Library_Name__c": "Jeremy Sale #43410 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6030949,
+      "longitude": -79.5047648
+    },
+    "List_As_Name__c": "Jeremy Sale",
+    "Primary_Steward_s_Email__c": "jeremysale@gmail.com",
+    "Official_Charter_Number__c": "43410",
+    "Library_Story__c": "A friend of mine built his own LFL, and it inspired us to have one of our own! I traded him some photography for the library he built, and now we are loving it; especially when we get to read some of the donated books!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "187 Sixth St",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M8V 3A6",
+    "Id": "a06d000000qvblEAAQ"
+  },
+  {
+    "Library_Name__c": "Ilana Wilner #32123 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68262,
+      "longitude": -79.3528
+    },
+    "List_As_Name__c": "Ilana Wilner",
+    "Official_Charter_Number__c": "32123",
+    "Library_Story__c": "Once upon a time, there was a Little Free Library...",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "111 Fulton Aveneu",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4K1X7",
+    "Id": "a06d000000pV7pKAAS"
+  },
+  {
+    "Library_Name__c": "Sheila Jones #24894 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.69196,
+      "longitude": -79.3063899
+    },
+    "Official_Charter_Number__c": "24894",
+    "Library_Story__c": "We love to read, and always share our books amongst family and friends, and now we are delighted to share with our local community as well.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "32 Epsom Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4C2A7",
+    "Id": "a06d000000ghMqCAAU"
+  },
+  {
+    "Library_Name__c": "Tony Redpath #61601 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6671,
+      "longitude": -79.35171
+    },
+    "List_As_Name__c": "Tony Redpath",
+    "Primary_Steward_s_Email__c": "tredpath@rogers.com",
+    "Official_Charter_Number__c": "61601",
+    "Library_Story__c": "The wood for our Little Free Library came from a > 100 yr old red elm located between our house and our next door neighbour. Sadly, the tree died of Dutch Elm disease two years ago.. When the tree was cut down we salvaged the trunk and had it sawn into lumber. The library is one of the end results!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "21, Victor Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4K1A7",
+    "Id": "a060W00000xBvlXQAS"
+  },
+  {
+    "Library_Name__c": "Michelle Ellefson #21397 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67828,
+      "longitude": -79.42501
+    },
+    "Official_Charter_Number__c": "21397",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "66 Tyrrel Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6G2G4",
+    "Id": "a06d000000uR2Q3AAK"
+  },
+  {
+    "Library_Name__c": "James Feasby #61681 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.39414,
+      "longitude": -75.71862
+    },
+    "Official_Charter_Number__c": "61681",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "38 Gwynne Avenue",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "k1y1w9",
+    "Id": "a060W00000xBzCSQA0"
+  },
+  {
+    "Library_Name__c": "Oxford Street Little Library #27576 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.40304,
+      "longitude": -75.72957
+    },
+    "List_As_Name__c": "Oxford Street Little Library",
+    "Official_Charter_Number__c": "27576",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "2 Pinehurst Avenue",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1Y 1K3",
+    "Id": "a060W000018eDXoQAM"
+  },
+  {
+    "Library_Name__c": "Charlotte Peterson #29675 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.7299,
+      "longitude": -79.40742
+    },
+    "Official_Charter_Number__c": "29675",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "121 Fairlawn Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M5M1S9",
+    "Id": "a060W00000wMIAAQA4"
+  },
+  {
+    "Library_Name__c": "Adults Section #48888 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.70677,
+      "longitude": -79.40195
+    },
+    "List_As_Name__c": "Adults Section",
+    "Primary_Steward_s_Email__c": "leighannestone@hotmail.com",
+    "Official_Charter_Number__c": "48888",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "26 Henning Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4R 1X7",
+    "Id": "a060W00000wOOSxQAO"
+  },
+  {
+    "Library_Name__c": "Emily Romano #47786 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.7642499,
+      "longitude": -79.39396
+    },
+    "List_As_Name__c": "Emily Romano",
+    "Primary_Steward_s_Email__c": "emily_graham@hotmail.com",
+    "Official_Charter_Number__c": "47786",
+    "Library_Story__c": "Flaming Roseway (or \"The Flame\" as we call it around here) is a cozy community in North Toronto full of diverse and interesting people. We often spend time outside with our neighbours and we all thought a little free library would be a perfect way to bring us closer and get to know one another better by sharing books. We have planted our library near the path that runs through the parkette in our community. It is between #52 and #60 Flaming Roseway. Drop by and check it out!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "52 Flaming Roseway",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M2N 5W8",
+    "Id": "a060W00000wORosQAG"
+  },
+  {
+    "Library_Name__c": "John Gorman #61465 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.38123,
+      "longitude": -75.75593
+    },
+    "List_As_Name__c": "John Gorman",
+    "Primary_Steward_s_Email__c": "johnarthurgorman@gmail.com",
+    "Official_Charter_Number__c": "61465",
+    "Library_Story__c": "I built our Free Little Library out of an old, solid wood TV stand that a neighbour had placed on the curb. We bought the little bench at a garage sale. It was already painted red and blue which became the inspiration for our colour scheme. Half of the library is dedicated to children and youth literature. We get huge satisfaction out of watching people browse the books. Still waiting for someone to feel comfortable enough to sit down and read for a bit!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "664, Highland Avenue",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K2A 2K4",
+    "Id": "a060W00000xC69aQAC"
+  },
+  {
+    "Library_Name__c": "Cranberry Cove Ratepayers' Association #93668 Mississauga ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.540911,
+      "longitude": -79.588654
+    },
+    "List_As_Name__c": "Cranberry Cove Ratepayers' Association",
+    "Official_Charter_Number__c": "93668",
+    "Library_Story__c": "Cranberry Cove Ratepayers' Association invites all to enjoy our Little Free Library located in our beautiful Ben Machree Park. Take a book and leave a book for all to enjoy.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "Ben Machree Park",
+    "City__c": "Mississauga",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "L5H 2R5",
+    "Id": "a060W00001630G3QAI"
+  },
+  {
+    "Library_Name__c": "Daren's and Heidi's Library #89865 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.70396,
+      "longitude": -79.50723
+    },
+    "List_As_Name__c": "Daren's and Heidi's Library",
+    "Primary_Steward_s_Email__c": "heidihuber@sympatico.ca",
+    "Official_Charter_Number__c": "89865",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "80 Macdonald Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M9N 2E4",
+    "Id": "a060W000014W0ENQA0"
+  },
+  {
+    "Library_Name__c": "Antonio's Library #104315 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6277,
+      "longitude": -79.51329
+    },
+    "List_As_Name__c": "Antonio's Library",
+    "Official_Charter_Number__c": "104315",
+    "Library_Story__c": "Welcome to our library! \n\nWe made it ourselves and it's become a neighborhood favourite. \n\nWe have a shelf for children's books and another two for fiction and non-fiction. \n\nDrop by! Bring a book and take a book.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "40 Athol Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M8Z2A4",
+    "Id": "a060W000018lkn7QAA"
+  },
+  {
+    "Library_Name__c": "David Forgay #22343 Toronto",
+    "Library_Geolocation__c": {
+      "latitude": 43.69825,
+      "longitude": -79.40129
+    },
+    "Official_Charter_Number__c": "22343",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "80 Chaplin Ccrescent",
+    "City__c": "Toronto",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M5P1A5",
+    "Id": "a060W00000xCQIjQAO"
+  },
+  {
+    "Library_Name__c": "Neil McGraw #58414 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.4045599,
+      "longitude": -75.7067299
+    },
+    "List_As_Name__c": "Neil McGraw",
+    "Official_Charter_Number__c": "58414",
+    "Library_Story__c": "We built the LFL as a family project. It's important to us that our kids see us reading and loving books. We hope this library is well used and well loved by the community.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "430 Arlington Avenue",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1R6Z8",
+    "Id": "a060W00000xCQexQAG"
+  },
+  {
+    "Library_Name__c": "Binks Collier family Library #79026 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.64129,
+      "longitude": -79.49333
+    },
+    "List_As_Name__c": "Binks Collier family Library",
+    "Official_Charter_Number__c": "79026",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "69 Riverwood Parkway",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M8Y 4E4",
+    "Id": "a060W000015g2ZrQAI"
+  },
+  {
+    "Library_Name__c": "Tiny Hogwarts Library #91788 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.78276,
+      "longitude": -79.4053799
+    },
+    "List_As_Name__c": "Tiny Hogwarts Library",
+    "Official_Charter_Number__c": "91788",
+    "Library_Story__c": "Whether you’re a Ravenclaw, Hufflepuff, Gryffindor or Slytherin you’re welcome to borrow from our tiny Hogwarts library!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "145 Pemberton Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M2M 1Y6",
+    "Id": "a060W000015g2ZmQAI"
+  },
+  {
+    "Library_Name__c": "McGill University #59174 Montreal QC",
+    "Library_Geolocation__c": {
+      "latitude": 45.50379,
+      "longitude": -73.57849
+    },
+    "List_As_Name__c": "McGill University",
+    "Primary_Steward_s_Email__c": "lflmcgill@gmail.com",
+    "Official_Charter_Number__c": "59174",
+    "Library_Story__c": "McGill University Sustainability Projects Fund & McGill Library are working together to foster a sense of community & promote a love of reading, all the while developing space for McGill students, faculty, staff & alumni to revitalize & recycle printed books. LFL repurposed newspaper boxes are across campus: Brown Bldg (lobby), Burnside Hall (basement), Arts Bldg (1st fl.), Leacock Bldg (near Porter), Redpath Library Bldg.(basement caf).",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "3600 McTavish Street",
+    "City__c": "Montreal",
+    "State_Province_Region__c": "QC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "H3A 0G3",
+    "Id": "a060W00000xCeUqQAK"
+  },
+  {
+    "Library_Name__c": "McGill University #59171 Montreal QC",
+    "Library_Geolocation__c": {
+      "latitude": 45.5043633,
+      "longitude": -73.5742978
+    },
+    "List_As_Name__c": "McGill University",
+    "Primary_Steward_s_Email__c": "lflmcgill@gmail.com",
+    "Official_Charter_Number__c": "59171",
+    "Library_Story__c": "McGill University Sustainability Projects Fund & McGill Library are working together to foster a sense of community & promote a love of reading, all the while developing space for McGill students, faculty, staff & alumni to revitalize & recycle printed books. LFL repurposed newspaper boxes are across campus: Brown Bldg (lobby), Burnside Hall (basement), Arts Bldg (1st fl.), Leacock Bldg (near Porter), Redpath Library Bldg.(basement caf).",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "805 rue Sherbrooke Ouest",
+    "City__c": "Montreal",
+    "State_Province_Region__c": "QC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "H3A 0B9",
+    "Id": "a060W00000xCeTnQAK"
+  },
+  {
+    "Library_Name__c": "Sara Haigh #22028 Scarborough ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.78713,
+      "longitude": -79.17959
+    },
+    "List_As_Name__c": "Sara Haigh",
+    "Official_Charter_Number__c": "22028",
+    "Library_Story__c": "The Little Free Library is my all time favourite birthday gift from my wonderful family! I take great pleasure in being its steward and am thrilled with the interest and use it receives from the neighbourhood. Folks are generous in helping keep it well-stocked with a good variety. It's always fascinating to see what others have enjoyed and want to share - a very enriching experience, both in terms of reading and community connection!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "84 Bobmar Road",
+    "City__c": "Scarborough",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1C 1C9",
+    "Id": "a06d000000sKvcSAAS"
+  },
+  {
+    "Library_Name__c": "Fiona Lake Waslander #103650 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65622,
+      "longitude": -79.5117
+    },
+    "Official_Charter_Number__c": "103650",
+    "Library_Story__c": "We're excited to share books with our neighbours!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "100 Strath Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M8X1R5",
+    "Id": "a060W000018l4ZrQAI"
+  },
+  {
+    "Library_Name__c": "McGill University #591172 Montreal QC",
+    "Library_Geolocation__c": {
+      "latitude": 45.5034373,
+      "longitude": -73.5752244
+    },
+    "List_As_Name__c": "McGill University",
+    "Primary_Steward_s_Email__c": "lflmcgill@gmail.com",
+    "Official_Charter_Number__c": "591172",
+    "Library_Story__c": "McGill University Sustainability Projects Fund & McGill Library are working together to foster a sense of community & promote a love of reading, all the while developing space for McGill students, faculty, staff & alumni to revitalize & recycle printed books. LFL repurposed newspaper boxes are across campus: Brown Bldg (lobby), Burnside Hall (basement), Arts Bldg (1st fl.), Leacock Bldg (near Porter), Redpath Library Bldg.(basement caf).",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "855 rue Sherbrooke Ouest",
+    "City__c": "Montreal",
+    "State_Province_Region__c": "QC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "H3A 2T7",
+    "Id": "a060W00000xCeTsQAK"
+  },
+  {
+    "Library_Name__c": "McGill University #59175 Montreal QC",
+    "Library_Geolocation__c": {
+      "latitude": 45.50509,
+      "longitude": -73.58034
+    },
+    "List_As_Name__c": "McGill University",
+    "Primary_Steward_s_Email__c": "lflmcgill@gmail.com",
+    "Official_Charter_Number__c": "59175",
+    "Library_Story__c": "McGill University Sustainability Projects Fund & McGill Library are working together to foster a sense of community & promote a love of reading, all the while developing space for McGill students, faculty, staff & alumni to revitalize & recycle printed books. LFL repurposed newspaper boxes are across campus: Brown Bldg (lobby), Burnside Hall (basement), Arts Bldg (1st fl.), Leacock Bldg (near Porter), Redpath Library Bldg.(basement caf).",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "3459 McTavish Street",
+    "City__c": "Montreal",
+    "State_Province_Region__c": "QC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "H3A 0C9",
+    "Id": "a060W00000xCeUvQAK"
+  },
+  {
+    "Library_Name__c": "McGill University #59173 Montreal QC",
+    "Library_Geolocation__c": {
+      "latitude": 45.5034789,
+      "longitude": -73.5751789
+    },
+    "List_As_Name__c": "McGill University",
+    "Primary_Steward_s_Email__c": "lflmcgill@gmail.com",
+    "Official_Charter_Number__c": "59173",
+    "Library_Story__c": "McGill University Sustainability Projects Fund & McGill Library are working together to foster a sense of community & promote a love of reading, all the while developing space for McGill students, faculty, staff & alumni to revitalize & recycle printed books. LFL repurposed newspaper boxes are across campus: Brown Bldg (lobby), Burnside Hall (basement), Arts Bldg (1st fl.), Leacock Bldg (near Porter), Redpath Library Bldg.(basement caf).",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "853 rue Sherbrooke ouest",
+    "City__c": "Montreal",
+    "State_Province_Region__c": "QC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "H3A 0G5",
+    "Id": "a060W00000xCeUlQAK"
+  },
+  {
+    "Library_Name__c": "Grenadier #82537 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.64238,
+      "longitude": -79.46953
+    },
+    "List_As_Name__c": "Grenadier",
+    "Primary_Steward_s_Email__c": "garyweigl@gmail.com",
+    "Official_Charter_Number__c": "82537",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "27 Grenadier Hts",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6S2W5",
+    "Id": "a060W000012gfDzQAI"
+  },
+  {
+    "Library_Name__c": "Emma's Children's Library #74940 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68388,
+      "longitude": -79.29119
+    },
+    "List_As_Name__c": "Emma's Children's Library",
+    "Official_Charter_Number__c": "74940",
+    "Library_Story__c": "My parents built this library for me as a present for my secondary birthday, to teach me about sharing and help me build a sense of community in our neighbourhood. My library is kid height and specializes in children's books.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "171 Pickering Street",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4E 3J5",
+    "Id": "a060W00001181PQQAY"
+  },
+  {
+    "Library_Name__c": "Little Free Library #81867 #81867 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.24207,
+      "longitude": -123.0644
+    },
+    "List_As_Name__c": "Little Free Library #81867",
+    "Official_Charter_Number__c": "81867",
+    "Library_Story__c": "Newly erected on Jan 27, 2019! Come visit our LFL!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "4761 Little St",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V5N 4S7",
+    "Id": "a060W0000108acBQAQ"
+  },
+  {
+    "Library_Name__c": "Rajiv Kalsi #29449 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.39658,
+      "longitude": -75.67746
+    },
+    "List_As_Name__c": "Rajiv Kalsi",
+    "Primary_Steward_s_Email__c": "rajivkalsi2005@gmail.com",
+    "Official_Charter_Number__c": "29449",
+    "Library_Story__c": "I read a a magazine article about a Little Free Library in my City of Ottawa built by a young man last year. The story inspired me to look at the Little Free Library website, and to build my own library in my neighbourhood. I repurposed a solar cooker that I had built several years ago and never used. I added a door and some paint, and installed it on August 28th. In just a few days I have received positive feed back and people are taking and leaving books!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "146 Sunnyside Avenue",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1S0R3",
+    "Id": "a06d000000inhnVAAQ"
+  },
+  {
+    "Library_Name__c": "RAYMOND SQUIRRELL #71552 TORONTO ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.71622,
+      "longitude": -79.23633
+    },
+    "List_As_Name__c": "RAYMOND SQUIRRELL",
+    "Primary_Steward_s_Email__c": "raysquirrell@gmail.com",
+    "Official_Charter_Number__c": "71552",
+    "Library_Story__c": "PHOTOS WILL BE POSTED AS SOON AS LIBRARY IS INSTALLED & STOCKED",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "74 GRADWELL DRIVE",
+    "City__c": "TORONTO",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1M2N2",
+    "Id": "a060W000010NLqcQAG"
+  },
+  {
+    "Library_Name__c": "Grace Church Little Free Library #78841 Scarborough ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.72802,
+      "longitude": -79.26724
+    },
+    "List_As_Name__c": "Grace Church Little Free Library",
+    "Official_Charter_Number__c": "78841",
+    "Library_Story__c": "Grace Church is a neighbourhood hub with large outdoor seating, comfortable indoor cafe-style space, free wifi, free coffee and tea, a community garden, free monthly community lunches, free weekly summer BBQs, and now we're proud to host a Little Free Library. We can't wait for you to visit! Enjoy!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "700 Kennedy Road",
+    "City__c": "Scarborough",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1K 2B5",
+    "Id": "a060W000014AVgyQAG"
+  },
+  {
+    "Library_Name__c": "Maria Martella #29684 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67987,
+      "longitude": -79.43753
+    },
+    "List_As_Name__c": "Maria Martella",
+    "Primary_Steward_s_Email__c": "maria@tinlids.ca",
+    "Official_Charter_Number__c": "29684",
+    "Library_Story__c": "I am the owner of Tinlids, which is a wholesaler of children's and teen books for schools and libraries across Canada. www.tinlids.ca I love connecting people and books, and I live on a very small street with amazing people. This is a great way to get people sharing and talking about books !",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "21 Appleton Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6E 3A4",
+    "Id": "a06d000000Zd0qlAAB"
+  },
+  {
+    "Library_Name__c": "Lennox Street Little Library #102307 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.1891,
+      "longitude": -75.83454
+    },
+    "List_As_Name__c": "Lennox Street Little Library",
+    "Official_Charter_Number__c": "102307",
+    "Library_Story__c": "On the corner of Strachan & Lennox St. Serving young & old in the neighbourhood. We actively try to achieve a balance of kids, young adult, adult fiction and non-fiction. If you see you something you're interested in: grab it! Lots of turn over!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "96 Strachan St.",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K0A 2Z0",
+    "Id": "a060W000017byvtQAA"
+  },
+  {
+    "Library_Name__c": "Alison Gadsby #37775 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6639,
+      "longitude": -79.47413
+    },
+    "Primary_Steward_s_Email__c": "junctionwrites@gmail.com",
+    "Official_Charter_Number__c": "37775",
+    "Library_Story__c": "As a collector of great books, and the curator of a monthly prose reading series, it is important to me that great books get read. While I do collect many, many, many books, I know that I shouldn't. I know they should be shared.\nSo our Little Library will be filled with authors who have read at Junction Reads, and the favourite books my kids have grown out of.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "47 Laws Street",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6P2Y8",
+    "Id": "a06d000000qvnAdAAI"
+  },
+  {
+    "Library_Name__c": "Makerspace North #72372 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.415313,
+      "longitude": -75.7042853
+    },
+    "List_As_Name__c": "Makerspace North",
+    "Official_Charter_Number__c": "72372",
+    "Library_Story__c": "Our library's home is in a Makerspace here in Ottawa. It's a CNC crafted replica of a tiny home that houses the books. We are especially inspired and love to exchange books about maker culture, entrepreneurship and all things STEAM.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "250 City Centre, Bay 216",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1R 6K7",
+    "Id": "a060W00001083XyQAI"
+  },
+  {
+    "Library_Name__c": "E + M's Book Nook #82545 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.69531,
+      "longitude": -79.34796
+    },
+    "List_As_Name__c": "E + M's Book Nook",
+    "Primary_Steward_s_Email__c": "jf.hastings@outlook.com",
+    "Official_Charter_Number__c": "82545",
+    "Library_Story__c": "E + M love to share books with the neighbourhood. Our \"Book Nook\" has all sorts of exciting content, including fiction, non-fiction and children's books! Feel free to browse and take anything that catches your eye, trade in your well-loved novels, or simply add to the collection. In the winter months, our Book Nook may be on the porch, so don't be shy!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "42 Chilton Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4J3C8",
+    "Id": "a060W000013r1wBQAQ"
+  },
+  {
+    "Library_Name__c": "Cozy Corner Library #110653 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.4114,
+      "longitude": -75.69407
+    },
+    "List_As_Name__c": "Cozy Corner Library",
+    "Official_Charter_Number__c": "110653",
+    "Library_Story__c": "A lovely little well stocked library built into a repurposed abandoned fireplace. Enjoy a free book by the fire!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "385 Mcleod St.",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K2P1A5",
+    "Id": "a060W00001AT3MgQAL"
+  },
+  {
+    "Library_Name__c": "Civic Free Library #110651 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.39334,
+      "longitude": -75.72771
+    },
+    "List_As_Name__c": "Civic Free Library",
+    "Official_Charter_Number__c": "110651",
+    "Library_Story__c": "Two young readers looking forward to sharing their favourite books with all the neighbourhood kids; with a little space for grown-ups to leave a book and take a book too.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "383 Holland Avenue",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1Y 0Y9",
+    "Id": "a060W00001AT3KzQAL"
+  },
+  {
+    "Library_Name__c": "Paola Gomez #32125 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67867,
+      "longitude": -79.45445
+    },
+    "Primary_Steward_s_Email__c": "paosantiny@hotmail.com",
+    "Official_Charter_Number__c": "32125",
+    "Library_Story__c": "This library is arts and children oriented. In addition to art books we offer art supplies for children’s projects.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "111 Mcroberts Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6E4P3",
+    "Id": "a06d000000l2UH7AAM"
+  },
+  {
+    "Library_Name__c": "The Heft Family #29695 TORONTO ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.70985,
+      "longitude": -79.40995
+    },
+    "Official_Charter_Number__c": "29695",
+    "Library_Story__c": "We are a family of readers, story-tellers and book-lovers.\nOne of us was even a published author and poet. \nThis library was established in his memory.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "258 Castlefield Avenue",
+    "City__c": "TORONTO",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4R1G7",
+    "Id": "a06d000000jy9cKAAQ"
+  },
+  {
+    "Library_Name__c": "Barry Rashotte #2937 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.40576,
+      "longitude": -75.65767
+    },
+    "List_As_Name__c": "Barry Rashotte",
+    "Primary_Steward_s_Email__c": "barryrashotte@hotmail.com",
+    "Official_Charter_Number__c": "2937",
+    "Library_Story__c": "This library was inspired by an article I read and my wife's love of books. As you can see the mobile base is an old BBQ. This allows me to move it in at night and when the snow plow is due to pass by.:) This is actually the second library I built as someone liked my first one so much they actually took it, books and all. I am now considering building a third addition as it is very popular in area and book donations require that I store boxes of them in my garden shed.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "217 Knox Cres",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1G 0K6",
+    "Id": "a06d000000jy9c5AAA"
+  },
+  {
+    "Library_Name__c": "Cliffside Little Free Library #108771 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.70722,
+      "longitude": -79.24766
+    },
+    "List_As_Name__c": "Cliffside Little Free Library",
+    "Primary_Steward_s_Email__c": "wes_grant@rogers.com",
+    "Official_Charter_Number__c": "108771",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "98 Midland Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1n 4A2",
+    "Id": "a060W00001ASoQPQA1"
+  },
+  {
+    "Library_Name__c": "ZS Worotynec #51702 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67158,
+      "longitude": -79.49634
+    },
+    "Primary_Steward_s_Email__c": "zs.worotynec@utoronto.ca",
+    "Official_Charter_Number__c": "51702",
+    "Library_Story__c": "My Little Free Library has a Twitter account ~ @LittleDuern",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "10 Duern St.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6N 4G5",
+    "Id": "a060W00000x9RQ9QAM"
+  },
+  {
+    "Library_Name__c": "St. Mark's Church Little Free Library #95479 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.35965,
+      "longitude": -75.7103
+    },
+    "List_As_Name__c": "St. Mark's Church Little Free Library",
+    "Official_Charter_Number__c": "95479",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "1606 Fisher Avenue",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K2C 1X6",
+    "Id": "a060W000016krA0QAI"
+  },
+  {
+    "Library_Name__c": "Windermere Avenue Little Free Library #55023 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6452699,
+      "longitude": -79.47817
+    },
+    "List_As_Name__c": "Windermere Avenue Little Free Library",
+    "Official_Charter_Number__c": "55023",
+    "Library_Story__c": "We started out with a smaller Little Free Library in 2017 but it wasn't big enough for the number of books we were getting. In 2019 we built this new library from plans from the LFL site and it's the perfect size!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "241 Windermere Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6S 3K4",
+    "Id": "a060W00000x9VJzQAM"
+  },
+  {
+    "Library_Name__c": "St. Stephens community lending library #95310 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.39589,
+      "longitude": -75.7255799
+    },
+    "List_As_Name__c": "St. Stephens community lending library",
+    "Official_Charter_Number__c": "95310",
+    "Library_Story__c": "This library was created by St. Stephen's youth for our community in celebration of our 75th anniversary.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "579 Parkdale Ave",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1Y 4K1",
+    "Id": "a060W000016kdO5QAI"
+  },
+  {
+    "Library_Name__c": "Brin Hamilton #48354 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.2463399,
+      "longitude": -123.09647
+    },
+    "List_As_Name__c": "Brin Hamilton",
+    "Official_Charter_Number__c": "48354",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "4324 Prince Edward St",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V5V3Y7",
+    "Id": "a060W00000x9jxrQAA"
+  },
+  {
+    "Library_Name__c": "Daniel Mattmueller #57159 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6408,
+      "longitude": -79.4448
+    },
+    "List_As_Name__c": "Daniel Mattmueller",
+    "Primary_Steward_s_Email__c": "matschi-mail@gmx.net",
+    "Official_Charter_Number__c": "57159",
+    "Library_Story__c": "The Liebenzell House Toronto houses international theological students preparing for ministry around the world. We believe that through reading the most important book, the Bible, we are able to understand ourselves, the people around us, the world and our God.\nReading is so important! Take a book, bring a book - and understand!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "42 Harvard Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6R 1C6",
+    "Id": "a060W00000x9KLiQAM"
+  },
+  {
+    "Library_Name__c": "Stibbard Little Library #75616 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.71698,
+      "longitude": -79.39229
+    },
+    "List_As_Name__c": "Stibbard Little Library",
+    "Official_Charter_Number__c": "75616",
+    "Library_Story__c": "I started off to build a simple box library, and then I had a request from above that it would be nice if it was a close replica of our 100 year old house. That took a little longer to build as a result of the unusual roof lines, and then was further delayed due to Covds-19. It has been up and running for two weeks, and we have seen a complete turnover in books. The neighbours all have lots to contribute.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "177 Stibbard Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4P 2C4",
+    "Id": "a060W00001BBSblQAH"
+  },
+  {
+    "Library_Name__c": "Dorval Road Library #86480 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65806,
+      "longitude": -79.45542
+    },
+    "List_As_Name__c": "Dorval Road Library",
+    "Official_Charter_Number__c": "86480",
+    "Library_Story__c": "I loved the idea of little free libraries and decided to build mine out of left over plexiglass from a home reno. I love how it empties and then miraculously refills itself!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "52 Dorval Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6P2B6",
+    "Id": "a060W00001AP6uFQAT"
+  },
+  {
+    "Library_Name__c": "Cynthia Nuzzi #55335 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.36582,
+      "longitude": -75.72721
+    },
+    "Official_Charter_Number__c": "55335",
+    "Library_Story__c": "The Library is supported by volunteers of the Ottawa Dante Alighieri Society, the Marconi Centre and Villa Marconi Long Term Care Centre. Books are in the Italian language.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "1026 Baseline Rd",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K2C 0A6",
+    "Id": "a060W00000yQsNbQAK"
+  },
+  {
+    "Library_Name__c": "Sarah Jennings #53493 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66608,
+      "longitude": -79.32722
+    },
+    "List_As_Name__c": "Sarah Jennings",
+    "Official_Charter_Number__c": "53493",
+    "Library_Story__c": "In memory of my mother, Elizabeth Anne Jennings, former nurse, late librarian.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "76 Hiltz Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4L 2N5",
+    "Id": "a060W00000x9RaPQAU"
+  },
+  {
+    "Library_Name__c": "Eve Sutton-Long #49095 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.402469,
+      "longitude": -75.7150555
+    },
+    "List_As_Name__c": "Eve Sutton-Long",
+    "Official_Charter_Number__c": "49095",
+    "Library_Story__c": "We decided to make a Little Free Library to spread the community feeling and share the love of reading. It's homemade, not pre-made. The children on the street love to look in it everyday. We painted it white and red to show of the red crabapples on our tree that stay there all winter.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "249 Loretta Ave",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1S4P6",
+    "Id": "a06d000000v4byfAAA"
+  },
+  {
+    "Library_Name__c": "CFSRA #95484 Mississauga ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.51926,
+      "longitude": -79.63028
+    },
+    "List_As_Name__c": "CFSRA",
+    "Official_Charter_Number__c": "95484",
+    "Library_Story__c": "One year ago in Niagara-on-the-Lake, ON, I passed by the most adorable Little Library, an exact mini-replica of the beautiful owner's residence. That was it for me. I contacted the Clarkson Neighborhood Association about approval and support, and it was unanimously accepted. A local cabinetmaker designed, built and installed our lovely library which is now up and running!\nAnd the children are loving it!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "1189 April Drive",
+    "City__c": "Mississauga",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "L5J 3J6",
+    "Id": "a060W000017bOvqQAE"
+  },
+  {
+    "Library_Name__c": "Leslie Vandenenden #13663 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.69227,
+      "longitude": -79.31072
+    },
+    "Official_Charter_Number__c": "13663",
+    "Library_Story__c": "I am an English Major and have collected a lot of books over the years. I always donate them or give them away to someone I know. I also get a lot of books given to me from my clients. Ones which I may not read so it is nice to know someone will. When I heard about this organization I thought it was so great. Books should be shared and re-used. It is fun for kids of all ages to come and look through it. On a daily basis the books are changing. Great way to encourage literacy & imagination",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "181 Gledhill Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4C 5K9",
+    "Id": "a06d000000qwUzRAAU"
+  },
+  {
+    "Library_Name__c": "Toronto Dance Salsa #37546 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.76828,
+      "longitude": -79.4122299
+    },
+    "List_As_Name__c": "Toronto Dance Salsa",
+    "Primary_Steward_s_Email__c": "info@torontodancesalsa.ca",
+    "Official_Charter_Number__c": "37546",
+    "Library_Story__c": "Welcome to Toronto Dance Salsa, Canada's largest salsa dance school with over 5000 students every year! We specialize in turning absolute \"Two-left feet\" beginners into seasoned Salseros/Salseras. So get ready to get fit, meet new friends and have a blast learning Salsa with our fun salsa lessons! Learn more at http://www.torontodancesalsa.ca",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "5095 Yonge St, 2nd floor",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M2N 6Z4",
+    "Id": "a06d000000v6Ow2AAE"
+  },
+  {
+    "Library_Name__c": "Erik de Vries #32126 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.42458,
+      "longitude": -75.6633
+    },
+    "Official_Charter_Number__c": "32126",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "45 Queen Mary St",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1K 1X8",
+    "Id": "a06d000000jzEzAAAU"
+  },
+  {
+    "Library_Name__c": "Jennifer Gibbs #30454 Scarborough ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.73744,
+      "longitude": -79.2052
+    },
+    "List_As_Name__c": "Jennifer Gibbs",
+    "Official_Charter_Number__c": "30454",
+    "Library_Story__c": "Our family loves to read and we wanted to share our love of reading with the rest of the community. We love that young and old alike add and share with our library on a daily basis.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "4 South Marine Drive",
+    "City__c": "Scarborough",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1E 1A2",
+    "Id": "a06d000000v6P2jAAE"
+  },
+  {
+    "Library_Name__c": "Kaicea Pitts #71863 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.2842169,
+      "longitude": -123.1132943
+    },
+    "Official_Charter_Number__c": "71863",
+    "Library_Story__c": "The Downtown Vancouver Business Improvement Association (DVBIA), in collaboration with Simon Fraser University's Contemporary Arts Program, welcome all to use the Little Free Library at The Perch at 1075 West Georgia. This is one of eleven former newspaper boxes that were redesigned, with the purpose of engaging the public in a sustainable effort, as well as to enrich their minds through the magic of reading in downtown Vancouver.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "438 Seymour",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6B 3K3",
+    "Id": "a060W00001149epQAA"
+  },
+  {
+    "Library_Name__c": "Julia Gray #106785 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.69073,
+      "longitude": -79.30177
+    },
+    "Official_Charter_Number__c": "106785",
+    "Library_Story__c": "Books for adults and children, and painted a cheerful blue. The wood used to build this Little Free Library was reclaimed from our old stair ballustrades that were removed during a renovation.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "66 Barrington Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4C 4Z1",
+    "Id": "a060W00001BCiWlQAL"
+  },
+  {
+    "Library_Name__c": "Room 103 Frankland Community School #62334 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67714,
+      "longitude": -79.3499
+    },
+    "List_As_Name__c": "Room 103 Frankland Community School",
+    "Official_Charter_Number__c": "62334",
+    "Library_Story__c": "This Little Library was built and donated by a family whose child was a student of Ms. Kingstone in Room 103. The kindergarten class has been sharing books through the little library since 2014. Sometimes the Little Library travels to the lobby of Frankland Community School and on nice days, you can find it in the school yard after school.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "816 Logan Ave.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4K 3E1",
+    "Id": "a060W00000zcFdRQAU"
+  },
+  {
+    "Library_Name__c": "Mark Groleau #46650 North York ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.75672,
+      "longitude": -79.41182
+    },
+    "List_As_Name__c": "Mark Groleau",
+    "Primary_Steward_s_Email__c": "groleaumark@gmail.com",
+    "Official_Charter_Number__c": "46650",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "39 Cameron Ave",
+    "City__c": "North York",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M2N1C9",
+    "Id": "a06d000000t3EuoAAE"
+  },
+  {
+    "Library_Name__c": "Miranda Paquette #104317 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.44325,
+      "longitude": -75.62753
+    },
+    "Official_Charter_Number__c": "104317",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "705 Roanoke Street",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1K 2G3",
+    "Id": "a060W000019b3F4QAI"
+  },
+  {
+    "Library_Name__c": "Darryl Dash #38815 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6381299,
+      "longitude": -79.4208
+    },
+    "List_As_Name__c": "Darryl Dash",
+    "Official_Charter_Number__c": "38815",
+    "Library_Story__c": "Liberty Grace Church wanted to reach out to the new community of Liberty Village. There were no Little Free Libraries close by, so they decided to steward two in the community. One is at the Liberty Village Park; the other is on their location at 25 Liberty. Liberty Grace Church invites you to join them every Sunday at 4PM.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "25 Liberty Street",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6K 1A6",
+    "Id": "a06d000000qwcsXAAQ"
+  },
+  {
+    "Library_Name__c": "Darryl Dash #38816 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.63879,
+      "longitude": -79.41546
+    },
+    "List_As_Name__c": "Darryl Dash",
+    "Primary_Steward_s_Email__c": "darryl@libertygrace.ca",
+    "Official_Charter_Number__c": "38816",
+    "Library_Story__c": "Liberty Grace Church wanted to reach out to the new community of Liberty Village. There were no Little Free Libraries close by, so they decided to steward two in the community. One is at the Liberty Village Park; the other is on their location at 25 Liberty. Liberty Grace Church invites you to join them every Sunday at 4PM.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "69 Lynn Williams St",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6K2R7",
+    "Id": "a06d000000qwct1AAA"
+  },
+  {
+    "Library_Name__c": "Stevie Forbes-Roberts #32122 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.7066,
+      "longitude": -79.51406
+    },
+    "List_As_Name__c": "Stevie Forbes-Roberts",
+    "Primary_Steward_s_Email__c": "sfrliveshere@gmail.com",
+    "Official_Charter_Number__c": "32122",
+    "Library_Story__c": "132 King Street",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "132 King Street",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "N1E 4P8",
+    "Id": "a06d000000jzsvMAAQ"
+  },
+  {
+    "Library_Name__c": "Little Free Library #105376 Mississauga ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.58416,
+      "longitude": -79.60456
+    },
+    "List_As_Name__c": "Little Free Library",
+    "Official_Charter_Number__c": "105376",
+    "Library_Story__c": "A little free library for everyone",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "329 Rudar Rd",
+    "City__c": "Mississauga",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "L5A1S4",
+    "Id": "a060W000018kwZmQAI"
+  },
+  {
+    "Library_Name__c": "Sam Radzinksy anotherstar@hotmail.com #33975 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6648799,
+      "longitude": -79.40665
+    },
+    "List_As_Name__c": "Sam Radzinksy anotherstar@hotmail.com",
+    "Primary_Steward_s_Email__c": "anotherstar@hotmail.com",
+    "Official_Charter_Number__c": "33975",
+    "Library_Story__c": "Our little free library was created by Sam Radzinsky and Anne Gruel. We had a lot of help with construction and supplies. \n\nThe library is located on a tree-lined street in the Annex area of Toronto. There is a bench and table out front for library users to sit down and enjoy the books. The library is located under a street lamp, which makes it possible to browse and select books at night.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "261 Brunswick Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M5S 2M6",
+    "Id": "a06d000000k07BWAAY"
+  },
+  {
+    "Library_Name__c": "Greenboro East #102309 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.36396,
+      "longitude": -75.62604
+    },
+    "List_As_Name__c": "Greenboro East",
+    "Official_Charter_Number__c": "102309",
+    "Library_Story__c": "Creating and building a little free library has been on my list for over 10 years. As I chatted with neighbours while we were all home during these past few months due to the pandemic, a neighbour offered to use scrap wood from everyone's garage to build one for me. I then painted with the paint I had left from my front door and voila, the neighbourhood built our first LFL that has already gained a steady stream of regular 'hood users!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "98 Huntersfield Drive",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1T 3L7",
+    "Id": "a060W000017bjSfQAI"
+  },
+  {
+    "Library_Name__c": "Syndi Day #91910 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6850499,
+      "longitude": -79.46874
+    },
+    "Official_Charter_Number__c": "91910",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "170 Dunraven Drive",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "m6m 1h5",
+    "Id": "a060W000015KIe6QAG"
+  },
+  {
+    "Library_Name__c": "Lara Koritzke #17625 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6514979,
+      "longitude": -79.484634
+    },
+    "List_As_Name__c": "Lara Koritzke",
+    "Primary_Steward_s_Email__c": "lara.koritzke@gmail.com",
+    "Official_Charter_Number__c": "17625",
+    "Library_Story__c": "The Halford Lane little free library is at the entry way to the Halford Lane alley that is in beautiful Bloor West Village of Toronto, just at the top of the steps that connect Halford Avenue's long brick steep road to Weatherell Street, close to the Humber River and Etienne Brule Park. Look for us close to 19 Halford Ave, or 19 Weatherell and the library is just in the mouth of the alleyway at the top of the stairs. The stewards are the families on Halford Lane, with our kids who love books.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "19 Weatherell Street",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6S 4H3",
+    "Id": "a06d000000mYvFEAA0"
+  },
+  {
+    "Library_Name__c": "Jenna Simpson #44460 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6968,
+      "longitude": -79.3103
+    },
+    "Official_Charter_Number__c": "44460",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "39 Everett Crescent",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4C 4P4",
+    "Id": "a060W00000wLvm1QAC"
+  },
+  {
+    "Library_Name__c": "Hannah Curror #25331 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.25946,
+      "longitude": -123.15698
+    },
+    "Official_Charter_Number__c": "25331",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "2265 W 14th Avenue",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6K 2V9",
+    "Id": "a06d000000iqQzjAAE"
+  },
+  {
+    "Library_Name__c": "Beverley Watt #27003 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.22943,
+      "longitude": -123.14391
+    },
+    "Primary_Steward_s_Email__c": "bdwatt@gmail.com",
+    "Official_Charter_Number__c": "27003",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "6237 Adera Street",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6M 3J5",
+    "Id": "a06d000000i8SvBAAU"
+  },
+  {
+    "Library_Name__c": "Tree Library #930996 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.37074,
+      "longitude": -75.68689
+    },
+    "List_As_Name__c": "Tree Library",
+    "Primary_Steward_s_Email__c": "parent.carmela@gmail.com",
+    "Official_Charter_Number__c": "930996",
+    "Library_Story__c": "Homemade little library for 20th wedding anniversary",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "2584 Hobson Rd",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1V 8M7",
+    "Id": "a060W00001APyq2QAD"
+  },
+  {
+    "Library_Name__c": "Sherri Helwig #34395 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.79111,
+      "longitude": -79.13406
+    },
+    "List_As_Name__c": "Sherri Helwig",
+    "Primary_Steward_s_Email__c": "sherri@slhelwig.com",
+    "Official_Charter_Number__c": "34395",
+    "Library_Story__c": "This library has a regularly-updated collection of books (popular fiction, kids books, classics, Canadian-authored books), bookmarks, a geocache for treasure hunters with a GPS, and - assuming we can keep the raccoons at bay! - dog biscuits, to give the canines something to do while their walkers stop to take a look. Facebook: https://www.facebook.com/ShareBooksOnRidgewood; Twitter: https://twitter.com/HQ_LFLibrary",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "289 Ridgewood Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1C 2X3",
+    "Id": "a06d000000mWlbqAAC"
+  },
+  {
+    "Library_Name__c": "BSN Little Free Library #79309 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66955,
+      "longitude": -79.38461
+    },
+    "List_As_Name__c": "BSN Little Free Library",
+    "Official_Charter_Number__c": "79309",
+    "Library_Story__c": "The BSN Little Free Library was established in September 2018 as part of a greater initiative to foster community within our condominium building. The library is located in the lounge on the 17th floor and may be accessed by residents only.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "35 Hayden Street",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4Y 3C3",
+    "Id": "a060W000012BhPWQA0"
+  },
+  {
+    "Library_Name__c": "Liz Hudson #64049 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.2648766,
+      "longitude": -123.2559447
+    },
+    "Official_Charter_Number__c": "64049",
+    "Library_Story__c": "At UBC Press we are a community of book lovers and we wanted to share our love of books with the greater UBC Community and visitors. We chose to build our Little Library to mimic the structure where UBC Press is located, Ponderosa Annex B.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "UBC Press, 2029 West Mall",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6T 1Z2",
+    "Id": "a060W000010MV2pQAG"
+  },
+  {
+    "Library_Name__c": "Ken clark #37215 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.72864,
+      "longitude": -79.4153
+    },
+    "List_As_Name__c": "Ken clark",
+    "Official_Charter_Number__c": "37215",
+    "Library_Story__c": "Welcome to our library. Pleas enjoy",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "318 Fairlawn",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M5M1T3",
+    "Id": "a06d000000pX0L4AAK"
+  },
+  {
+    "Library_Name__c": "Robert Herrington #20968 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66272,
+      "longitude": -79.45853
+    },
+    "Primary_Steward_s_Email__c": "westbendlittlefreelibrary@gmail.com",
+    "Official_Charter_Number__c": "20968",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "755 Indian Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6P2E4",
+    "Id": "a06d000000gE6TMAA0"
+  },
+  {
+    "Library_Name__c": "Tamara Raine #73623 Scarborough ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.75097,
+      "longitude": -79.19758
+    },
+    "List_As_Name__c": "Tamara Raine",
+    "Primary_Steward_s_Email__c": "tamarasgibson@hotmail.com",
+    "Official_Charter_Number__c": "73623",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "41 Somerdale Square",
+    "City__c": "Scarborough",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1E1M9",
+    "Id": "a060W00001145GjQAI"
+  },
+  {
+    "Library_Name__c": "Melissa Cameron #26990 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6455,
+      "longitude": -79.42338
+    },
+    "Primary_Steward_s_Email__c": "dovercourtlittlefreelibrary@gmail.com",
+    "Official_Charter_Number__c": "26990",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "164 Dovercourt Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6J 3C4",
+    "Id": "a06d000000i91dRAAQ"
+  },
+  {
+    "Library_Name__c": "RaeAnn Robertson #22141 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.70816,
+      "longitude": -79.3798599
+    },
+    "List_As_Name__c": "RaeAnn Robertson",
+    "Primary_Steward_s_Email__c": "raeannr@sympatico.ca",
+    "Official_Charter_Number__c": "22141",
+    "Library_Story__c": "526 Soudan Avenue",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "526 Soudan Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4S 1X4",
+    "Id": "a06d000000jzxs8AAA"
+  },
+  {
+    "Library_Name__c": "Alexandra Risen #22893 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.71198,
+      "longitude": -79.40558
+    },
+    "List_As_Name__c": "Alexandra Risen",
+    "Official_Charter_Number__c": "22893",
+    "Library_Story__c": "Rosedale Park in Toronto was home to the first Canadian Grey Cup match in 1909. Today, it is a gathering spot for toddlers in the splash pool, dog walkers, joggers, hockey, tennis, soccer and baseball players. This Library serves both the neighbours and visitors to the park from all over the city.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "Rosedale",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4W2A2",
+    "Id": "a06d000000i9AjVAAU"
+  },
+  {
+    "Library_Name__c": "Emily’s Library #77403 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.63874,
+      "longitude": -79.50699
+    },
+    "List_As_Name__c": "Emily’s Library",
+    "Official_Charter_Number__c": "77403",
+    "Library_Story__c": "My little library came from a desire and wish to have a library of my own. And it came to be with the good graces of my family for my 50th birthday. I am over the moon about having it on my front lawn and hope that the books I place in it are shared and discussed and bring a measure of contentment. And I am so very much looking forward to reading what others leave behind.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "193 Humbervale Blvd",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M8Y 3R2",
+    "Id": "a060W0000129GRYQA2"
+  },
+  {
+    "Library_Name__c": "Red Schoolhouse Little Library #28300 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.64367,
+      "longitude": -79.5374
+    },
+    "List_As_Name__c": "Red Schoolhouse Little Library",
+    "Official_Charter_Number__c": "28300",
+    "Library_Story__c": "Wayne built this little library for his teacher-librarian wife on their fifth anniversary.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "12 Mervyn Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M9B 1M6",
+    "Id": "a060W000010MgrSQAS"
+  },
+  {
+    "Library_Name__c": "Belynda Blyth #28282 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67422,
+      "longitude": -79.3246
+    },
+    "List_As_Name__c": "Belynda Blyth",
+    "Official_Charter_Number__c": "28282",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "375 Woodfield Rd",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4L 2X2",
+    "Id": "a060W00000wMbKfQAK"
+  },
+  {
+    "Library_Name__c": "Jacqueline Jordan #1832 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6937914,
+      "longitude": -79.36632
+    },
+    "List_As_Name__c": "Jacqueline Jordan",
+    "Primary_Steward_s_Email__c": "jacqueline_jordan@hotmail.com",
+    "Official_Charter_Number__c": "1832",
+    "Library_Story__c": "Nesbitt Park is the gathering point for the community known as Governors Bridge in mid-town Toronto. The concept of a little free library is consistent with the community feel of this park and so in the fall of 2013, an initiative was launched to obtain City permission to install it and obtain and decorate the library itself. Chris Fraser organized logistics of municipal approvals and spear-headed public relations. Bill Wrigley, a well-known champion of little free libraries in the Greater Toronto Area built the box. Jacqueline Jordan stenciled ferns and literary quotations all over the library and organized the kick-off. The little free library, branch # 1832, was officially launched on January 21, 2014 in -30 degree Celsius (-22 F) weather which was tempered by a donation of hot chocolate by the manager of Tim Hortons (1840 Bayview Ave). The launch took place, not long after sunrise around 8:15 am to coincide with gathering for the \"walking school bus\". The park is the weekday morning meeting point where local school children are dropped off by parents and then walk together with designated adults on the \"walking school bus\" the rest of the way up to Bennington Heights Elementary School. Also, at the park, a community picnic takes place every September- dads wheel their barbeques up the street and everyone donates food (odd number houses donate desserts and even numbered houses donate salads). Games take place and a good time is had by all. In the winter, local parents put up and maintain a rink so the children can skate outside for a couple of months. Nesbitt Park is the Governors Bridge \"town square\" and how appropriate to have a library in the centre of town.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "Nesbitt Park\n93 Nesbitt Drive",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4W 2E6",
+    "Id": "a06d000000b082PAAQ"
+  },
+  {
+    "Library_Name__c": "Tammy Coutu #8052 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67041,
+      "longitude": -79.28837
+    },
+    "List_As_Name__c": "Tammy Coutu",
+    "Primary_Steward_s_Email__c": "tammyacoutu@gmail.com",
+    "Official_Charter_Number__c": "8052",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "22 Fernwood Park Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4E3G1",
+    "Id": "a06d000000b086WAAQ"
+  },
+  {
+    "Library_Name__c": "Beth Kaplan #8701 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66347,
+      "longitude": -79.3646
+    },
+    "List_As_Name__c": "Beth Kaplan",
+    "Official_Charter_Number__c": "8701",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "308 Sackville St.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M5A3G2",
+    "Id": "a06d000000b088DAAQ"
+  },
+  {
+    "Library_Name__c": "J GRIFFIN #17751 OTTAWA ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.3148,
+      "longitude": -75.59901
+    },
+    "List_As_Name__c": "J GRIFFIN",
+    "Primary_Steward_s_Email__c": "jaysauvegriffin@gmail.com",
+    "Official_Charter_Number__c": "17751",
+    "Library_Story__c": "We have been dreaming of our very own Little Free Library, so when we recently moved in to our new neighborhood, creating one was at the top of my to-do list! With our daughter beginning kindergarten, there seemed no better time to promote the love for reading.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "4276 KELLY FARM DR",
+    "City__c": "OTTAWA",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1T0A6",
+    "Id": "a06d000000b08emAAA"
+  },
+  {
+    "Library_Name__c": "Adina Kaufman #16311 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6712,
+      "longitude": -79.41641
+    },
+    "List_As_Name__c": "Adina Kaufman",
+    "Primary_Steward_s_Email__c": "adina_kaufman@hotmail.com",
+    "Official_Charter_Number__c": "16311",
+    "Library_Story__c": "We are a family that has always been passionate about reading and are avid users of the amazing Toronto Public Library system. I'm thrilled that my dad Ilia took my 40th birthday gift request seriously and built us this incredible library to share with our community. This library was a real family project - while my father was the chief designer and builder, everyone's been helping by donating books and our three nephews took charge of decorating the library and preparing it for its official ribbon cutting opening ceremony. Adina and Brad",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "848 Palmerston Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6G 2S1",
+    "Id": "a06d000000b08a6AAA"
+  },
+  {
+    "Library_Name__c": "chART Public Art Marpole #11134 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.2124168,
+      "longitude": -123.1405762
+    },
+    "List_As_Name__c": "chART Public Art Marpole",
+    "Primary_Steward_s_Email__c": "chart@ecuad.ca",
+    "Official_Charter_Number__c": "11134",
+    "Library_Story__c": "This little free library was designed by chART in collaboration with Bean Around the World. This unique sculpture/library is registered officially as part of the international movement at littlefreelibrary.org. The seed books, which are all on the theme of travel, were donated by Characters Book Store, a Marpole business that closed in 2012. The community is encouraged to borrow, take, or leave books when they visit the coffee shop.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "8099 Granville St",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6P 4Z5",
+    "Id": "a06d000000b08JVAAY"
+  },
+  {
+    "Library_Name__c": "OTTLFL - Featherston Drive ALTA VISTA #11145 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.38392,
+      "longitude": -75.65093
+    },
+    "List_As_Name__c": "OTTLFL - Featherston Drive ALTA VISTA",
+    "Primary_Steward_s_Email__c": "ottawalittlefreelibrary@gmail.com",
+    "Official_Charter_Number__c": "11145",
+    "Library_Story__c": "This little free library is located in Ottawa, Ontario Canada in the Alta Vista Neighbourhood. Jack Castell (helped by his mom Juliann) is the Steward of the LFL. Please see the LFL Blog at : http://ottawalittlefreeli.wix.com/featherston-drive or feel free to contact us at: ottawalittlefreelibrary@gmail.com",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "1621 Featherston Drive",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1H6P1",
+    "Id": "a06d000000b08JaAAI"
+  },
+  {
+    "Library_Name__c": "Rachel Beattie #14705 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67769,
+      "longitude": -79.45458
+    },
+    "List_As_Name__c": "Rachel Beattie",
+    "Official_Charter_Number__c": "14705",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "70 McRoberts Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6E4P4",
+    "Id": "a06d000000b08TuAAI"
+  },
+  {
+    "Library_Name__c": "GARY BOSOMWORTH #11677 VANCOUVER BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.28839,
+      "longitude": -123.05653
+    },
+    "List_As_Name__c": "GARY BOSOMWORTH",
+    "Primary_Steward_s_Email__c": "gary.bosomworth@gmail.com",
+    "Official_Charter_Number__c": "11677",
+    "Library_Story__c": "We hope to share the life long love of books that our parents sewed and nurtured within us with our friends and neighbours in Hastings Sunrise.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "NORTH NANAIMO STREET & McGILL STREET",
+    "City__c": "VANCOUVER",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V5L 4W7",
+    "Id": "a06d000000b08MSAAY"
+  },
+  {
+    "Library_Name__c": "Kristin Priede #11931 Scarborough ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.7795,
+      "longitude": -79.22696
+    },
+    "List_As_Name__c": "Kristin Priede",
+    "Primary_Steward_s_Email__c": "kristin_priede@hotmail.com",
+    "Official_Charter_Number__c": "11931",
+    "Library_Story__c": "The students and teachers from the Leacock Foundationâ??s Saturday Literacy Program at Woburn Jr. P.S. have opened a Little Free Library to be shared with their community. The box is located outside the schoolâ??s main entrance and is available for the entire neighbourhood with books for all ages. The childrenâ??s requests are that everyone who uses it, â??shares, has fun, takes care of the books, and gets knowledge from themâ??. Our Saturday Program is part of Leacockâ??s Triangle of Hope. The Foundation funds childrenâ??s programs with high needs schools in Toronto, Toronto Independent schools and schools in Eastern Cape, South Africa. Our connection to South Africa contributed to our programâ??s theme, Ubuntu, an African philosophy meaning â??I am, because we areâ??. Ubuntu was the start of our idea to open a library; it was a way for our students to share with the community and think of themselves less as individuals and more as a member of a larger community. Our programâ??s main academic focus is literacy, students from grade 1 to 6 spend the mornings improving their reading and writing all while having a lot of fun. Lastly, our primary studentsâ?? wanted to pass along this message, â??treat school like a family, treat it with respectâ??.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "40 Dormington Dr",
+    "City__c": "Scarborough",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1G 3N2",
+    "Id": "a06d000000b08NDAAY"
+  },
+  {
+    "Library_Name__c": "Ann McGill #1837 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66749,
+      "longitude": -79.32189
+    },
+    "List_As_Name__c": "Ann McGill",
+    "Official_Charter_Number__c": "1837",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "123 Woodfield Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4L 2W5",
+    "Id": "a06d000000b076IAAQ"
+  },
+  {
+    "Library_Name__c": "Geoff Hodgson #15843 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.773,
+      "longitude": -79.43473
+    },
+    "List_As_Name__c": "Geoff Hodgson",
+    "Primary_Steward_s_Email__c": "geoffhodgson@rogers.com",
+    "Official_Charter_Number__c": "15843",
+    "Library_Story__c": "Walking around downtown, saw one and fell in love with the concept. Built and installed the first one in sour area, and of course the design and colours had to ,mimic the house. Installed some solar garden lights for the \"customers\" during the long winter months, just for fun, because I always try and do things the hardest way possible. I really hope the community enjoys it, and we will try and add some adventure books!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "114 Bevdale REoad",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M2R 1L7",
+    "Id": "a06d000000b08Y0AAI"
+  },
+  {
+    "Library_Name__c": "Dominic Stones #15408 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.64623,
+      "longitude": -79.43569
+    },
+    "List_As_Name__c": "Dominic Stones",
+    "Primary_Steward_s_Email__c": "apisto@sympatico.ca",
+    "Official_Charter_Number__c": "15408",
+    "Library_Story__c": "I was inspired to make this library by seeing a wonderfully converted phonebox in the British village of Belbroughton. It took me a few years to find a rugged set of shelves to convert and weatherize. It's great to encourage reading and to see a sense of community develop around the library.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "Between 33 and 35 Delaney Crescent \nC/O 21 Delaney Crescent",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6K 1P9",
+    "Id": "a06d000000b08VpAAI"
+  },
+  {
+    "Library_Name__c": "Mark and Claire Huisman #10061 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68988,
+      "longitude": -79.29818
+    },
+    "List_As_Name__c": "Mark and Claire Huisman",
+    "Primary_Steward_s_Email__c": "claire@marchlightfilms.com",
+    "Official_Charter_Number__c": "10061",
+    "Library_Story__c": "My husband and I both love to read. As a gift, he registered and built our Little Free Library so we can share our love of books with our neighbours and friends. We are hoping, in our own small way, to help turn our busy street into a neighbourhood. The books you'll find in our library are fun, classic and eclectic.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "81 Coleman avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4C1P8",
+    "Id": "a06d000000b08DZAAY"
+  },
+  {
+    "Library_Name__c": "Melina Auerbach #10089 vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.28714,
+      "longitude": -123.04968
+    },
+    "Official_Charter_Number__c": "10089",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "225 North Slocan Street",
+    "City__c": "vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "v5k 3m4",
+    "Id": "a06d000000b08DkAAI"
+  },
+  {
+    "Library_Name__c": "Pearl Lamont #10151 Scarborough ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.74282,
+      "longitude": -79.20479
+    },
+    "List_As_Name__c": "Pearl Lamont",
+    "Official_Charter_Number__c": "10151",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "37 Sir Raymond Drive",
+    "City__c": "Scarborough",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1E 1C1",
+    "Id": "a06d000000b08E2AAI"
+  },
+  {
+    "Library_Name__c": "Gretel Meyer Odell #18597 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.64741,
+      "longitude": -79.43628
+    },
+    "List_As_Name__c": "Gretel Meyer Odell",
+    "Primary_Steward_s_Email__c": "gretel@meyerodell.com",
+    "Official_Charter_Number__c": "18597",
+    "Library_Story__c": "While our immediate neighbourhood already has three wonderful Little Free Libraries, I was concerned that there was not one of these magical boxes where kids could consistently count on finding a good read (as they are mainly full of adult reads). The Wyndham Street LF library specializes in children's books with a small shelf for adult reads on the top. Our front yard also has a lovely bench where readers can stop and enjoy a book or take their time to preview their read before taking it home.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "37 Wyndham Street",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6K1R8",
+    "Id": "a06d000000iBLyDAAW"
+  },
+  {
+    "Library_Name__c": "Lindsay Somers #14634 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.64734,
+      "longitude": -79.4334
+    },
+    "List_As_Name__c": "Lindsay Somers",
+    "Official_Charter_Number__c": "14634",
+    "Library_Story__c": "The Friends of McCormick Park, a collective of active neighbours in the Brockton Triangle Community, raised money for our Little Free Library through a \"Bake Sale for Books\" in 2013. The LFL is located in an area of our park with multiple benches and gorgeous, large rocks - a beautiful place to open a book! We are hoping this library is well loved by our community and just another reason for our neighbours to come out and enjoy McCormick Park.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "McCormick Park 66 Sheridan Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1P 4N7",
+    "Id": "a06d000000b07J8AAI"
+  },
+  {
+    "Library_Name__c": "Hilary Gray #5002 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68031,
+      "longitude": -79.32482
+    },
+    "List_As_Name__c": "Hilary Gray",
+    "Primary_Steward_s_Email__c": "hmckgray@gmail.com",
+    "Official_Charter_Number__c": "5002",
+    "Library_Story__c": "My brother, David McKinley, retired last year and I thought he might enjoy a \"project\"! He is a wonderful craftsman. So, he built the library (from scratch) and then his very talented wife, Jennifer McKinley, painted it (she had never worked with acrylic paints before). All of the images on the library represent flowers or insects that could be found in my garden. We are so thrilled to have it in our front yard and our children and community love it! Hilary & Peter Gray",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "127 Parkmount Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4J 4V3",
+    "Id": "a06d000000b077NAAQ"
+  },
+  {
+    "Library_Name__c": "Carol Bomke #5269 Vancouver B.C.",
+    "Library_Geolocation__c": {
+      "latitude": 49.24525,
+      "longitude": -123.10424
+    },
+    "List_As_Name__c": "Carol Bomke",
+    "Official_Charter_Number__c": "5269",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "4453 James Street",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "B.C.",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V5V 3H9",
+    "Id": "a06d000000b077UAAQ"
+  },
+  {
+    "Library_Name__c": "Sean Evans #8050 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66208,
+      "longitude": -79.44284
+    },
+    "List_As_Name__c": "Sean Evans",
+    "Primary_Steward_s_Email__c": "sean.evans@rogers.com",
+    "Official_Charter_Number__c": "8050",
+    "Library_Story__c": "Please use the story submitted in the original location from 230 rushton road. Toronto. \nWe are just moving.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "563 saint Clarens",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6h 3w6",
+    "Id": "a06d000000b07xBAAQ"
+  },
+  {
+    "Library_Name__c": "Kellie Diguangco #8963 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.269958,
+      "longitude": -123.133224
+    },
+    "List_As_Name__c": "Kellie Diguangco",
+    "Official_Charter_Number__c": "8963",
+    "Library_Story__c": "Little Free Library 8963 is located on Granville Island in beautiful British Columbia. Granville Island is a charming place where tourists and locals visit The Public Market, and it is home to two art schools as well studios to many artisans. Kellie Diguangco is a Literacy advocate, lover of children's books, imagination aficionado, instructor, and mom of 4. Kellie knew Granville Island would make a unique home for a Little Free Library and hopes to continue to spread the love of Literacy to children everywhere.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "Railspur Park",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6H 3S5",
+    "Id": "a06d000000b088yAAA"
+  },
+  {
+    "Library_Name__c": "Theresa Marion #12930 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.2777513,
+      "longitude": -123.1333049
+    },
+    "List_As_Name__c": "Theresa Marion",
+    "Primary_Steward_s_Email__c": "mavanc@gmail.com",
+    "Official_Charter_Number__c": "12930",
+    "Library_Story__c": "Located in front of Pacific Heights Housing Co-op at 1035 Pacific Street & Burrard, in Vancouver's West End, this Little Free Library was opened in 2014. It was made possible through a Greenest City Neighbourhood Small Grant administered through Gordon Neighbourhood House. www.facebook.com/phhc.lfl/",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "1035 Pacific Street",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6E 1S9",
+    "Id": "a06d000000b08QHAAY"
+  },
+  {
+    "Library_Name__c": "Irena Hrzina #9092 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65992,
+      "longitude": -79.43244
+    },
+    "List_As_Name__c": "Irena Hrzina",
+    "Official_Charter_Number__c": "9092",
+    "Library_Story__c": "This library was built by Barry Lambeck, who has another little library north of Hamilton, Ontario. Everyone in our neighbourhood seems to love it, and books come and go at a rapid pace.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "268 Havelock St.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6H 3B9",
+    "Id": "a06d000000b089PAAQ"
+  },
+  {
+    "Library_Name__c": "Adam Scime #9539 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66925,
+      "longitude": -79.41966
+    },
+    "List_As_Name__c": "Adam Scime",
+    "Official_Charter_Number__c": "9539",
+    "Library_Story__c": "Two dear friends, who love to read, decided to build a Little Free Library after seeing one of these magical boxes online. Over the course of the winter we painted and assembled the library and come the summer time, we put it in the ground! We had so much fun with this project!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "550 Clinton St",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6G 2Z6",
+    "Id": "a06d000000b08BNAAY"
+  },
+  {
+    "Library_Name__c": "chART Public Art Marpole #13509 Vancouver BC",
+    "Library_Geolocation__c": {
+      "latitude": 49.20702,
+      "longitude": -123.1346
+    },
+    "List_As_Name__c": "chART Public Art Marpole",
+    "Primary_Steward_s_Email__c": "chart@ecuad.ca",
+    "Official_Charter_Number__c": "13509",
+    "Library_Story__c": "This little free library was designed by chART in collaboration with Marpole Place Neighborhood House and Marpole Family Place and was created for their location at Hudson and 70th. Recent flood damage, however, has caused the organizations to temporarily relocate to St. Augustineâ??s. While this library still belongs to Marpole Place Neighborhood House and Marpole Family Place, it has been installed for the time being at St. Augustineâ??s for the neighborhood to enjoy. This uniquie sculpture/library is registered officially as part of the international movement at littlefreelibrary.org. The seed books, which are all on the theme of food, cooking, and gardening, were donated by Characters Book Store, a Marpole business that closed in 2012. The community is encouraged to borrow, take, or leave books when they visit the church. This little free library also has a built-in seating and a planter box. The planter houses a row of lavender and marks the location as part of the Vancouver Parks Departmentâ??s Pollinator Project.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "Hudson Street at 71st Ave.",
+    "City__c": "Vancouver",
+    "State_Province_Region__c": "BC",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "V6P 4M7",
+    "Id": "a06d000000b08REAAY"
+  },
+  {
+    "Library_Name__c": "Taya Cook #9239 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66287,
+      "longitude": -79.41886
+    },
+    "List_As_Name__c": "Taya Cook",
+    "Primary_Steward_s_Email__c": "gracelittlelibrary@hotmail.com",
+    "Official_Charter_Number__c": "9239",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "468 Grace Street",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6G3A9",
+    "Id": "a06d000000b089uAAA"
+  },
+  {
+    "Library_Name__c": "Jacques Mailloux #60529 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.37757,
+      "longitude": -75.7722
+    },
+    "List_As_Name__c": "Jacques Mailloux",
+    "Primary_Steward_s_Email__c": "jack-m@live.ca",
+    "Official_Charter_Number__c": "60529",
+    "Library_Story__c": "Started summer of 2017, this library has already attracted a lot of regular users. Stewards include Jacques, Dorothy, Thalia and Jackson.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "2125 Knightsbridge Road",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K2A0R1",
+    "Id": "a060W00000yS7qNQAS"
+  },
+  {
+    "Library_Name__c": "Krista Hurdon #39820 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67224,
+      "longitude": -79.46207
+    },
+    "Official_Charter_Number__c": "39820",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "64 Ford Street",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6N 3A1",
+    "Id": "a06d000000pXChTAAW"
+  },
+  {
+    "Library_Name__c": "Kirk Sullivan #42869 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.38995,
+      "longitude": -75.69112
+    },
+    "Official_Charter_Number__c": "42869",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "198 Hopewell Avenue",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1S 2Z5",
+    "Id": "a06d000000qV2A9AAK"
+  },
+  {
+    "Library_Name__c": "Ann Shisko #20198 Mississauga ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.5512293,
+      "longitude": -79.7419053
+    },
+    "List_As_Name__c": "Ann Shisko",
+    "Primary_Steward_s_Email__c": "littlefreelibrary@rtms.ca",
+    "Official_Charter_Number__c": "20198",
+    "Library_Story__c": "A whole school project, the Ruth Thompson Little Free Library aims to bring the community to the school and promote literacy for all. Designed and painted by students in the Arts Council, this colourful library is very popular with students, staff and community members.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "5605 Freshwater Dr.",
+    "City__c": "Mississauga",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "L5M7M8",
+    "Id": "a06d000000giaohAAA"
+  },
+  {
+    "Library_Name__c": "Aniko Szocs #19271 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.70342,
+      "longitude": -79.36336
+    },
+    "List_As_Name__c": "Aniko Szocs",
+    "Primary_Steward_s_Email__c": "aszocs@hotmail.com",
+    "Official_Charter_Number__c": "19271",
+    "Library_Story__c": "Our Little Free Library is located inside Millwood Melt, and we feature: titles written by Canadian authors, books about spiritual wellness, and a good selection of quality kids' books.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "902 Millwood Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4G 1X1",
+    "Id": "a06d000000gioIRAAY"
+  },
+  {
+    "Library_Name__c": "Mary Trant #20991 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67111,
+      "longitude": -79.31558
+    },
+    "Official_Charter_Number__c": "20991",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "76 Robbins Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4L 1X3",
+    "Id": "a06d000000giy8eAAA"
+  },
+  {
+    "Library_Name__c": "Jenny Horsman #17773 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65001,
+      "longitude": -79.44777
+    },
+    "List_As_Name__c": "Jenny Horsman",
+    "Primary_Steward_s_Email__c": "jenny@jennyhorsman.com",
+    "Official_Charter_Number__c": "17773",
+    "Library_Story__c": "This library is close to the sidewalk for everyone to spot as they go by. Kids often settle in on the bench to read and then return their books. The adult books turn around frequently - though I rarely see them arrive or leave! We've expanded recently to include videos and even the occasional puzzle!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "35 Parkway Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6R 1T6",
+    "Id": "a06d000000givOeAAI"
+  },
+  {
+    "Library_Name__c": "Juliana Morais #61011 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67666,
+      "longitude": -79.48023
+    },
+    "Primary_Steward_s_Email__c": "julie.morais@gmail.com",
+    "Official_Charter_Number__c": "61011",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "95 Spears Street",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6N 3X8",
+    "Id": "a060W00000ySDuoQAG"
+  },
+  {
+    "Library_Name__c": "Next To The Maple LFL #69430 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.7310299,
+      "longitude": -79.40693
+    },
+    "List_As_Name__c": "Next To The Maple LFL",
+    "Primary_Steward_s_Email__c": "krtcummings@gmail.com",
+    "Official_Charter_Number__c": "69430",
+    "Library_Story__c": "Our Little Free Library sits just outside our house by the big Maple tree. It is always fully stocked and it contains a wide selection of very current adult, young adult and children’s books. It has two lights inside so that you can peruse the books at night, as well. We want people to feel very welcome to check it out.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "99 St. Germain Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M5M1V9",
+    "Id": "a060W000012gLojQAE"
+  },
+  {
+    "Library_Name__c": "Stella Daskalakis #53696 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6953,
+      "longitude": -79.35316
+    },
+    "List_As_Name__c": "Stella Daskalakis",
+    "Primary_Steward_s_Email__c": "styliany@hotmail.com",
+    "Official_Charter_Number__c": "53696",
+    "Library_Story__c": "Our little dream of a library is up! The first one in our neighbourhood. \nIt sits in front of what the neighbours call \"the Martha Stewart house\". \nWe are excited to share the love of reading with friends and neighbours.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "86 Hopedale Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4K3M7",
+    "Id": "a060W00000yRi5jQAC"
+  },
+  {
+    "Library_Name__c": "Henning Library - Adult & Kids Section #69761 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.70677,
+      "longitude": -79.40195
+    },
+    "List_As_Name__c": "Henning Library - Adult & Kids Section",
+    "Official_Charter_Number__c": "69761",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "26 Henning Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4R 1X7",
+    "Id": "a060W000011tWdsQAE"
+  },
+  {
+    "Library_Name__c": "Samantha Sandell #41203 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67413,
+      "longitude": -79.43295
+    },
+    "Primary_Steward_s_Email__c": "samantha.ann.sandell@gmail.com",
+    "Official_Charter_Number__c": "41203",
+    "Library_Story__c": "A birthday gift from my lovely husband. Go hands free while you look the books because we've included a hook to leash your dog safely. Look forward to seeing you! Happy reading!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "609 Delaware Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6H2V3",
+    "Id": "a060W00000wKsw0QAC"
+  },
+  {
+    "Library_Name__c": "Jevin and Ashley #72357 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.44071,
+      "longitude": -75.6100699
+    },
+    "List_As_Name__c": "Jevin and Ashley",
+    "Primary_Steward_s_Email__c": "jevin@quickjack.ca",
+    "Official_Charter_Number__c": "72357",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "20 Appleford St.",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "k1j6t9",
+    "Id": "a060W0000115lX5QAI"
+  },
+  {
+    "Library_Name__c": "Lisa Clapperton #64127 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66608,
+      "longitude": -79.43886
+    },
+    "List_As_Name__c": "Lisa Clapperton",
+    "Primary_Steward_s_Email__c": "lisaclapperton@gmail.com",
+    "Official_Charter_Number__c": "64127",
+    "Library_Story__c": "I've wanted a Little Free Library for as long as I can remember!\nThis year my husband surprised me for my 40th birthday with a custom locally made (by Ian Lefebvre) library. Best gift ever.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "9 Lappin Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6H1Y3",
+    "Id": "a060W000010NLrVQAW"
+  },
+  {
+    "Library_Name__c": "Therese Edwards #18116 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68172,
+      "longitude": -79.28916
+    },
+    "Official_Charter_Number__c": "18116",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "46 Lawlor Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4E3L7",
+    "Id": "a06d000000nRLGcAAO"
+  },
+  {
+    "Library_Name__c": "Litlle Free Library for Kids #81918 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.71904,
+      "longitude": -79.43393
+    },
+    "List_As_Name__c": "Litlle Free Library for Kids",
+    "Official_Charter_Number__c": "81918",
+    "Library_Story__c": "This is a Little Free Library just for kids' books! Kids, parents and caregivers, please stop by and help yourself to a book, or leave a book for another child to enjoy!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "7 Kirkland Blvd.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6A 1E5",
+    "Id": "a060W0000162ntXQAQ"
+  },
+  {
+    "Library_Name__c": "StilecroftLFL #98017 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.75067,
+      "longitude": -79.49208
+    },
+    "List_As_Name__c": "StilecroftLFL",
+    "Official_Charter_Number__c": "98017",
+    "Library_Story__c": "A Little Free Library on Stilecroft Drive in North York, Ontario, Canada",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "35 Stilecroft Drive",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M3J 1A6",
+    "Id": "a060W000017bMm6QAE"
+  },
+  {
+    "Library_Name__c": "Judith Fricker #34032 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.71853,
+      "longitude": -79.52964
+    },
+    "List_As_Name__c": "Judith Fricker",
+    "Primary_Steward_s_Email__c": "jfricker7@gmail.com",
+    "Official_Charter_Number__c": "34032",
+    "Library_Story__c": "Our \"Little Free Library\" is located in the NW Toronto, on Jodphur Avenue. I just love this idea, and it's great for our street, which I think is a very socially active street in our neighbourhood! The \"Little Free Library\" is situated at the front of our \"wild\" and natural garden so now there are 2 reasons to stop and look!\n\nI also belong to a book club which meets monthly, so this fits right in with our group's interest: the sharing of books!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "28 Jodphur Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M9M2J4",
+    "Id": "a060W00000wNty2QAC"
+  },
+  {
+    "Library_Name__c": "Max Rosen #19272 East York ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.69393,
+      "longitude": -79.37093
+    },
+    "List_As_Name__c": "Max Rosen",
+    "Primary_Steward_s_Email__c": "mxrose182@gmail.com",
+    "Official_Charter_Number__c": "19272",
+    "Library_Story__c": "182 Bayview Heights Dr",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "182 Bayview Heights Dr",
+    "City__c": "East York",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4G 2Y9",
+    "Id": "a06d000000l32mVAAQ"
+  },
+  {
+    "Library_Name__c": "Nick Pengelley #38880 Mississauga ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.52111,
+      "longitude": -79.61411
+    },
+    "List_As_Name__c": "Nick Pengelley",
+    "Primary_Steward_s_Email__c": "nick.pengelley@gmail.com",
+    "Official_Charter_Number__c": "38880",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "1471 Petrie Way",
+    "City__c": "Mississauga",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "L5J3Z7",
+    "Id": "a06d000000ovt65AAA"
+  },
+  {
+    "Library_Name__c": "Gisèle Gordon #28349 Toronto",
+    "Library_Geolocation__c": {
+      "latitude": 43.64734,
+      "longitude": -79.42495
+    },
+    "Primary_Steward_s_Email__c": "gisele@urbanntion.com",
+    "Official_Charter_Number__c": "28349",
+    "Library_Story__c": "We are a family of artists who love books. We try to keep the bottom library shelf stocked for kids of all ages, and the top shelf for grown ups, but the selection changes with everyone's input, so it's always evolving. Our artist friend Fiona Smyth painted the library for us, turning it into a beautiful work of art.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "229 Lisgar St",
+    "City__c": "Toronto",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6J3G6",
+    "Id": "a06d000000iqTRKAA2"
+  },
+  {
+    "Library_Name__c": "David Reevely #31886 OTTAWA ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.39559,
+      "longitude": -75.69436
+    },
+    "List_As_Name__c": "David Reevely",
+    "Primary_Steward_s_Email__c": "david@reevely.ca",
+    "Official_Charter_Number__c": "31886",
+    "Library_Story__c": "The Glebe isn't short of books, but the more we can spread around, the better.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "135 Broadway Ave",
+    "City__c": "OTTAWA",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1S 2V7",
+    "Id": "a06d000000jyzOVAAY"
+  },
+  {
+    "Library_Name__c": "Ryan Penn #26256 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66341,
+      "longitude": -79.4141099
+    },
+    "List_As_Name__c": "Ryan Penn",
+    "Primary_Steward_s_Email__c": "ryan@penn.ca",
+    "Official_Charter_Number__c": "26256",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "663 Euclid Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6G2T8",
+    "Id": "a06d000000hN7daAAC"
+  },
+  {
+    "Library_Name__c": "Lara Bafaro #36375 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.75387,
+      "longitude": -79.41779
+    },
+    "Official_Charter_Number__c": "36375",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "54 Stuart Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M2N 1B3",
+    "Id": "a06d000000mZisAAAS"
+  },
+  {
+    "Library_Name__c": "\"Anna\" by Fellowship Church #81332 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.64054,
+      "longitude": -79.58145
+    },
+    "List_As_Name__c": "\"Anna\" by Fellowship Church",
+    "Official_Charter_Number__c": "81332",
+    "Library_Story__c": "Our library is named for Anna, the dear sister in the Netherlands of the man who designed and built this library. This library is for the use and enjoyment of the neighbourhood. It contains good books for adults and children alike. It is located on a large green space, and next to a bus stop for both Toronto and Mississauga transit.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "800 Burnhamthorpe Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M9C 2Z3",
+    "Id": "a060W000012fyNiQAI"
+  },
+  {
+    "Library_Name__c": "Susan Daly #21202 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68736,
+      "longitude": -79.27519
+    },
+    "List_As_Name__c": "Susan Daly",
+    "Official_Charter_Number__c": "21202",
+    "Library_Story__c": "My sweetie surprised me at Christmas with a Little Free Library, made entirely from spare parts in his basement. And for my birthday, he installed it. We're now open for business, and as we were putting it up, at least 5 neighbours came by to express their delight.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "Queensbury Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1N 2X8",
+    "Id": "a06d000000hNpdvAAC"
+  },
+  {
+    "Library_Name__c": "Katrina Kilroy #11401 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66061,
+      "longitude": -79.45584
+    },
+    "List_As_Name__c": "Katrina Kilroy",
+    "Official_Charter_Number__c": "11401",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "20 Abbott Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6P 1H4",
+    "Id": "a06d000000jzy7BAAQ"
+  },
+  {
+    "Library_Name__c": "Amy Mazur #57718 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.71287,
+      "longitude": -79.29733
+    },
+    "Official_Charter_Number__c": "57718",
+    "Library_Story__c": "This little free library was created by MommysLuckyPenny. \nI am 27 years old and last summer welcomed my first child, a daughter. I always loved seeing the little free libraries all over my city, especially in the beaches. After I had my daughter I had a little more craft time on my hands because of maternity leave so with her help I decided to build my own little Free Library. I've really enjoy watching the child in my neighborhood visit the library and exchange their own books. Big hit so far.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "1299 Victoria Park Ave.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4B2K9",
+    "Id": "a060W00000xAttGQAS"
+  },
+  {
+    "Library_Name__c": "Beth Driscoll #15999 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.65772,
+      "longitude": -79.4301799
+    },
+    "Primary_Steward_s_Email__c": "duncan.reith@sympatico.ca",
+    "Official_Charter_Number__c": "15999",
+    "Library_Story__c": "Our little free library was a birthday gift from our entire family to Beth who has had a life long love of reading and has admired and enjoyed all the other little free libraries in our neighbourhood. Beyond sharing our family's love of books and reading, it has been amazing to see the participation from the neighbourhood and to meet so many new people.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "256 Rusholme Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6H 2Y8",
+    "Id": "a06d000000iqiOpAAI"
+  },
+  {
+    "Library_Name__c": "Catherine Chan #21885 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68208,
+      "longitude": -79.39458
+    },
+    "Official_Charter_Number__c": "21885",
+    "Library_Story__c": "After our first son was born, we wanted to foster a love of reading with him. We stumbled upon the Little Free Library and acquired one before his 1st birthday. Since we were moving, we did not put it up immediately. Now our son is turning 4 and his younger brother just turned 2, we finally have the Library erected outside our home. We can’t wait to see the books that will be left there and imagine the people’s stories unfold.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "65 Walker Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4V1G3",
+    "Id": "a060W00000zaBtJQAU"
+  },
+  {
+    "Library_Name__c": "Manor Park Community Council #44371 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.4503419,
+      "longitude": -75.6577567
+    },
+    "List_As_Name__c": "Manor Park Community Council",
+    "Primary_Steward_s_Email__c": "mpcc@manorpark.ca",
+    "Official_Charter_Number__c": "44371",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "100 Thornwood Road",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1K 4Y1",
+    "Id": "a06d000000qxeaPAAQ"
+  },
+  {
+    "Library_Name__c": "Mary Lou Burt #79011 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6985699,
+      "longitude": -79.32237
+    },
+    "Official_Charter_Number__c": "79011",
+    "Library_Story__c": "Would like to encourage reading to all my neighbours. My grandchildren love coming to the library to see what is new. It's a terrific way to meet your neighbours.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "42 Norlong Blvd",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4c3w7",
+    "Id": "a060W000012CsYtQAK"
+  },
+  {
+    "Library_Name__c": "Vital Planet Health Shop #43416 toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6017277,
+      "longitude": -79.5002582
+    },
+    "List_As_Name__c": "Vital Planet Health Shop",
+    "Official_Charter_Number__c": "43416",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "2789 Lake Shore Blvd W",
+    "City__c": "toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "m8v 1H4",
+    "Id": "a06d000000qxef8AAA"
+  },
+  {
+    "Library_Name__c": "Joan Moore #17856 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6319604,
+      "longitude": -79.3556845
+    },
+    "List_As_Name__c": "Joan Moore",
+    "Primary_Steward_s_Email__c": "jamooresk8@yahoo.ca",
+    "Official_Charter_Number__c": "17856",
+    "Library_Story__c": "The Library was my birthday present from my husband",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "24 Fifth Street, Ward's Island",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "m5j 2b9",
+    "Id": "a06d000000pXoiFAAS"
+  },
+  {
+    "Library_Name__c": "Patricia Broadbent #0779 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68311,
+      "longitude": -79.29607
+    },
+    "Official_Charter_Number__c": "0779",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "98 Swanwick Ave",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4E 1Z9",
+    "Id": "a06d000000bUpztAAC"
+  },
+  {
+    "Library_Name__c": "Cynthia Barrett #6997 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67461,
+      "longitude": -79.28316
+    },
+    "List_As_Name__c": "Cynthia Barrett",
+    "Official_Charter_Number__c": "6997",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "21 Kingswood Road",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4E 3N4",
+    "Id": "a06d000000bUqkAAAS"
+  },
+  {
+    "Library_Name__c": "Erika Wice #35349 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.71228,
+      "longitude": -79.29075
+    },
+    "List_As_Name__c": "Erika Wice",
+    "Primary_Steward_s_Email__c": "erikawice1@gmail.com",
+    "Official_Charter_Number__c": "35349",
+    "Library_Story__c": "I had come across a little free library while pursuing my my other passion, Geocaching (I also have a cache hidden on the the street) and decided a little free library was just what I needed. \nMany of my friends and I read a great deal and this is an excellent way to pass our books out to other people. \nMy grandmother also passed away in July of this year and she was a big reader. I have completed this library in her memory and it is dedicated to her, Marion; mysteries were her favourites :)",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "8 Rosita Cres.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M1L 1X8",
+    "Id": "a06d000000mFIv5AAG"
+  },
+  {
+    "Library_Name__c": "Susan Rogers #42641 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66339,
+      "longitude": -79.48418
+    },
+    "List_As_Name__c": "Susan Rogers",
+    "Primary_Steward_s_Email__c": "susanjrogers@sympatico.ca",
+    "Official_Charter_Number__c": "42641",
+    "Library_Story__c": "This beautiful library was a gift from my best friend Lynne Watts. It was handcrafted and designed by her husband Rick Watts. I am from St John's NF and the the design represents the colourful row houses from there. Our family are avid readers and my mother is a retired librarian. The library was erected early August 2016 and it has brought much joy. The collection includes both children and adult books and it changes daily.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "666 Durie St",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6S 3H3",
+    "Id": "a06d000000qxVD2AAM"
+  },
+  {
+    "Library_Name__c": "Carol Friesen #52547 North York ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.74189,
+      "longitude": -79.32437
+    },
+    "Official_Charter_Number__c": "52547",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "35 Roanoke Rd",
+    "City__c": "North York",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M3A 1G1",
+    "Id": "a060W00000wL6bKQAS"
+  },
+  {
+    "Library_Name__c": "Edina St Library #71568 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.39094,
+      "longitude": -75.73453
+    },
+    "List_As_Name__c": "Edina St Library",
+    "Official_Charter_Number__c": "71568",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "32 Edina St.",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1Y 3N9",
+    "Id": "a060W000012CerEQAS"
+  },
+  {
+    "Library_Name__c": "Mitzi Reinsilber #28527 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.69705,
+      "longitude": -79.43813
+    },
+    "List_As_Name__c": "Mitzi Reinsilber",
+    "Primary_Steward_s_Email__c": "atlasavelfl@gmail.com",
+    "Official_Charter_Number__c": "28527",
+    "Library_Story__c": "Atlas Avenue Little Free Library\r\n\r\nCheck us out and LIKE us on Facebook :\r\n\r\nhttps://www.facebook.com/pages/Atlas-Avenue-Little-Free-Library/1637503209864787",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "548 Atlas Ave.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6C 3R6",
+    "Id": "a06d000000i9nIZAAY"
+  },
+  {
+    "Library_Name__c": "Alex TheGreatandPowerful #34767 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6773499,
+      "longitude": -79.42331
+    },
+    "List_As_Name__c": "Alex TheGreatandPowerful",
+    "Official_Charter_Number__c": "34767",
+    "Library_Story__c": "Voila our library: maison des livres, is bilingual; n’est pas formidable ça ? English/French books galore/ à gogo! We LOVE reading, you'll find great literature, good reads, teen books or children's books. But no drug store paperbacks, computer manuals/old school text books! We take those to the thrift store for you - because only great/fun reading goes on chez nous! Drop by to find/leave/share special books; livres en Français en particulier. Qu'est-ce que tu attends? Jetez un coup d’oeil!",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "112 Braemore Gardens",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6G2C8",
+    "Id": "a06d000000pYJNkAAO"
+  },
+  {
+    "Library_Name__c": "Stephanie Fell #14643 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.68347,
+      "longitude": -79.3361199
+    },
+    "Official_Charter_Number__c": "14643",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "84 Caithness Avenue, front yard",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4J 3Y1",
+    "Id": "a06d000000eA5J8AAK"
+  },
+  {
+    "Library_Name__c": "Shannon Broughton #18177 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.6995888,
+      "longitude": -79.3720132
+    },
+    "Official_Charter_Number__c": "18177",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "21 Airdrie Rd.",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4G 1M8",
+    "Id": "a06d000000eA5UVAA0"
+  },
+  {
+    "Library_Name__c": "Anna-Louise Pentland #29683 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.4032,
+      "longitude": -75.67806
+    },
+    "Official_Charter_Number__c": "29683",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "13 Bower Street",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1S 0J9",
+    "Id": "a06d000000owIJaAAM"
+  },
+  {
+    "Library_Name__c": "Tanya Ruppell #15913 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.347,
+      "longitude": -75.78251
+    },
+    "List_As_Name__c": "Tanya Ruppell",
+    "Primary_Steward_s_Email__c": "tanyasparty2001@yahoo.ca",
+    "Official_Charter_Number__c": "15913",
+    "Library_Story__c": "Literacy has the power to improve lives of individuals, who then have the power to raise up society in general. Community has the power to accomplish tasks that could never be done alone. Literacy and community make for a better world for us all. That's why this library came to be.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "2423 Ryan Dr",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K2C1K9",
+    "Id": "a06d000000owIJzAAM"
+  },
+  {
+    "Library_Name__c": "Zoe Davidson #17032 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.67076,
+      "longitude": -79.33159
+    },
+    "Official_Charter_Number__c": "17032",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "247 Hastings Avenue",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M4L 2L9",
+    "Id": "a06d000000eA5MSAA0"
+  },
+  {
+    "Library_Name__c": "Greg & Maryn Santos #15123 Montreal Quebec",
+    "Library_Geolocation__c": {
+      "latitude": 45.46888,
+      "longitude": -73.61796
+    },
+    "Primary_Steward_s_Email__c": "marynstockman@hotmail.com",
+    "Official_Charter_Number__c": "15123",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": true,
+    "Street__c": "2353 av. de Clifton",
+    "City__c": "Montreal",
+    "State_Province_Region__c": "Quebec",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "H4A 2N5",
+    "Id": "a06d000000eA5MTAA0"
+  },
+  {
+    "Library_Name__c": "Siobhan NiLoughlin #19082 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.64626,
+      "longitude": -79.43546
+    },
+    "Official_Charter_Number__c": "19082",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "25 Delaney Crescent",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6K 1P9",
+    "Id": "a06d000000eA5LMAA0"
+  },
+  {
+    "Library_Name__c": "Julie Hamilton #42873 Ottawa ON",
+    "Library_Geolocation__c": {
+      "latitude": 45.31564,
+      "longitude": -75.61297
+    },
+    "Official_Charter_Number__c": "42873",
+    "Library_Story__c": "A little bit of everything. Come check us out.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "704 Willowburn St",
+    "City__c": "Ottawa",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "K1T 0J2",
+    "Id": "a06d000000rqV4gAAE"
+  },
+  {
+    "Library_Name__c": "Paige Rice #24076 Toronto ON",
+    "Library_Geolocation__c": {
+      "latitude": 43.66134,
+      "longitude": -79.4950999
+    },
+    "Official_Charter_Number__c": "24076",
+    "Library_Story__c": "We wanted to share our love of books and the love of reading with the community. Our project took about 4 weekends to build from both recycled & new materials. We opened our library on May 16, 2015, and have enjoyed quite a good turnover of books.",
+    "Exact_Location_on_Map__c": true,
+    "Email_on_Map__c": false,
+    "Street__c": "15 Magwood Court",
+    "City__c": "Toronto",
+    "State_Province_Region__c": "ON",
+    "Country__c": "Canada",
+    "Postal_Zip_Code__c": "M6S2M4",
+    "Id": "a06d000000hOmC5AAK"
+  }
+]

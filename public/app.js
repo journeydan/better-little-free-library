@@ -636,28 +636,46 @@
       </g>
     `;
 
-    const pinsHtml = visibleBoxes
+    const showAllLabels = visibleBoxes.length <= 25;
+    const orderedPins = [...visibleBoxes].sort((a, b) => {
+      const aSel = a.id === state.selectedBoxId ? 2 : a.available_count > 0 ? 1 : 0;
+      const bSel = b.id === state.selectedBoxId ? 2 : b.available_count > 0 ? 1 : 0;
+      return aSel - bSel;
+    });
+
+    const pinsHtml = orderedPins
       .map((box) => {
         const pt = proj.project(box.lat, box.lng);
         const selected = box.id === state.selectedBoxId;
         const roof = box.roof_color || "#C85A32";
+        const showLabel = selected || box.available_count > 0 || showAllLabels;
+        const pinScale = selected ? 1.18 : showAllLabels || box.available_count > 0 ? 0.96 : 0.72;
         return `
           <g class="map-pin-group" data-box-id="${box.id}" transform="translate(${pt.x}, ${pt.y})">
+            <title>${escapeHtml(box.name)} · ${escapeHtml(box.address)} (${box.available_count} available)</title>
             ${selected ? `<circle cx="0" cy="-12" r="34" fill="#D96B43" opacity="0.22" />` : ""}
-            <ellipse cx="0" cy="4" rx="14" ry="5" fill="rgba(0,0,0,0.22)" />
-            <g transform="scale(${selected ? 1.18 : 1})">
+            <ellipse cx="0" cy="4" rx="12" ry="4" fill="rgba(0,0,0,0.2)" />
+            <g transform="scale(${pinScale})">
               <rect x="-15" y="-22" width="30" height="23" rx="3" fill="#FAF6F0" stroke="#3E2B1D" stroke-width="2.2" />
               <path d="M -20 -20 L 0 -37 L 20 -20 Z" fill="${escapeHtml(roof)}" stroke="#3E2B1D" stroke-width="2" stroke-linejoin="round" />
               <rect x="-9" y="-17" width="5" height="13" rx="1" fill="#2D5A43" />
               <rect x="-2" y="-18" width="5" height="14" rx="1" fill="#D96B43" />
               <rect x="5" y="-16" width="5" height="12" rx="1" fill="#3D6B8E" />
-              <circle cx="17" cy="-29" r="11" fill="${selected ? "#D96B43" : "#2D5A43"}" stroke="#FFFFFF" stroke-width="2" />
-              <text x="17" y="-25" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">${box.available_count}</text>
+              ${
+                box.available_count > 0 || selected
+                  ? `<circle cx="17" cy="-29" r="11" fill="${selected ? "#D96B43" : "#2D5A43"}" stroke="#FFFFFF" stroke-width="2" />
+                     <text x="17" y="-25" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">${box.available_count}</text>`
+                  : ""
+              }
             </g>
-            <rect x="-74" y="10" width="148" height="20" rx="10" fill="rgba(255,255,255,0.94)" stroke="${selected ? "#D96B43" : "#D9CEBE"}" stroke-width="1.2" />
-            <text x="0" y="24" text-anchor="middle" fill="#241E19" font-size="11" font-weight="700">
-              ${escapeHtml(box.name.length > 21 ? box.name.slice(0, 19) + "…" : box.name)}
-            </text>
+            ${
+              showLabel
+                ? `<rect x="-74" y="10" width="148" height="20" rx="10" fill="rgba(255,255,255,0.94)" stroke="${selected ? "#D96B43" : "#D9CEBE"}" stroke-width="1.2" />
+                   <text x="0" y="24" text-anchor="middle" fill="#241E19" font-size="11" font-weight="700">
+                     ${escapeHtml(box.name.length > 21 ? box.name.slice(0, 19) + "…" : box.name)}
+                   </text>`
+                : ""
+            }
           </g>
         `;
       })
@@ -1462,51 +1480,51 @@
       renderMapView();
     });
 
-    // LFL Import Modal
+    // LFL Import Modal (Real registered records from Official LFL Canada snapshot)
     const SAMPLE_OFFICIAL_LFL_EXPORT = [
       {
-        Library_Name__c: "Summit Hill Little Library",
-        Official_Charter_Number__c: "42108",
-        Street__c: "742 Summit Ave",
-        City__c: "St. Paul",
-        State_Province__c: "MN",
-        Postal_Code__c: "55105",
-        Library_Geolocation__c: { latitude: 44.9412, longitude: -93.1315 },
-        Primary_Steward_s_Name__c: "Claire Novak",
-        Library_Story__c: "Historic brownstone-style Little Free Library near the Summit Ave overlook.",
+        Id: "a060W000013xCzdQAE",
+        Library_Name__c: "Tardis #91578 Ottawa ON",
+        Official_Charter_Number__c: "91578",
+        Street__c: "1829 Elmridge Dr.",
+        City__c: "Ottawa",
+        State_Province_Region__c: "ON",
+        Postal_Zip_Code__c: "K1J 6R8",
+        Library_Geolocation__c: { latitude: 45.44208, longitude: -75.60426 },
+        Library_Story__c: "Our library pays homage to the British SF show, \"Doctor Who\". A book is like the Tardis. It is bigger on the inside and able to transport you through Time and Space.",
       },
       {
-        Library_Name__c: "Lake Harriet Windmill Box",
-        Official_Charter_Number__c: "18490",
-        Street__c: "4135 W Lake Harriet Pkwy",
-        City__c: "Minneapolis",
-        State_Province__c: "MN",
-        Postal_Code__c: "55409",
-        Library_Geolocation__c: { latitude: 44.9228, longitude: -93.3084 },
-        Primary_Steward_s_Name__c: "Owen Lindqvist",
-        Library_Story__c: "Stocked daily with Twin Cities fiction, children's picture books, and nature guides.",
+        Id: "a060W00000yTeAYQA0",
+        Library_Name__c: "Roshell and Nadya Bissett #54545 Ottawa ON",
+        Official_Charter_Number__c: "54545",
+        Street__c: "103-160 Argyle Avenue",
+        City__c: "Ottawa",
+        State_Province_Region__c: "ON",
+        Postal_Zip_Code__c: "K2P 0N2",
+        Library_Geolocation__c: { latitude: 45.4118659, longitude: -75.6888471 },
+        Library_Story__c: "Child-friendly little free library on the corner of Argyle Ave & Metcalfe.",
       },
       {
-        Library_Name__c: "Minnehaha Falls Cedar Post",
-        Official_Charter_Number__c: "63512",
-        Street__c: "4801 S Minnehaha Park Dr",
-        City__c: "Minneapolis",
-        State_Province__c: "MN",
-        Postal_Code__c: "55417",
-        Library_Geolocation__c: { latitude: 44.9153, longitude: -93.2110 },
-        Primary_Steward_s_Name__c: "Maya Hernandez",
-        Library_Story__c: "Trailside box welcoming park visitors with rotating paperbacks.",
+        Id: "a060W000013uAwFQAU",
+        Library_Name__c: "Roxies Reads #86493 Vancouver BC",
+        Official_Charter_Number__c: "86493",
+        Street__c: "3205 West King Edward Ave",
+        City__c: "Vancouver",
+        State_Province_Region__c: "BC",
+        Postal_Zip_Code__c: "V6L 1V6",
+        Library_Geolocation__c: { latitude: 49.25036, longitude: -123.17595 },
+        Library_Story__c: "Please feel free to take books without dropping off or place some to share. Happy Reading!",
       },
       {
-        Library_Name__c: "Cathedral Hill Reading Cottage",
-        Official_Charter_Number__c: "29405",
-        Street__c: "321 Selby Ave",
-        City__c: "St. Paul",
-        State_Province__c: "MN",
-        Postal_Code__c: "55102",
-        Library_Geolocation__c: { latitude: 44.9465, longitude: -93.1142 },
-        Primary_Steward_s_Name__c: "David Park",
-        Library_Story__c: "Neighborhood mystery and poetry swap box.",
+        Id: "a060W000010IDXEQA4",
+        Library_Name__c: "Jamie Girouard #69912 Vancouver BC",
+        Official_Charter_Number__c: "69912",
+        Street__c: "2294 West 10th Ave",
+        City__c: "Vancouver",
+        State_Province_Region__c: "BC",
+        Postal_Zip_Code__c: "V6K 2H8",
+        Library_Geolocation__c: { latitude: 49.2626599, longitude: -123.15728 },
+        Library_Story__c: "We created our first Little Library as a high school shop project.",
       },
     ];
 
