@@ -41,6 +41,8 @@
     selectedBoxId: null,
     activeRegion: "",
     mapCenter: { lat: 43.6629, lng: -79.3957, label: "Toronto, ON" },
+    mapZoom: 12,
+    userLocation: null,
     placingBoxMode: false,
     pendingNewBoxCoords: { lat: 43.6629, lng: -79.3957 },
     mapViewBox: { x: 0, y: 0, w: 1000, h: 720 },
@@ -124,7 +126,8 @@
     if (!state.activeRegion && state.boxes.length > 0) {
       const b0 = state.boxes[0];
       state.activeRegion = getBoxRegionLabel(b0);
-      state.mapCenter = { lat: b0.lat, lng: b0.lng, label: state.activeRegion };
+      const regionBoxes = state.boxes.filter((b) => getBoxRegionLabel(b) === state.activeRegion);
+      fitMapToBoxes(regionBoxes.length ? regionBoxes : [b0]);
     }
 
     renderAll();
@@ -168,6 +171,7 @@
     if (target) {
       state.activeRegion = getBoxRegionLabel(target);
       state.mapCenter = { lat: target.lat, lng: target.lng, label: state.activeRegion };
+      state.mapZoom = Math.max(state.mapZoom || 12, 15);
       state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
     }
     switchView("map");
@@ -456,15 +460,12 @@
   // --- Render Interactive Map View ---
   function getVisibleMapBoxes() {
     if (!state.boxes.length) return [];
-    if (state.activeRegion) {
-      const matched = state.boxes.filter((b) => getBoxRegionLabel(b) === state.activeRegion);
-      if (matched.length > 0) return matched;
-    }
-    const cLat = state.mapCenter?.lat ?? 43.6629;
-    const cLng = state.mapCenter?.lng ?? -79.3957;
-    return state.boxes.filter(
-      (b) => Math.abs(b.lat - cLat) <= 0.35 && Math.abs(b.lng - cLng) <= 0.45
-    );
+    const proj = getGeoProjection();
+    return state.boxes.filter((b) => {
+      if (b.id === state.selectedBoxId) return true;
+      const pt = proj.project(b.lat, b.lng);
+      return pt.x >= -120 && pt.x <= 1120 && pt.y >= -120 && pt.y <= 840;
+    });
   }
 
   function lngToWorldX(lng, z) {
@@ -486,8 +487,8 @@
     return (180 / Math.PI) * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)));
   }
 
-  function getGeoProjection(visibleBoxes) {
-    const pts = visibleBoxes.length ? visibleBoxes : [{ lat: state.mapCenter.lat, lng: state.mapCenter.lng }];
+  function fitMapToBoxes(boxes) {
+    const pts = boxes && boxes.length ? boxes : [{ lat: state.mapCenter?.lat ?? 43.6629, lng: state.mapCenter?.lng ?? -79.3957 }];
     let minLat = Infinity;
     let maxLat = -Infinity;
     let minLng = Infinity;
@@ -500,7 +501,6 @@
     }
     const centerLat = (minLat + maxLat) / 2;
     const centerLng = (minLng + maxLng) / 2;
-
     let zoom = 14;
     if (pts.length > 1) {
       zoom = 11;
@@ -513,6 +513,18 @@
         }
       }
     }
+    state.mapCenter = {
+      lat: centerLat,
+      lng: centerLng,
+      label: state.activeRegion || state.mapCenter?.label || "Toronto, ON",
+    };
+    state.mapZoom = zoom;
+  }
+
+  function getGeoProjection() {
+    const centerLat = Number.isFinite(state.mapCenter?.lat) ? state.mapCenter.lat : 43.6629;
+    const centerLng = Number.isFinite(state.mapCenter?.lng) ? state.mapCenter.lng : -79.3957;
+    const zoom = Math.max(4, Math.min(18, Math.round(state.mapZoom || 12)));
 
     const centerWx = lngToWorldX(centerLng, zoom);
     const centerWy = latToWorldY(centerLat, zoom);
@@ -575,11 +587,9 @@
 
   function renderMapSvg() {
     const svg = document.getElementById("neighborhoodMapSvg");
-    const vb = state.mapViewBox;
-    svg.setAttribute("viewBox", `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
+    svg.setAttribute("viewBox", "0 0 1000 720");
 
-    const visibleBoxes = getVisibleMapBoxes();
-    const proj = getGeoProjection(visibleBoxes);
+    const proj = getGeoProjection();
     state.lastGeoProjection = proj;
 
     const z = proj.zoom;
@@ -599,10 +609,12 @@
       }
     }
 
-    // 1 km scale bar width in Web Mercator px
+    // Dynamic metric scale bar in Web Mercator px
     const metersPerPx = (156543.03392 * Math.cos((proj.centerLat * Math.PI) / 180)) / Math.pow(2, z);
-    const kmPx = Math.max(40, Math.min(260, 1000 / Math.max(0.1, metersPerPx)));
-    const regionTitle = state.activeRegion || state.mapCenter?.label || "Little Free Library Map";
+    const scaleMeters = z <= 11 ? 5000 : z <= 13 ? 2000 : z === 14 ? 1000 : z === 15 ? 500 : 200;
+    const scaleLabel = scaleMeters >= 1000 ? `${scaleMeters / 1000} km` : `${scaleMeters} m`;
+    const kmPx = Math.max(40, Math.min(260, scaleMeters / Math.max(0.05, metersPerPx)));
+    const regionTitle = state.mapCenter?.label || state.activeRegion || "Little Free Library Map";
 
     const staticBackdrop = `
       <defs>
@@ -619,14 +631,14 @@
 
       <!-- Subtle Region Badge + Scale Bar + Compass -->
       <g transform="translate(18, 16)">
-        <rect x="0" y="0" width="${Math.max(150, regionTitle.length * 8.5 + 24)}" height="28" rx="14" fill="rgba(255,255,255,0.92)" stroke="#D9CEBE" />
+        <rect x="0" y="0" width="${Math.max(150, regionTitle.length * 8.5 + 32)}" height="28" rx="14" fill="rgba(255,255,255,0.92)" stroke="#D9CEBE" />
         <text x="12" y="18" fill="#214432" font-size="12" font-weight="700">${escapeHtml(regionTitle)} · z${z}</text>
       </g>
 
       <g transform="translate(24, 678)">
         <rect x="-8" y="-22" width="${kmPx + 24}" height="34" rx="8" fill="rgba(255,255,255,0.9)" stroke="#D9CEBE" />
         <path d="M 0 0 L 0 -6 M ${kmPx} 0 L ${kmPx} -6 M 0 -3 L ${kmPx} -3" stroke="#2D5A43" stroke-width="2.5" fill="none" />
-        <text x="${kmPx / 2}" y="-9" text-anchor="middle" fill="#241E19" font-size="11" font-weight="700">1 km</text>
+        <text x="${kmPx / 2}" y="-9" text-anchor="middle" fill="#241E19" font-size="11" font-weight="700">${scaleLabel}</text>
       </g>
 
       <g transform="translate(955, 675)">
@@ -636,20 +648,27 @@
       </g>
     `;
 
-    const showAllLabels = visibleBoxes.length <= 25;
-    const orderedPins = [...visibleBoxes].sort((a, b) => {
-      const aSel = a.id === state.selectedBoxId ? 2 : a.available_count > 0 ? 1 : 0;
-      const bSel = b.id === state.selectedBoxId ? 2 : b.available_count > 0 ? 1 : 0;
+    const visibleEntries = [];
+    for (const box of state.boxes) {
+      const pt = proj.project(box.lat, box.lng);
+      const selected = box.id === state.selectedBoxId;
+      if (pt.x >= -120 && pt.x <= 1120 && pt.y >= -120 && pt.y <= 840) {
+        visibleEntries.push({ box, pt, selected });
+      }
+    }
+
+    const showAllLabels = visibleEntries.length <= 25 || z >= 15;
+    visibleEntries.sort((a, b) => {
+      const aSel = a.selected ? 2 : a.box.available_count > 0 ? 1 : 0;
+      const bSel = b.selected ? 2 : b.box.available_count > 0 ? 1 : 0;
       return aSel - bSel;
     });
 
-    const pinsHtml = orderedPins
-      .map((box) => {
-        const pt = proj.project(box.lat, box.lng);
-        const selected = box.id === state.selectedBoxId;
+    const pinsHtml = visibleEntries
+      .map(({ box, pt, selected }) => {
         const roof = box.roof_color || "#C85A32";
         const showLabel = selected || box.available_count > 0 || showAllLabels;
-        const pinScale = selected ? 1.18 : showAllLabels || box.available_count > 0 ? 0.96 : 0.72;
+        const pinScale = selected ? 1.18 : z >= 15 || showAllLabels || box.available_count > 0 ? 0.96 : 0.76;
         return `
           <g class="map-pin-group" data-box-id="${box.id}" transform="translate(${pt.x}, ${pt.y})">
             <title>${escapeHtml(box.name)} · ${escapeHtml(box.address)} (${box.available_count} available)</title>
@@ -681,7 +700,24 @@
       })
       .join("");
 
-    svg.innerHTML = staticBackdrop + pinsHtml;
+    let userPinHtml = "";
+    if (state.userLocation && Number.isFinite(state.userLocation.lat) && Number.isFinite(state.userLocation.lng)) {
+      const upt = proj.project(state.userLocation.lat, state.userLocation.lng);
+      if (upt.x >= -100 && upt.x <= 1100 && upt.y >= -100 && upt.y <= 820) {
+        const userLabel = state.userLocation.label ? `You (${state.userLocation.label})` : "You Are Here";
+        userPinHtml = `
+          <g class="user-location-marker" transform="translate(${upt.x}, ${upt.y})">
+            <title>${escapeHtml(userLabel)}</title>
+            <circle cx="0" cy="0" r="22" fill="#0EA5E9" opacity="0.22" />
+            <circle cx="0" cy="0" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="3" />
+            <rect x="-52" y="13" width="104" height="20" rx="10" fill="rgba(2,132,199,0.95)" stroke="#FFFFFF" stroke-width="1.5" />
+            <text x="0" y="27" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">You Are Here</text>
+          </g>
+        `;
+      }
+    }
+
+    svg.innerHTML = staticBackdrop + pinsHtml + userPinHtml;
   }
 
   function renderMapDrawer() {
@@ -790,22 +826,41 @@
   }
 
   // --- Map Pan / Zoom & Placement ---
-  function zoomMap(factor) {
-    const vb = state.mapViewBox;
-    const nextW = Math.max(360, Math.min(1000, vb.w * factor));
-    const nextH = nextW * 0.72;
-    const cx = vb.x + vb.w / 2;
-    const cy = vb.y + vb.h / 2;
-    vb.w = nextW;
-    vb.h = nextH;
-    vb.x = Math.max(0, Math.min(1000 - nextW, cx - nextW / 2));
-    vb.y = Math.max(0, Math.min(720 - nextH, cy - nextH / 2));
+  function zoomMap(stepOrFactor, anchorX = 500, anchorY = 360) {
+    const delta =
+      stepOrFactor === 1 || stepOrFactor === -1
+        ? stepOrFactor
+        : stepOrFactor < 1
+          ? 1
+          : -1;
+    const currentZoom = Math.max(4, Math.min(18, Math.round(state.mapZoom || 12)));
+    const nextZoom = Math.max(4, Math.min(18, currentZoom + delta));
+    if (nextZoom === currentZoom) return;
+
+    const proj = state.lastGeoProjection || getGeoProjection();
+    const anchorGeo = proj.unproject(anchorX, anchorY);
+    const anchorWxNext = lngToWorldX(anchorGeo.lng, nextZoom);
+    const anchorWyNext = latToWorldY(anchorGeo.lat, nextZoom);
+    const centerWxNext = anchorWxNext + (500 - anchorX);
+    const centerWyNext = anchorWyNext + (360 - anchorY);
+
+    state.mapZoom = nextZoom;
+    state.mapCenter = {
+      lat: worldYToLat(centerWyNext, nextZoom),
+      lng: worldXToLng(centerWxNext, nextZoom),
+      label: state.mapCenter?.label || state.activeRegion || "Map View",
+    };
+    state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
     renderMapSvg();
   }
 
   function resetMap() {
+    const regionBoxes = state.activeRegion
+      ? state.boxes.filter((b) => getBoxRegionLabel(b) === state.activeRegion)
+      : state.boxes;
+    fitMapToBoxes(regionBoxes.length ? regionBoxes : state.boxes);
     state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
-    renderMapSvg();
+    renderMapView();
   }
 
   function setAddBoxMode(enabled) {
@@ -1385,6 +1440,7 @@
             state.selectedBoxId = localMatch.id;
             state.activeRegion = getBoxRegionLabel(localMatch);
             state.mapCenter = { lat: localMatch.lat, lng: localMatch.lng, label: state.activeRegion };
+            state.mapZoom = Math.max(state.mapZoom || 12, 15);
             state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
             renderMapView();
             showToast(`Focused on ${localMatch.name} (${localMatch.charter_number})`);
@@ -1407,11 +1463,26 @@
           }
         }
 
-        if (resp.center) state.mapCenter = resp.center;
+        if (payload.isNearMe || (payload.lat != null && payload.lng != null)) {
+          const nearLabel = payload.label || resp.center?.label || state.mapCenter?.label || "Nearby Location";
+          state.mapCenter = { lat: payload.lat, lng: payload.lng, label: nearLabel };
+          state.mapZoom = payload.zoom || 15;
+          if (state.userLocation) {
+            state.userLocation = { ...state.userLocation, label: resp.center?.label || state.userLocation.label };
+          }
+        } else {
+          if (resp.center) state.mapCenter = resp.center;
+          state.mapZoom =
+            resp.source_used === "local-match"
+              ? Math.max(state.mapZoom || 12, 15)
+              : payload.query && /\d/.test(payload.query)
+                ? 14
+                : 13;
+        }
         if (resp.matched_box_id) state.selectedBoxId = resp.matched_box_id;
         state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
         const matched = (resp.state?.boxes || []).find((b) => b.id === resp.matched_box_id);
-        state.activeRegion = matched ? getBoxRegionLabel(matched) : (resp.center?.label || "");
+        state.activeRegion = matched ? getBoxRegionLabel(matched) : (state.mapCenter?.label || "");
         applyStatePayload(resp.state);
         if (resp.source_used === "local-match") {
           showToast(`Focused on ${resp.center?.label || "matching box"}`);
@@ -1420,7 +1491,7 @@
             `Synced ${resp.synced_count} Little Free Library box(es) near ${resp.center?.label || "location"} (${resp.source_used})`
           );
         } else {
-          showToast(`Centered map on ${resp.center?.label || "location"}; no new mapped boxes found nearby.`);
+          showToast(`Centered map on ${state.mapCenter?.label || "your location"}`);
         }
       } catch (err) {
         showToast(`LFL Sync failed: ${err.message}`);
@@ -1446,20 +1517,45 @@
       }
     });
 
+    async function applyNearMeCoords(lat, lng, label) {
+      const locLabel = label || `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+      state.userLocation = { lat, lng, label: locLabel };
+      state.mapCenter = { lat, lng, label: locLabel };
+      state.mapZoom = 15;
+      state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
+      renderMapView();
+      await runLflSync({ lat, lng, zoom: 15, isNearMe: true, label: locLabel });
+    }
+
+    async function fallbackNearMeFromServer(reasonMsg) {
+      try {
+        const loc = await apiGet("/api/lfl/near-me");
+        if (Number.isFinite(loc.lat) && Number.isFinite(loc.lng)) {
+          await applyNearMeCoords(loc.lat, loc.lng, loc.label || "Nearby Location");
+          return;
+        }
+      } catch (_err) {
+        // Ignore fallback failure and surface message below
+      }
+      showToast(reasonMsg || "Could not determine your location; enter a city or postal code to sync.");
+    }
+
     document.getElementById("lflNearMeBtn").addEventListener("click", () => {
       if (!navigator.geolocation) {
-        showToast("Browser geolocation is unavailable; search a city or zip instead.");
+        showToast("Using approximate network location...");
+        fallbackNearMeFromServer("Browser geolocation is unavailable; search a city or postal code instead.");
         return;
       }
-      showToast("Requesting device GPS location...");
+      showToast("Finding Little Free Libraries near you...");
       navigator.geolocation.getCurrentPosition(
         (pos) => {
-          runLflSync({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+          applyNearMeCoords(pos.coords.latitude, pos.coords.longitude, "Your GPS Location");
         },
         () => {
-          showToast("Location permission denied; enter a city or zip code to sync.");
+          showToast("Device GPS unavailable — using approximate IP location...");
+          fallbackNearMeFromServer("Location permission denied; enter a city or postal code to sync.");
         },
-        { timeout: 8000 }
+        { timeout: 4500, enableHighAccuracy: false }
       );
     });
 
@@ -1467,10 +1563,11 @@
       const pill = e.target.closest("[data-region]");
       if (!pill) return;
       state.activeRegion = pill.dataset.region;
-      const firstInRegion = state.boxes.find((b) => getBoxRegionLabel(b) === state.activeRegion);
-      if (firstInRegion) {
-        state.selectedBoxId = firstInRegion.id;
-        state.mapCenter = { lat: firstInRegion.lat, lng: firstInRegion.lng, label: state.activeRegion };
+      const regionBoxes = state.boxes.filter((b) => getBoxRegionLabel(b) === state.activeRegion);
+      if (regionBoxes.length) {
+        state.selectedBoxId = regionBoxes[0].id;
+        fitMapToBoxes(regionBoxes);
+        state.mapCenter.label = state.activeRegion;
       }
       state.mapViewBox = { x: 0, y: 0, w: 1000, h: 720 };
       renderMapView();
@@ -1571,8 +1668,8 @@
     });
 
     // Map controls & interactions
-    document.getElementById("mapZoomInBtn").addEventListener("click", () => zoomMap(0.8));
-    document.getElementById("mapZoomOutBtn").addEventListener("click", () => zoomMap(1.25));
+    document.getElementById("mapZoomInBtn").addEventListener("click", () => zoomMap(1));
+    document.getElementById("mapZoomOutBtn").addEventListener("click", () => zoomMap(-1));
     document.getElementById("mapResetBtn").addEventListener("click", resetMap);
     document.getElementById("toggleAddBoxModeBtn").addEventListener("click", () => {
       setAddBoxMode(!state.placingBoxMode);
@@ -1584,11 +1681,15 @@
 
     mapViewport.addEventListener("pointerdown", (e) => {
       if (e.target.closest(".map-pin-group")) return;
+      const zoom = Math.max(4, Math.min(18, Math.round(state.mapZoom || 12)));
+      const centerLat = Number.isFinite(state.mapCenter?.lat) ? state.mapCenter.lat : 43.6629;
+      const centerLng = Number.isFinite(state.mapCenter?.lng) ? state.mapCenter.lng : -79.3957;
       state.mapDrag = {
         startX: e.clientX,
         startY: e.clientY,
-        origX: state.mapViewBox.x,
-        origY: state.mapViewBox.y,
+        startCenterWx: lngToWorldX(centerLng, zoom),
+        startCenterWy: latToWorldY(centerLat, zoom),
+        zoom,
         moved: false,
       };
     });
@@ -1602,10 +1703,15 @@
       }
       if (!state.mapDrag.moved) return;
       const rect = mapSvg.getBoundingClientRect();
-      const scaleX = state.mapViewBox.w / Math.max(1, rect.width);
-      const scaleY = state.mapViewBox.h / Math.max(1, rect.height);
-      state.mapViewBox.x = Math.max(0, Math.min(1000 - state.mapViewBox.w, state.mapDrag.origX - dx * scaleX));
-      state.mapViewBox.y = Math.max(0, Math.min(720 - state.mapViewBox.h, state.mapDrag.origY - dy * scaleY));
+      const scaleX = 1000 / Math.max(1, rect.width);
+      const scaleY = 720 / Math.max(1, rect.height);
+      const nextWx = state.mapDrag.startCenterWx - dx * scaleX;
+      const nextWy = state.mapDrag.startCenterWy - dy * scaleY;
+      state.mapCenter = {
+        lat: Math.max(-85, Math.min(85, worldYToLat(nextWy, state.mapDrag.zoom))),
+        lng: ((worldXToLng(nextWx, state.mapDrag.zoom) + 540) % 360) - 180,
+        label: state.mapCenter?.label || state.activeRegion || "Map View",
+      };
       renderMapSvg();
     });
 
@@ -1620,7 +1726,7 @@
         const ctm = mapSvg.getScreenCTM();
         if (ctm) {
           const svgPt = pt.matrixTransform(ctm.inverse());
-          const proj = state.lastGeoProjection || getGeoProjection(getVisibleMapBoxes());
+          const proj = state.lastGeoProjection || getGeoProjection();
           const coords = proj.unproject(svgPt.x, svgPt.y);
           state.pendingNewBoxCoords = coords;
           document.getElementById("newBoxCoordsLabel").textContent = `${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)}`;
@@ -1630,11 +1736,26 @@
       }
     });
 
+    let lastWheelZoomAt = 0;
     mapViewport.addEventListener(
       "wheel",
       (e) => {
         e.preventDefault();
-        zoomMap(e.deltaY < 0 ? 0.9 : 1.1);
+        const now = Date.now();
+        if (now - lastWheelZoomAt < 140) return;
+        lastWheelZoomAt = now;
+        let anchorX = 500;
+        let anchorY = 360;
+        const ctm = mapSvg.getScreenCTM();
+        if (ctm) {
+          const pt = mapSvg.createSVGPoint();
+          pt.x = e.clientX;
+          pt.y = e.clientY;
+          const svgPt = pt.matrixTransform(ctm.inverse());
+          anchorX = Math.max(0, Math.min(1000, svgPt.x));
+          anchorY = Math.max(0, Math.min(720, svgPt.y));
+        }
+        zoomMap(e.deltaY < 0 ? 1 : -1, anchorX, anchorY);
       },
       { passive: false }
     );

@@ -1738,6 +1738,10 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
                 self.send_json(HTTPStatus.OK, build_state(conn))
             return
 
+        if path == "/api/lfl/near-me":
+            self.handle_near_me()
+            return
+
         if path == "/api/health":
             self.send_json(HTTPStatus.OK, {"ok": True})
             return
@@ -1938,10 +1942,59 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
 
         self.send_json(HTTPStatus.CREATED, {"box_id": box_id, "state": state})
 
+    def handle_near_me(self) -> None:
+        """Estimate user location via IP geolocation with clean fallback."""
+        result = None
+
+        try:
+            req = urllib.request.Request(
+                "http://ip-api.com/json/?fields=status,city,region,postal,lat,lon",
+                headers={"User-Agent": "ShelfSpot-LFL-Finder/1.0", "Accept": "application/json"},
+            )
+            with urllib.request.urlopen(req, timeout=4) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            if data.get("status") == "success" and data.get("lat") is not None and data.get("lon") is not None:
+                lat, lng = _clamp_gps(data.get("lat"), data.get("lon"))
+                city = str(data.get("city") or "").strip()
+                st = _clean_lfl_state(str(data.get("region") or "").strip(), city)
+                label = ", ".join(p for p in [city, st] if p) or f"{lat:.4f}, {lng:.4f}"
+                result = {"lat": lat, "lng": lng, "city": city, "state": st, "label": label}
+        except Exception:
+            result = None
+
+        if result is None:
+            try:
+                req = urllib.request.Request(
+                    "https://ipapi.co/json/",
+                    headers={"User-Agent": "ShelfSpot-LFL-Finder/1.0", "Accept": "application/json"},
+                )
+                with urllib.request.urlopen(req, timeout=4) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                if data.get("latitude") is not None and data.get("longitude") is not None:
+                    lat, lng = _clamp_gps(data.get("latitude"), data.get("longitude"))
+                    city = str(data.get("city") or "").strip()
+                    st = _clean_lfl_state(str(data.get("region_code") or data.get("region") or "").strip(), city)
+                    label = ", ".join(p for p in [city, st] if p) or f"{lat:.4f}, {lng:.4f}"
+                    result = {"lat": lat, "lng": lng, "city": city, "state": st, "label": label}
+            except Exception:
+                result = None
+
+        if result is None:
+            result = {
+                "lat": 43.6532,
+                "lng": -79.3832,
+                "city": "Toronto",
+                "state": "ON",
+                "label": "Downtown Toronto, ON",
+            }
+
+        self.send_json(HTTPStatus.OK, result)
+
     def handle_lfl_sync(self, body: dict) -> None:
         query = str(body.get("query") or "").strip()
         radius_km = float(body.get("radius_km") or 4.0)
         has_coords = body.get("lat") is not None and body.get("lng") is not None
+        req_lat, req_lng = _clamp_gps(body.get("lat"), body.get("lng")) if has_coords else (None, None)
 
         if not query and not has_coords:
             self.send_json(HTTPStatus.BAD_REQUEST, {"error": "Provide a city, zip code, charter #, or lat/lng."})
@@ -1973,20 +2026,22 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
 
         source_used = "official-lfl"
         candidates = []
-        lat = lng = None
-        label = query or ""
+        lat = req_lat
+        lng = req_lng
+        label = query or (f"{req_lat:.4f}, {req_lng:.4f}" if has_coords else "")
         city = state_code = postal = ""
 
         try:
             live_records, api_lat, api_lng = _query_live_lfl_map_api(
                 query=query,
-                lat=body.get("lat"),
-                lng=body.get("lng"),
+                lat=req_lat,
+                lng=req_lng,
                 radius_km=max(radius_km, 15.0),
             )
             if live_records:
                 candidates = live_records
-                lat, lng = api_lat, api_lng
+                if not has_coords:
+                    lat, lng = api_lat, api_lng
                 first = live_records[0]
                 if query and query.lower() in CITY_GAZETTEER:
                     _, _, g_city, g_st, _ = CITY_GAZETTEER[query.lower()]
@@ -2000,7 +2055,7 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
 
         if not candidates:
             if has_coords:
-                lat, lng = _clamp_gps(body.get("lat"), body.get("lng"))
+                lat, lng = req_lat, req_lng
                 city, state_code, postal, label = "", "", "", f"{lat:.4f}, {lng:.4f}"
                 try:
                     rev_url = f"https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lng}"
@@ -2035,6 +2090,11 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
 
         with get_db() as conn:
             synced_count, last_id = _upsert_lfl_boxes(conn, candidates, update_existing=False)
+            if lat is not None and lng is not None:
+                all_coords = conn.execute("SELECT id, lat, lng FROM boxes").fetchall()
+                if all_coords:
+                    closest = min(all_coords, key=lambda r: (r["lat"] - lat) ** 2 + (r["lng"] - lng) ** 2)
+                    last_id = closest["id"]
             state = build_state(conn)
 
         self.send_json(
