@@ -53,17 +53,19 @@
       <!-- Quick Stats Ribbon -->
       <div class="stats-ribbon">
         <div class="stats-inner">
-          <div class="stat-pill">
-            <strong id="statAvailable">0</strong>
-            <span>Available Books</span>
-          </div>
-          <div class="stat-pill">
-            <strong id="statBoxes">0</strong>
-            <span>Active Boxes</span>
-          </div>
-          <div class="stat-pill">
-            <strong id="statCheckins">0</strong>
-            <span>Photo Check-Ins</span>
+          <div class="stats-pills-scroll">
+            <button class="stat-pill" type="button" data-stat-view="index" title="Browse Available Books">
+              <strong id="statAvailable">0</strong>
+              <span>Available Books</span>
+            </button>
+            <button class="stat-pill" type="button" data-stat-view="map" title="Explore Active Library Boxes">
+              <strong id="statBoxes">0</strong>
+              <span>Active Boxes</span>
+            </button>
+            <button class="stat-pill" type="button" data-stat-view="feed" title="View Recent Photo Check-Ins">
+              <strong id="statCheckins">0</strong>
+              <span>Photo Check-Ins</span>
+            </button>
           </div>
           <div class="stat-spacer"></div>
           <div class="quick-find">
@@ -123,6 +125,7 @@
             </select>
             <select id="indexSortSelect" class="select-control" aria-label="Sort books">
               <option value="newest">Newest Spotted</option>
+              <option value="nearest">Nearest on Map</option>
               <option value="title">Title A–Z</option>
               <option value="box">Box Name</option>
             </select>
@@ -181,19 +184,23 @@
           <button id="cancelAddBoxModeBtn" class="btn btn-ghost btn-sm" type="button">Cancel</button>
         </div>
 
+        <div id="nearbyBoxesStrip" class="nearby-boxes-strip" aria-label="Closest Little Free Libraries"></div>
+
         <div class="map-layout">
           <div class="map-canvas-card">
             <div class="map-controls">
-              <button id="mapZoomInBtn" class="map-ctrl-btn" type="button" title="Zoom In">+</button>
-              <button id="mapZoomOutBtn" class="map-ctrl-btn" type="button" title="Zoom Out">−</button>
-              <button id="mapResetBtn" class="map-ctrl-btn" type="button" title="Reset View">⟲</button>
+              <button id="mapZoomInBtn" class="map-ctrl-btn" type="button" title="Zoom In" aria-label="Zoom In">+</button>
+              <button id="mapZoomOutBtn" class="map-ctrl-btn" type="button" title="Zoom Out" aria-label="Zoom Out">−</button>
+              <button id="mapResetBtn" class="map-ctrl-btn" type="button" title="Reset View" aria-label="Reset View">⟲</button>
+              <button id="mapLocateBtn" class="map-ctrl-btn" type="button" title="Near Me" aria-label="Locate Near Me">📍</button>
             </div>
             <div id="mapViewport" class="map-viewport">
               <svg id="neighborhoodMapSvg" viewBox="0 0 1000 720" preserveAspectRatio="xMidYMid meet"></svg>
             </div>
+            <div id="mobileMapPreviewBar" class="mobile-map-preview"></div>
             <div class="map-legend">
               <span class="legend-item"><span class="legend-dot available"></span> Library Box + Available Book Count</span>
-              <span class="legend-hint">Drag to pan · Scroll or +/− to zoom · Map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</span>
+              <span class="legend-hint">Drag or pinch to navigate · Map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</span>
             </div>
           </div>
 

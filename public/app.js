@@ -47,6 +47,10 @@
     pendingNewBoxCoords: { lat: 43.6629, lng: -79.3957 },
     mapViewBox: { x: 0, y: 0, w: 1000, h: 720 },
     mapDrag: null,
+    boxesById: new Map(),
+    dirtyViews: new Set(["feed", "index", "map"]),
+    lastFeedBoxSig: "",
+    mapRafId: null,
 
     // Snap / Upload modal state
     snapPhotoData: "",
@@ -109,8 +113,33 @@
     return data;
   }
 
+  function debounce(fn, delayMs = 110) {
+    let timer = null;
+    return function (...args) {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => fn.apply(this, args), delayMs);
+    };
+  }
+
+  function distanceKm(lat1, lng1, lat2, lng2) {
+    const toRad = (d) => (d * Math.PI) / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLng = toRad(lng2 - lng1);
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+    return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  function formatDistance(km) {
+    if (!Number.isFinite(km)) return "";
+    if (km < 1) return `${Math.max(50, Math.round((km * 1000) / 10) * 10)} m`;
+    return `${km < 10 ? km.toFixed(1) : Math.round(km)} km`;
+  }
+
   function applyStatePayload(payload) {
     state.boxes = payload.boxes || [];
+    state.boxesById = new Map(state.boxes.map((b) => [b.id, b]));
     state.checkins = payload.checkins || [];
     state.books = payload.books || [];
     state.stats = payload.stats || state.stats;
@@ -119,7 +148,7 @@
 
     if (!state.selectedBoxId && state.boxes.length > 0) {
       state.selectedBoxId = state.boxes[0].id;
-    } else if (state.selectedBoxId && !state.boxes.some((b) => b.id === state.selectedBoxId)) {
+    } else if (state.selectedBoxId && !state.boxesById.has(state.selectedBoxId)) {
       state.selectedBoxId = state.boxes[0]?.id || null;
     }
 
@@ -130,6 +159,9 @@
       fitMapToBoxes(regionBoxes.length ? regionBoxes : [b0]);
     }
 
+    state.dirtyViews.add("feed");
+    state.dirtyViews.add("index");
+    state.dirtyViews.add("map");
     renderAll();
   }
 
@@ -143,6 +175,13 @@
   }
 
   // --- Navigation ---
+  function renderViewByName(viewName) {
+    if (viewName === "feed") renderFeedView();
+    else if (viewName === "index") renderBookIndexView();
+    else if (viewName === "map") renderMapView();
+    state.dirtyViews.delete(viewName);
+  }
+
   function switchView(viewName) {
     state.activeView = viewName;
     document.querySelectorAll(".view-section").forEach((el) => {
@@ -151,8 +190,8 @@
     document.querySelectorAll(".nav-tab, .mobile-nav-btn[data-view]").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.view === viewName);
     });
-    if (viewName === "map") {
-      renderMapView();
+    if (state.dirtyViews.has(viewName) || viewName === "map") {
+      renderViewByName(viewName);
     }
   }
 
@@ -196,10 +235,15 @@
   function renderFeedBoxOptions() {
     const select = document.getElementById("feedBoxFilter");
     const current = state.feedBoxId;
-    select.innerHTML = `<option value="">All Library Boxes</option>` +
-      state.boxes
-        .map((b) => `<option value="${b.id}">${escapeHtml(b.name)} (${b.available_count})</option>`)
-        .join("");
+    const sig = `${state.boxes.length}:${state.stats.available_books ?? 0}`;
+    if (state.lastFeedBoxSig !== sig) {
+      state.lastFeedBoxSig = sig;
+      select.innerHTML =
+        `<option value="">All Library Boxes (${state.boxes.length})</option>` +
+        state.boxes
+          .map((b) => `<option value="${b.id}">${escapeHtml(b.name)} (${b.available_count})</option>`)
+          .join("");
+    }
     select.value = current;
   }
 
@@ -319,15 +363,23 @@
             </div>
 
             <div class="photo-stage">
-              <img src="${photoUrl}" alt="Little Free Library shelf at ${escapeHtml(ch.box_name)}" />
+              <img src="${photoUrl}" loading="lazy" decoding="async" alt="Little Free Library shelf at ${escapeHtml(ch.box_name)}" />
               <div class="photo-overlay-controls">
+                <button
+                  class="overlay-toggle-btn"
+                  type="button"
+                  data-action="open-lightbox"
+                  data-checkin-id="${ch.id}"
+                >
+                  🔍 Expand
+                </button>
                 <button
                   class="overlay-toggle-btn ${overlayHidden ? "off" : ""}"
                   type="button"
                   data-action="toggle-overlay"
                   data-checkin-id="${ch.id}"
                 >
-                  Spine Overlay: ${overlayHidden ? "OFF" : "ON"}
+                  Spines: ${overlayHidden ? "OFF" : "ON"}
                 </button>
               </div>
               <div class="bbox-layer ${overlayHidden ? "hidden-boxes" : ""}">
@@ -377,6 +429,7 @@
   function renderBookIndexView() {
     renderGenrePills();
     const q = state.indexSearch.trim().toLowerCase();
+    const refPoint = state.userLocation || state.mapCenter || { lat: 43.6629, lng: -79.3957 };
 
     let items = state.books.filter((bk) => {
       if (state.indexGenre !== "All Genres" && bk.genre !== state.indexGenre) return false;
@@ -392,7 +445,15 @@
       );
     });
 
-    if (state.indexSort === "title") {
+    const getBookDist = (bk) => {
+      const box = state.boxesById.get(bk.box_id);
+      if (!box) return Infinity;
+      return distanceKm(refPoint.lat, refPoint.lng, box.lat, box.lng);
+    };
+
+    if (state.indexSort === "nearest") {
+      items = [...items].sort((a, b) => getBookDist(a) - getBookDist(b));
+    } else if (state.indexSort === "title") {
       items = [...items].sort((a, b) => (a.title || "").localeCompare(b.title || ""));
     } else if (state.indexSort === "box") {
       items = [...items].sort((a, b) => (a.box_name || "").localeCompare(b.box_name || ""));
@@ -415,6 +476,8 @@
       .map((bk) => {
         const isPicked = bk.status === "picked_up";
         const confPct = Math.round((bk.confidence || 0.95) * 100);
+        const distKm = getBookDist(bk);
+        const distBadge = Number.isFinite(distKm) ? `<span class="badge badge-neutral">📍 ${formatDistance(distKm)}</span>` : "";
         return `
           <article class="book-card ${isPicked ? "is-picked" : ""}">
             <div class="book-spine-badge" style="background:${escapeHtml(bk.spine_color || "#3B6E5C")}"></div>
@@ -432,6 +495,7 @@
                 <div class="book-tags">
                   <span class="badge badge-neutral">${escapeHtml(bk.genre)}</span>
                   <span class="badge badge-terracotta">${confPct}% spine match</span>
+                  ${distBadge}
                 </div>
               </div>
 
@@ -812,17 +876,87 @@
     `;
   }
 
+  function renderNearbyBoxesStrip() {
+    const strip = document.getElementById("nearbyBoxesStrip");
+    if (!strip) return;
+    if (!state.boxes.length) {
+      strip.innerHTML = "";
+      return;
+    }
+    const ref = state.userLocation || state.mapCenter || { lat: 43.6629, lng: -79.3957 };
+    const nearest = state.boxes
+      .map((box) => ({
+        box,
+        dist: distanceKm(ref.lat, ref.lng, box.lat, box.lng),
+      }))
+      .sort((a, b) => a.dist - b.dist)
+      .slice(0, 8);
+
+    strip.innerHTML = nearest
+      .map(({ box, dist }) => {
+        const active = box.id === state.selectedBoxId;
+        return `
+          <button
+            type="button"
+            class="nearby-box-card ${active ? "active" : ""}"
+            data-nearby-box-id="${box.id}"
+          >
+            <div class="nearby-box-top">
+              <span>📍 ${formatDistance(dist)}</span>
+              <span class="badge ${box.available_count > 0 ? "badge-forest" : "badge-neutral"}">${box.available_count} books</span>
+            </div>
+            <div class="nearby-box-name">${escapeHtml(box.name)}</div>
+            <div class="nearby-box-addr">${escapeHtml(box.address)}</div>
+          </button>
+        `;
+      })
+      .join("");
+  }
+
+  function renderMobileMapPreview() {
+    const bar = document.getElementById("mobileMapPreviewBar");
+    if (!bar) return;
+    const box = state.boxesById.get(state.selectedBoxId) || state.boxes.find((b) => b.id === state.selectedBoxId);
+    if (!box) {
+      bar.innerHTML = "";
+      return;
+    }
+    const ref = state.userLocation || state.mapCenter || { lat: 43.6629, lng: -79.3957 };
+    const dist = formatDistance(distanceKm(ref.lat, ref.lng, box.lat, box.lng));
+    const gmapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${box.lat},${box.lng}`)}`;
+    bar.innerHTML = `
+      <div class="mobile-preview-info">
+        <div class="mobile-preview-title">${escapeHtml(box.name)}</div>
+        <div class="mobile-preview-sub">${escapeHtml(box.address)}${dist ? ` · ${dist}` : ""} · ${box.available_count} available</div>
+      </div>
+      <div class="mobile-preview-actions">
+        <button class="btn btn-primary btn-sm" type="button" data-action="snap-for-box" data-box-id="${box.id}">📸 Check In</button>
+        <a class="btn btn-secondary btn-sm" href="${gmapsLink}" target="_blank" rel="noopener">Directions ↗</a>
+        <button class="btn btn-ghost btn-sm" type="button" data-action="scroll-to-drawer">Details ↓</button>
+      </div>
+    `;
+  }
+
   function renderMapView() {
     renderMapRegionPills();
     renderMapSvg();
+    renderNearbyBoxesStrip();
+    renderMobileMapPreview();
     renderMapDrawer();
+  }
+
+  function scheduleMapRender() {
+    if (state.mapRafId) return;
+    state.mapRafId = window.requestAnimationFrame(() => {
+      state.mapRafId = null;
+      renderMapSvg();
+      renderNearbyBoxesStrip();
+    });
   }
 
   function renderAll() {
     renderHeaderStats();
-    renderFeedView();
-    renderBookIndexView();
-    renderMapView();
+    renderViewByName(state.activeView || "feed");
   }
 
   // --- Map Pan / Zoom & Placement ---
@@ -1003,7 +1137,28 @@
     if (!file) return;
     const reader = new FileReader();
     reader.onload = () => {
-      runShelfAnalysis({ photoData: reader.result, presetId: "" });
+      const rawUrl = reader.result;
+      const img = new Image();
+      img.onload = () => {
+        const maxDim = 1280;
+        let w = img.naturalWidth || img.width;
+        let h = img.naturalHeight || img.height;
+        if (w > maxDim || h > maxDim) {
+          const ratio = Math.min(maxDim / w, maxDim / h);
+          w = Math.round(w * ratio);
+          h = Math.round(h * ratio);
+        }
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+        const compressedUrl = canvas.toDataURL("image/jpeg", 0.85);
+        runShelfAnalysis({ photoData: compressedUrl, presetId: "" });
+      };
+      img.onerror = () => {
+        runShelfAnalysis({ photoData: rawUrl, presetId: "" });
+      };
+      img.src = rawUrl;
     };
     reader.readAsDataURL(file);
   }
@@ -1187,26 +1342,43 @@
 
   // --- Event Binding ---
   function bindEvents() {
-    // Navigation tabs
+    // Navigation tabs & interactive stat pills
     document.querySelectorAll(".nav-tab, .mobile-nav-btn[data-view]").forEach((btn) => {
       btn.addEventListener("click", () => switchView(btn.dataset.view));
     });
+    document.querySelectorAll(".stat-pill[data-stat-view]").forEach((pill) => {
+      pill.addEventListener("click", () => {
+        const targetView = pill.dataset.statView;
+        if (targetView === "index") {
+          state.indexStatus = "available";
+          document.getElementById("indexStatusFilter").value = "available";
+          state.dirtyViews.add("index");
+        }
+        switchView(targetView);
+      });
+    });
     document.getElementById("brandHomeBtn").addEventListener("click", () => switchView("feed"));
 
-    // Quick search in header -> jumps to Book Index
-    document.getElementById("headerQuickSearch").addEventListener("input", (e) => {
-      state.indexSearch = e.target.value;
-      document.getElementById("indexSearchInput").value = e.target.value;
-      if (e.target.value.trim() && state.activeView !== "index") {
+    // Quick search in header -> jumps to Book Index (debounced)
+    const onQuickSearch = debounce((val) => {
+      state.indexSearch = val;
+      document.getElementById("indexSearchInput").value = val;
+      if (val.trim() && state.activeView !== "index") {
         switchView("index");
       }
       renderBookIndexView();
+    }, 100);
+    document.getElementById("headerQuickSearch").addEventListener("input", (e) => {
+      onQuickSearch(e.target.value);
     });
 
-    // Feed filters
-    document.getElementById("feedSearchInput").addEventListener("input", (e) => {
-      state.feedSearch = e.target.value;
+    // Feed filters (debounced search)
+    const onFeedSearch = debounce((val) => {
+      state.feedSearch = val;
       renderFeedView();
+    }, 100);
+    document.getElementById("feedSearchInput").addEventListener("input", (e) => {
+      onFeedSearch(e.target.value);
     });
     document.getElementById("feedBoxFilter").addEventListener("change", (e) => {
       state.feedBoxId = e.target.value;
@@ -1227,7 +1399,10 @@
       const btn = e.target.closest("[data-action]");
       if (!btn) return;
       const action = btn.dataset.action;
-      if (action === "toggle-overlay") {
+      if (action === "open-lightbox") {
+        const cid = Number(btn.dataset.checkinId);
+        openPhotoLightbox(cid, state.activeFeedSpines[cid]);
+      } else if (action === "toggle-overlay") {
         const cid = Number(btn.dataset.checkinId);
         if (state.hiddenOverlays.has(cid)) state.hiddenOverlays.delete(cid);
         else state.hiddenOverlays.add(cid);
@@ -1244,11 +1419,14 @@
       }
     });
 
-    // Book Index filters
-    document.getElementById("indexSearchInput").addEventListener("input", (e) => {
-      state.indexSearch = e.target.value;
-      document.getElementById("headerQuickSearch").value = e.target.value;
+    // Book Index filters (debounced search)
+    const onIndexSearch = debounce((val) => {
+      state.indexSearch = val;
+      document.getElementById("headerQuickSearch").value = val;
       renderBookIndexView();
+    }, 100);
+    document.getElementById("indexSearchInput").addEventListener("input", (e) => {
+      onIndexSearch(e.target.value);
     });
     document.getElementById("indexStatusFilter").addEventListener("change", (e) => {
       state.indexStatus = e.target.value;
@@ -1671,15 +1849,49 @@
     document.getElementById("mapZoomInBtn").addEventListener("click", () => zoomMap(1));
     document.getElementById("mapZoomOutBtn").addEventListener("click", () => zoomMap(-1));
     document.getElementById("mapResetBtn").addEventListener("click", resetMap);
+    document.getElementById("mapLocateBtn").addEventListener("click", () => {
+      document.getElementById("lflNearMeBtn").click();
+    });
     document.getElementById("toggleAddBoxModeBtn").addEventListener("click", () => {
       setAddBoxMode(!state.placingBoxMode);
     });
     document.getElementById("cancelAddBoxModeBtn").addEventListener("click", () => setAddBoxMode(false));
 
+    document.getElementById("nearbyBoxesStrip").addEventListener("click", (e) => {
+      const card = e.target.closest("[data-nearby-box-id]");
+      if (!card) return;
+      const boxId = Number(card.dataset.nearbyBoxId);
+      const box = state.boxesById.get(boxId) || state.boxes.find((b) => b.id === boxId);
+      if (!box) return;
+      state.selectedBoxId = box.id;
+      state.mapCenter = { lat: box.lat, lng: box.lng, label: getBoxRegionLabel(box) };
+      state.mapZoom = Math.max(state.mapZoom || 12, 15);
+      renderMapView();
+    });
+
+    document.getElementById("mobileMapPreviewBar").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-action]");
+      if (!btn) return;
+      if (btn.dataset.action === "snap-for-box") {
+        openSnapModal(Number(btn.dataset.boxId));
+      } else if (btn.dataset.action === "scroll-to-drawer") {
+        document.getElementById("mapBoxDrawer").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
     const mapViewport = document.getElementById("mapViewport");
     const mapSvg = document.getElementById("neighborhoodMapSvg");
+    const activeTouchPointers = new Map();
+    let pinchStartDist = 0;
 
     mapViewport.addEventListener("pointerdown", (e) => {
+      activeTouchPointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (activeTouchPointers.size === 2) {
+        const pts = Array.from(activeTouchPointers.values());
+        pinchStartDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+        state.mapDrag = null;
+        return;
+      }
       if (e.target.closest(".map-pin-group")) return;
       const zoom = Math.max(4, Math.min(18, Math.round(state.mapZoom || 12)));
       const centerLat = Number.isFinite(state.mapCenter?.lat) ? state.mapCenter.lat : 43.6629;
@@ -1695,6 +1907,18 @@
     });
 
     window.addEventListener("pointermove", (e) => {
+      if (activeTouchPointers.has(e.pointerId)) {
+        activeTouchPointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      }
+      if (activeTouchPointers.size === 2 && pinchStartDist > 0) {
+        const pts = Array.from(activeTouchPointers.values());
+        const dist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+        if (Math.abs(dist - pinchStartDist) > 42) {
+          zoomMap(dist > pinchStartDist ? 1 : -1, 500, 360);
+          pinchStartDist = dist;
+        }
+        return;
+      }
       if (!state.mapDrag) return;
       const dx = e.clientX - state.mapDrag.startX;
       const dy = e.clientY - state.mapDrag.startY;
@@ -1712,10 +1936,17 @@
         lng: ((worldXToLng(nextWx, state.mapDrag.zoom) + 540) % 360) - 180,
         label: state.mapCenter?.label || state.activeRegion || "Map View",
       };
-      renderMapSvg();
+      scheduleMapRender();
     });
 
+    const clearPointer = (e) => {
+      activeTouchPointers.delete(e.pointerId);
+      if (activeTouchPointers.size < 2) pinchStartDist = 0;
+    };
+    window.addEventListener("pointercancel", clearPointer);
+
     window.addEventListener("pointerup", (e) => {
+      clearPointer(e);
       if (!state.mapDrag) return;
       const wasMoved = state.mapDrag.moved;
       state.mapDrag = null;
@@ -1775,6 +2006,18 @@
       } else if (btn.dataset.action === "toggle-book-status") {
         toggleBookStatus(Number(btn.dataset.bookId));
       }
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (state.placingBoxMode) {
+        setAddBoxMode(false);
+        return;
+      }
+      document.querySelectorAll(".modal-backdrop:not(.hidden)").forEach((backdrop) => {
+        if (backdrop.id === "snapModal") closeSnapModal();
+        else backdrop.classList.add("hidden");
+      });
     });
 
     // New Map Box modal

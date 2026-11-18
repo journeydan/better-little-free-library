@@ -303,7 +303,7 @@
     ctx.fill();
     ctx.restore();
 
-    return canvas.toDataURL("image/png");
+    return canvas.toDataURL("image/jpeg", 0.85);
   }
 
   function resolveCheckinPhoto(checkin) {

@@ -3,6 +3,7 @@
 
 import base64
 import csv
+import gzip
 import hashlib
 import io
 import json
@@ -422,6 +423,8 @@ CA_POSTAL_PREFIX_GAZETTEER = {
 def init_db() -> None:
     """Create tables if needed, migrate legacy schemas, and seed initial data when empty."""
     with get_db() as conn:
+        conn.execute("PRAGMA journal_mode=WAL;")
+        conn.execute("PRAGMA synchronous=NORMAL;")
         conn.executescript(
             """
             CREATE TABLE IF NOT EXISTS boxes (
@@ -468,6 +471,14 @@ def init_db() -> None:
                 spotted_at TEXT NOT NULL,
                 updated_at TEXT NOT NULL
             );
+
+            CREATE INDEX IF NOT EXISTS idx_boxes_city ON boxes(city);
+            CREATE INDEX IF NOT EXISTS idx_boxes_charter ON boxes(charter_number);
+            CREATE INDEX IF NOT EXISTS idx_boxes_ext ON boxes(external_id);
+            CREATE INDEX IF NOT EXISTS idx_checkins_box_id ON checkins(box_id);
+            CREATE INDEX IF NOT EXISTS idx_books_box_id ON books(box_id);
+            CREATE INDEX IF NOT EXISTS idx_books_checkin_id ON books(checkin_id);
+            CREATE INDEX IF NOT EXISTS idx_books_status ON books(status);
             """
         )
         migrate_db(conn)
@@ -1712,9 +1723,16 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
         print(f"[ShelfSpot] {self.address_string()} - {fmt % args}")
 
     def send_json(self, status: int, payload: dict) -> None:
-        raw = json.dumps(payload).encode("utf-8")
+        raw = json.dumps(payload, separators=(",", ":")).encode("utf-8")
+        accept_enc = self.headers.get("Accept-Encoding", "")
+        use_gzip = "gzip" in accept_enc and len(raw) > 512
+        if use_gzip:
+            raw = gzip.compress(raw, compresslevel=5)
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
+        if use_gzip:
+            self.send_header("Content-Encoding", "gzip")
+            self.send_header("Vary", "Accept-Encoding")
         self.send_header("Content-Length", str(len(raw)))
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
@@ -1761,8 +1779,16 @@ class ShelfSpotHandler(BaseHTTPRequestHandler):
 
         mime_type, _ = mimetypes.guess_type(str(candidate))
         content = candidate.read_bytes()
+        accept_enc = self.headers.get("Accept-Encoding", "")
+        compressible = (mime_type or "").startswith(("text/", "application/javascript", "application/json", "image/svg"))
+        use_gzip = "gzip" in accept_enc and compressible and len(content) > 512
+        if use_gzip:
+            content = gzip.compress(content, compresslevel=5)
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-Type", f"{mime_type or 'application/octet-stream'}; charset=utf-8")
+        if use_gzip:
+            self.send_header("Content-Encoding", "gzip")
+            self.send_header("Vary", "Accept-Encoding")
         self.send_header("Content-Length", str(len(content)))
         self.send_header("Cache-Control", "no-cache")
         self.end_headers()
