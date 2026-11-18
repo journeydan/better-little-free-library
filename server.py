@@ -43,7 +43,7 @@ DATA_DIR = BASE_DIR / "data"
 DB_PATH = DATA_DIR / "bookfinder.db"
 
 DEFAULT_PORT = int(os.environ.get("PORT", "8765"))
-HOST = os.environ.get("HOST", "127.0.0.1")
+HOST = os.environ.get("HOST", "0.0.0.0")
 
 ALLOWED_GENRES = [
     "Fiction",
